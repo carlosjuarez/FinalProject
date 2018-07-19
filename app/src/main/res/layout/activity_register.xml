@@ -8,8 +8,8 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingStart="@dimen/activity_horizontal_padding"
-    android:paddingEnd="@dimen/activity_vertical_padding"
-    android:paddingTop="@dimen/activity_horizontal_padding"
+    android:paddingEnd="@dimen/activity_horizontal_padding"
+    android:paddingTop="@dimen/activity_vertical_padding"
     android:paddingBottom="@dimen/activity_vertical_padding"
     tools:context=".RegisterActivity">
 
@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="@+id/cl_register_parent_layout"
         app:layout_constraintStart_toStartOf="@+id/cl_register_parent_layout"
         app:layout_constraintEnd_toEndOf="@+id/cl_register_parent_layout"
+        app:layout_constraintBottom_toTopOf="@+id/et_register_last_name"
         android:hint="@string/prompt_first_name"
         android:inputType="textEmailAddress"
         android:maxLines="1"

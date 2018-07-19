@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_group_search_group_image"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/tv_group_search_group_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="6dp"
+        android:text="GROUP NAME" />
+    <TextView
+        android:id="@+id/tv_group_search_group_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Group Description"
+        android:layout_below="@id/tv_group_search_group_name"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        />
+
+</RelativeLayout>

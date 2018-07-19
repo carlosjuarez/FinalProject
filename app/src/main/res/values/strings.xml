@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FInalProject</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Group_Name">Group Name</string>
+    <string name="Group_Description">Group Description</string>
 </resources>

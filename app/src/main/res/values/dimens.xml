@@ -2,4 +2,8 @@
 <resources>
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="rv_search_group_margins">8dp</dimen>
+    <dimen name="search_top_padding">6dp</dimen>
+    <dimen name="search_bottom_padding">6dp</dimen>
+    <dimen name="search_group_name_bottom_padding">6dp</dimen>
 </resources>

@@ -11,5 +11,6 @@
     <string name="err_msg_password">Enter the password</string>
     <string name="retype_password">Retype Password</string>
     <string name="tv_update_title">Update Password</string>
+    <string name="button_submit">Submit</string>
 
 </resources>

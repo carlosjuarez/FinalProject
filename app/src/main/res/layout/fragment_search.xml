@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,16 +10,17 @@
         android:id="@+id/sv_search_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
         android:paddingBottom="@dimen/search_bottom_padding">
     </android.support.v7.widget.SearchView>
 
-    <view class="android.support.v7.app.AlertController$RecycleListView"
+    <view
         android:id="@+id/rv_search_layout"
-        android:paddingTop="@dimen/search_top_padding"
+        class="android.support.v7.app.AlertController$RecycleListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:dividerHeight="@dimen/rv_search_group_margins"
-        android:scrollbars="vertical"/>
+        android:paddingTop="@dimen/search_recyclerview_top_padding"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@id/sv_search_layout" />
 
 </android.support.constraint.ConstraintLayout>

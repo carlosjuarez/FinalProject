@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChatUsetInteractionFragment"
+    android:paddingStart="@dimen/no_padding"
+    android:paddingEnd="@dimen/no_padding"
+    android:paddingTop="@dimen/no_padding"
+    android:paddingBottom="@dimen/no_padding">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_fragment_chat_user_interaction"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/rv_fragment_chat_user_interaction_height"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/et_fragment_chat_user_interaction"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </android.support.v7.widget.RecyclerView>
+
+    <EditText
+        android:id="@+id/et_fragment_chat_user_interaction"
+        android:layout_width="352dp"
+        android:layout_height="@dimen/te_button_height"
+        android:background="@drawable/et_top_line"
+        android:hint="@string/et_type_message"
+        android:textSize="@dimen/title_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ib_fragment_chat_user_interaction"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_fragment_chat_user_interaction" />
+
+    <ImageButton
+        android:id="@+id/ib_fragment_chat_user_interaction"
+        android:layout_width="@dimen/ib_fragment_chat_user_interaction_width"
+        android:layout_height="@dimen/te_button_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/et_top_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@dimen/ib_fragment_chat_user_interaction_horizontal_bias"
+        app:layout_constraintStart_toEndOf="@+id/rv_fragment_chat_user_interaction"
+        app:layout_constraintTop_toBottomOf="@+id/rv_fragment_chat_user_interaction" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -38,4 +38,19 @@
     <dimen name="caret_image_height">30dp</dimen>
     <dimen name="img_feed_margin_start">0dp</dimen>
     <dimen name="button_login_register_forgot_margin_bottom">128dp</dimen>
+    <dimen name="rv_fragment_chat_user_interaction_height">468dp</dimen>
+    <dimen name="et_fragment_chat_user_interaction_width">354dp</dimen>
+    <dimen name="ib_fragment_chat_user_interaction_width">29dp</dimen>
+    <dimen name="ib_fragment_chat_user_interaction_horizontal_bias">1.0</dimen>
+    <dimen name="no_padding">0dp</dimen>
+    <dimen name="rv_chat_user_interaction_sent_guideline">0.33</dimen>
+    <dimen name="rv_chat_user_interaction_receive_guideline">0.66</dimen>
+    <dimen name="recyleview_chat_user_interaction_sent_cardview_width">252dp</dimen>
+    <dimen name="recyleview_chat_user_interaction_sent_cardview_height">104dp</dimen>
+    <dimen name="recycleview_chat_user_interaction_item_margin_start_to_end">4dp</dimen>
+    <dimen name="recycleview_chat_user_interaction_sent_cardview_tv_message_height">73dp</dimen>
+    <dimen name="recycleview_chat_user_interaction_sent_cardview_tv_message_width">249dp</dimen>
+    <dimen name="recycleview_chat_user_interaction_sent_cardview_tv_timestamp_height">18dp</dimen>
+    <dimen name="recycleview_chat_user_interaction_sent_cardview_tv_timestamp_width">83dp</dimen>
+    <dimen name="recycleview_chat_user_interaction_sent_cardview_tv_timestamp_margin_right">161dp</dimen>
 </resources>

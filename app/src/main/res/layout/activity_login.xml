@@ -23,13 +23,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/et_login_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_name"
-            android:inputType="text"
-            android:maxLines="@dimen/max_lines" />
+            <EditText
+                android:id="@+id/et_login_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_name"
+                android:maxLines="@dimen/max_lines"
+                android:inputType="text"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -52,8 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_name"
-            android:inputType="text"
-            android:maxLines="@dimen/max_lines" />
+            android:maxLines="@dimen/max_lines"
+            android:inputType="text"/>
 
     </android.support.design.widget.TextInputEditText>
 

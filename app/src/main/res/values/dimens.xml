@@ -31,5 +31,4 @@
     <dimen name="views_update_bottom_margin">150dp</dimen>
     <dimen name="max_lines">1</dimen>
     <dimen name="no_dimension">0dp</dimen>
-
 </resources>

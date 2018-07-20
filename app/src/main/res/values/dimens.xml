@@ -20,4 +20,5 @@
     <dimen name="input_margin_top_to_bottom">8dp</dimen>
     <dimen name="text_size">12sp</dimen>
     <item name="constraintguide_calendar_display" format="float" type="dimen">0.5</item>
+
 </resources>

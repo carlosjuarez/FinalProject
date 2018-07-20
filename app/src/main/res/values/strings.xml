@@ -5,6 +5,7 @@
     <string name="hint_name">Email or Username</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm password</string>    
     <string name="btn_sign_up">Sign Up</string>
     <string name="err_msg_name">Enter your full name</string>
     <string name="err_msg_email">Enter valid email address</string>
@@ -12,5 +13,4 @@
     <string name="retype_password">Retype Password</string>
     <string name="tv_update_title">Update Password</string>
     <string name="button_submit">Submit</string>
-
 </resources>

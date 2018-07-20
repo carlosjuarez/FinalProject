@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">FInalProject</string>
+    <string name="app_name">FinalProject</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sv_group_members_hint">Search for a group member</string>
 </resources>

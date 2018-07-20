@@ -2,8 +2,6 @@
     <string name="app_name">FinalProject</string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_enter_code">Enter Confirmation Code</string>
-
-    <!-- Strings related to login -->
     <string name="prompt_first_name">First Name</string>
     <string name="prompt_last_name">Last Name</string>
     <string name="prompt_email">Email</string>

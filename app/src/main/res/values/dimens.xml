@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_padding">8dp</dimen>
+    <dimen name="activity_vertical_padding">8dp</dimen>
+    <dimen name="title_text_size">12dp</dimen>
+    <dimen name="margin_top_bottom">32dp</dimen>
+    <dimen name="te_button_height">45dp</dimen>
+    <dimen name="views_update_top_margin">100dp</dimen>
+    <dimen name="views_update_bottom_margin">150dp</dimen>
+    <dimen name="max_lines">1</dimen>
+    <dimen name="no_dimension">0dp</dimen>
+    <dimen name="input_margin_start_to_end">8dp</dimen>
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">8dp</dimen>
     <dimen name="rv_search_group_margins">8dp</dimen>

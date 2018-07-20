@@ -1,9 +1,7 @@
 <resources>
-    <string name="app_name">FInalProject</string>
+    <string name="app_name">FinalProject</string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_enter_code">Enter Confirmation Code</string>
-
-    <!-- Strings related to login -->
     <string name="prompt_first_name">First Name</string>
     <string name="prompt_last_name">Last Name</string>
     <string name="prompt_email">Email</string>
@@ -13,4 +11,19 @@
     <string name="prompt_confirmation_code">Confirmation Code</string>
     <string name="action_register">Register</string>
     <string name="action_submit">Submit</string>
+  
+    <string name="app_name">FinalProject</string>
+    <string name="action_settings">Settings</string>
+    <string name="button_login_submit">Log In</string>
+    <string name="hint_name">Email or Username</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="err_msg_name">Enter your full name</string>
+    <string name="err_msg_email">Enter valid email address</string>
+    <string name="err_msg_password">Enter the password</string>
+    <string name="retype_password">Retype Password</string>
+    <string name="tv_update_title">Update Password</string>
+    <string name="button_submit">Submit</string>
+
 </resources>

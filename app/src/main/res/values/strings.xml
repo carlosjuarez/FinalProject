@@ -14,4 +14,9 @@
     <string name="retype_password">Retype Password</string>
     <string name="tv_update_title">Update Password</string>
     <string name="button_submit">Submit</string>
+    <string name="img_feeditem_content_description">Image of the event</string>
+    <string name="feed_item_titledefault">Title</string>
+    <string name="feeditem_descriptiondefault">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit sodales dolor in sodales. Duis</string>
+    <string name="feed_item_location_default">Street Name, Num, City, State, ZipCode</string>
+    <string name="feed_item_price_default">$ $ $ $</string>
 </resources>

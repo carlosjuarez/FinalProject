@@ -12,8 +12,6 @@
     <dimen name="views_update_bottom_margin">150dp</dimen>
     <dimen name="no_dimension_height">0dp</dimen>
     <dimen name="no_dimension_width">0dp</dimen>
-    <dimen name="activity_horizontal_margin">8dp</dimen>
-    <dimen name="activity_vertical_margin">8dp</dimen>
     <dimen name="img_feed_item_width">100dp</dimen>
     <dimen name="img_feed_item_height">100dp</dimen>
     <dimen name="img_margin_start">16dp</dimen>

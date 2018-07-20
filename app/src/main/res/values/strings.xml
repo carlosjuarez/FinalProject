@@ -12,5 +12,8 @@
     <string name="retype_password">Retype Password</string>
     <string name="tv_update_title">Update Password</string>
     <string name="button_submit">Submit</string>
+    <string name="title_activity_password_forgotten_display">PasswordForgottenDisplay</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="password_hint">Password</string>
 
 </resources>

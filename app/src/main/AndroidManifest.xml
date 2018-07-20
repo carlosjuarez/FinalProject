@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".UpdatePasswordActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".UpdatePasswordActivity" />
+        <activity android:name=".EnterCodeActivity"></activity>
     </application>
 
 </manifest>

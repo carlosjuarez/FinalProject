@@ -26,7 +26,10 @@
     <dimen name="recycleview_chat_user_interaction_sent_cardview_tv_timestamp_height">18dp</dimen>
     <dimen name="recycleview_chat_user_interaction_sent_cardview_tv_timestamp_width">83dp</dimen>
     <dimen name="recycleview_chat_user_interaction_sent_cardview_tv_timestamp_margin_right">161dp</dimen>
-    <dimen name="no_dimension">0dp</dimen>
     <dimen name="rv_fragment_group_members_height">463dp</dimen>
+    <dimen name="views_update_top_margin">100dp</dimen>
+    <dimen name="views_update_bottom_margin">150dp</dimen>
+    <dimen name="input_margin_start_to_end">8dp</dimen>
+    <dimen name="no_dimension">0dp</dimen>
 
 </resources>

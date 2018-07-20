@@ -21,6 +21,6 @@
         android:dividerHeight="@dimen/rv_search_group_margins"
         android:paddingTop="@dimen/search_recyclerview_top_padding"
         android:scrollbars="vertical"
-        app:layout_constraintTop_toBottomOf="@id/sv_search_layout"/>
+        app:layout_constraintTop_toBottomOf="@+id/sv_search_layout"/>
 
 </android.support.constraint.ConstraintLayout>

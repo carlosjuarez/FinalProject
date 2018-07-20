@@ -16,5 +16,4 @@
     <dimen name="rv_search_group_margins">8dp</dimen>
     <dimen name="search_recyclerview_top_padding">12dp</dimen>
     <dimen name="search_bottom_padding">6dp</dimen>
-    <dimen name="search_group_name_bottom_padding">6dp</dimen>
 </resources>

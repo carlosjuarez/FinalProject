@@ -24,4 +24,5 @@
     <dimen name="search_recyclerview_top_padding">12dp</dimen>
     <dimen name="search_bottom_padding">6dp</dimen>
     <dimen name="activity_horizontal_margin">8dp</dimen>
+    <dimen name="text_input_max_line">1</dimen>
 </resources>

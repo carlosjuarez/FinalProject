@@ -9,6 +9,6 @@
     <string name="prompt_password">Password</string>
     <string name="prompt_retype_password">Retype Password</string>
     <string name="prompt_confirmation_code">Confirmation Code</string>
-    <string name="action_register">Register</string>
-    <string name="action_submit">Submit</string>
+    <string name="button_register">Register</string>
+    <string name="button_submit">Submit</string>
 </resources>

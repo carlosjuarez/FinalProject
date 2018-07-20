@@ -104,7 +104,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/action_register"
+        android:text="@string/button_register"
         android:textStyle="bold"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -8,7 +8,7 @@ public class PasswordForgottenActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_password_forgotten_display);
+        setContentView(R.layout.activity_forgotten_password);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }

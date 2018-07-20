@@ -22,4 +22,5 @@
     <dimen name="max_lines">1</dimen>
     <dimen name="no_dimension">0dp</dimen>
     <dimen name="activity_horizontal_margin">8dp</dimen>
+    <dimen name="text_input_max_line">1</dimen>
 </resources>

@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">FinalProject</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_enter_code">Enter Confirmation Code</string>
+    <string name="prompt_first_name">First Name</string>
+    <string name="prompt_last_name">Last Name</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_city">City</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_retype_password">Retype Password</string>
+    <string name="prompt_confirmation_code">Confirmation Code</string>
+    <string name="action_submit">Submit</string>
     <string name="action_settings">Settings</string>
     <string name="button_login_submit">Log In</string>
     <string name="hint_name">Email or Username</string>
@@ -12,5 +22,6 @@
     <string name="retype_password">Retype Password</string>
     <string name="tv_update_title">Update Password</string>
     <string name="button_submit">Submit</string>
-
+    
+    <string name="button_register">Register</string>
 </resources>

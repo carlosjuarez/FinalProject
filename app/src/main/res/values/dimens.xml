@@ -9,6 +9,7 @@
     <dimen name="te_button_height">45dp</dimen>
     <dimen name="views_update_top_margin">100dp</dimen>
     <dimen name="views_update_bottom_margin">150dp</dimen>
+    <dimen name="max_lines">1</dimen>
 
     <dimen name="input_margin_start_to_end">8dp</dimen>
     <dimen name="activity_horizontal_margin">8dp</dimen>

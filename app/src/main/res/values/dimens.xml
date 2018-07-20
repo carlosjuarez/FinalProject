@@ -55,4 +55,6 @@
     <dimen name="button_login_register_forgot_margin_bottom">128dp</dimen>
     <dimen name="et_fragment_group_members_width">357</dimen>
     <dimen name="btn_recoverpassword">180dp</dimen>
+    <dimen name="rv_fragment_group_members_height">463dp</dimen>
+
 </resources>

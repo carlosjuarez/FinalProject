@@ -6,12 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/constraint_search_display">
 
-    <android.support.v7.widget.SearchView
+    <include layout="@layout/search_layout"
         android:id="@+id/sv_search_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/search_bottom_padding">
-    </android.support.v7.widget.SearchView>
+    </include>
 
     <view
         android:id="@+id/rv_search_layout"
@@ -21,6 +21,6 @@
         android:dividerHeight="@dimen/rv_search_group_margins"
         android:paddingTop="@dimen/search_recyclerview_top_padding"
         android:scrollbars="vertical"
-        app:layout_constraintTop_toBottomOf="@id/sv_search_layout" />
+        app:layout_constraintTop_toBottomOf="@id/sv_search_layout"/>
 
 </android.support.constraint.ConstraintLayout>

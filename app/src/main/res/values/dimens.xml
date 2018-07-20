@@ -12,6 +12,7 @@
     <dimen name="input_margin_start_to_end">8dp</dimen>
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">8dp</dimen>
-    <dimen name="no_dimension">0dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="max_lines">1</dimen>
+    <dimen name="no_dimension">0dp</dimen>
 </resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_horizontal_margin">
+
+
+    <ImageView
+        android:id="@+id/img_feeditem_image"
+        android:layout_width="@dimen/img_feed_item_width"
+        android:layout_height="@dimen/img_feed_item_height"
+        android:layout_marginStart="@dimen/img_margin_start"
+        android:layout_marginTop="@dimen/input_margin_top_to_bottom"
+        android:contentDescription="@string/img_feeditem_content_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/image_nia_gray" />
+
+    <TextView
+        android:id="@+id/tv_feeditem_title"
+        android:layout_width="@dimen/no_dimension_width"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/input_margin_start_to_end"
+        android:layout_marginStart="@dimen/input_margin_start_to_end"
+        android:layout_marginTop="@dimen/input_margin_top_to_bottom"
+        android:text="@string/feed_item_titledefault"
+        android:textSize="@dimen/title_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_feeditem_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_feeditem_description"
+        android:layout_width="@dimen/no_dimension_width"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/input_margin_start_to_end"
+        android:layout_marginStart="@dimen/input_margin_start_to_end"
+        android:layout_marginTop="@dimen/input_margin_top_to_bottom"
+        android:text="@string/feeditem_descriptiondefault"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_feeditem_image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_feeditem_title" />
+
+    <TextView
+        android:id="@+id/tv_feeditem_location"
+        android:layout_width="@dimen/no_dimension_width"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/input_margin_start_to_end"
+        android:layout_marginStart="@dimen/input_margin_start_to_end"
+        android:layout_marginTop="@dimen/input_margin_top_to_bottom"
+        android:text="@string/feed_item_location_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_feeditem_image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_feeditem_description" />
+
+    <TextView
+        android:id="@+id/tv_feeditem_price"
+        android:layout_width="@dimen/no_dimension_width"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/input_margin_start_to_end"
+        android:layout_marginStart="@dimen/input_margin_start_to_end"
+        android:layout_marginTop="@dimen/input_margin_top_to_bottom"
+        android:text="@string/feed_item_price_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_feeditem_image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_feeditem_location" />
+
+
+</android.support.constraint.ConstraintLayout>

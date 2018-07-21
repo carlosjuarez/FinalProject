@@ -2,7 +2,7 @@
     <string name="app_name">FinalProject</string>
     <string name="action_settings">Settings</string>
     <string name="button_login_submit">Log In</string>
-    <string name="hint_name">Email or Username</string>
+    <string name="hint_name">Username</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="btn_sign_up">Sign Up</string>
@@ -12,5 +12,6 @@
     <string name="retype_password">Retype Password</string>
     <string name="tv_update_title">Update Password</string>
     <string name="button_submit">Submit</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

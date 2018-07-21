@@ -21,4 +21,12 @@
     <string name="feed_item_location_default">Street Name, Num, City, State, ZipCode</string>
     <string name="feed_item_price_default">$ $ $ $</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="iv_image_description_user_image">User Image</string>
+    <string name="tv_default_text_user_name">User Name</string>
+    <string name="tv_default_text_user_status">User Status</string>
+    <string name="iv_default_user_image_description">User Image</string>
+
 </resources>

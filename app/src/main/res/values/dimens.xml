@@ -23,4 +23,12 @@
     <dimen name="no_dimension">0dp</dimen>
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="text_input_max_line">1</dimen>
+
+    <dimen name="et_top_line_width">0.5dp</dimen>
+    <dimen name="et_top_line_item_noline">-2dp</dimen>
+    <dimen name="et_top_line_item_line">1dp</dimen>
+    <dimen name="margin_16_dp">16dp</dimen>
+    <dimen name="iv_main_user_image_square_size">100dp</dimen>
+    <dimen name="iv_chat_user_image_square_size">50dp</dimen>
+    <dimen name="iv_chat_new_message_icon_image_square_size">25dp</dimen>
 </resources>

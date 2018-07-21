@@ -35,7 +35,7 @@
 
             <TextView
                 android:id="@+id/recycleview_chat_user_interaction_sent_cardview_tv_message"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/no_padding"
                 android:layout_height="wrap_content"
                 android:text="@string/et_type_message"
                 android:textSize="@dimen/title_text_size"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatUsetInteractionFragment"
+    tools:context=".ChatUserInteractionFragment"
     android:paddingStart="@dimen/no_padding"
     android:paddingEnd="@dimen/no_padding"
     android:paddingTop="@dimen/no_padding"
@@ -25,7 +25,8 @@
 
     <EditText
         android:id="@+id/et_fragment_chat_user_interaction"
-        android:layout_width="352dp"
+        android:layout_width="@dimen/recyleview_chat_user_interaction_sent_cardview_width"
+        android:inputType="text"
         android:layout_height="@dimen/te_button_height"
         android:background="@drawable/et_top_line"
         android:hint="@string/et_type_message"

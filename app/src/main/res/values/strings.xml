@@ -1,4 +1,9 @@
 <resources>
+    <string name="app_name">FInalProject</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="et_type_message">Type message</string>
     <string name="app_name">FinalProject</string>
     <string name="action_settings">Settings</string>
     <string name="button_login_submit">Log In</string>

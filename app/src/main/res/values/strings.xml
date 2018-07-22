@@ -25,5 +25,6 @@
     <string name="tv_default_text_user_name">User Name</string>
     <string name="tv_default_text_user_status">User Status</string>
     <string name="iv_default_user_image_description">User Image</string>
+    <string name="tv_recyclerview_chat_user_item_group_chat_text">+5</string>
 
 </resources>

@@ -56,6 +56,4 @@
     <dimen name="recycleview_chat_user_interaction_sent_cardview_tv_timestamp_width">83dp</dimen>
     <dimen name="recycleview_chat_user_interaction_sent_cardview_tv_timestamp_margin_right">161dp</dimen>
 
-
-
 </resources>

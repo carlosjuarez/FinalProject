@@ -15,7 +15,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/show_viewPager"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/no_dimension"
+        android:layout_height="@dimen/no_dimension_height"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

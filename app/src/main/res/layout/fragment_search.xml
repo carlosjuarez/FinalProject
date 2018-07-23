@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relativeLayout">
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/sv_search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:paddingBottom="@dimen/rv_search_group_margins">
+    </android.support.v7.widget.SearchView>
+
+    <view class="android.support.v7.app.AlertController$RecycleListView"
+        android:id="@+id/rv_search_layout"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="@dimen/rv_search_group_margins"
+        android:scrollbars="vertical"/>
+
+</android.support.constraint.ConstraintLayout>

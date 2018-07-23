@@ -41,6 +41,7 @@
     <dimen name="no_dimension">0dp</dimen>
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="text_input_max_line">1</dimen>
+    <dimen name="rv_search_group_margins">8dp</dimen>
     <dimen name="margin_vertical_double">16dp</dimen>
     <dimen name="margin_horizontal_double">16dp</dimen>
     <dimen name="iv_main_user_image_square_size">100dp</dimen>

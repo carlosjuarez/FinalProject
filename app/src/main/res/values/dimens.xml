@@ -26,4 +26,5 @@
     <dimen name="caret_image_width">30dp</dimen>
     <dimen name="caret_image_height">30dp</dimen>
     <dimen name="img_feed_margin_start">0dp</dimen>
+    <dimen name="et_fragment_group_members_width">357</dimen>
 </resources>

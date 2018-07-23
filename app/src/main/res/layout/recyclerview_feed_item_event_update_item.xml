@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_feeditem_event_update_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_feeditem_event_update"
+        android:layout_width="@dimen/no_dimension_width"
+        android:layout_height="@dimen/no_dimension_height"
+        android:layout_marginEnd="@dimen/input_margin_start_to_end"
+        android:layout_marginStart="@dimen/input_margin_start_to_end"
+        android:layout_marginTop="@dimen/input_margin_top_to_bottom"
+        android:text="@string/feeditem_descriptiondefault"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

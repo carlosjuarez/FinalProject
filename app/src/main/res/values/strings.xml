@@ -28,5 +28,10 @@
     <string name="tv_recyclerview_chat_user_item_group_chat_text">+5</string>
     <string name="tv_group_name">GROUP NAME</string>
     <string name="tv_group_description">GROUP DESCRIPTION</string>
+    <string name="tv_forgot_password_title">Forgot Password?</string>
+    <string name="tv_forgot_password_instructions">Please enter your password and follow the instructions from the registered email.</string>
+    <string name="tv_forgot_password_member_email_title">Registered email</string>
+    <string name="btn_forgot_password_submit">Submit</string>
+    <string name="btn_forgot_password_cancel">Cancel</string>
 
 </resources>

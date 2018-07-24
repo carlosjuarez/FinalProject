@@ -2,6 +2,8 @@
     <string name="app_name">FinalProject</string>
     <string name="action_settings">Settings</string>
     <string name="button_login_submit">Log In</string>
+    <string name="button_login_register">Register</string>
+    <string name="button_login_forgot">Forgot Password</string>
     <string name="hint_name">Email or Username</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
@@ -22,7 +24,6 @@
     <string name="feed_item_price_default">$ $ $ $</string>
     <string name="et_fragment_group_members_search">Search for Member</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="iv_image_description_user_image">User Image</string>
     <string name="tv_default_text_user_name">User Name</string>
     <string name="tv_default_text_user_status">User Status</string>
@@ -35,5 +36,6 @@
     <string name="tv_forgot_password_member_email_title">Registered email</string>
     <string name="btn_forgot_password_submit">Submit</string>
     <string name="btn_forgot_password_cancel">Cancel</string>
+    <string name="et_type_message">Type message</string>
 
 </resources>

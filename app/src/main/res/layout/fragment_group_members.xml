@@ -10,20 +10,20 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/sv_bottom_border"
         app:defaultQueryHint="@string/sv_group_members_hint"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/sv_bottom_border"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/rv_fragment_group_members_height"
+        android:layout_height="@dimen/no_dimension"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"/>
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
 </android.support.constraint.ConstraintLayout>

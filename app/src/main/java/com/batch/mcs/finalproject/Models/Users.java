@@ -1,4 +1,4 @@
-package com.batch.mcs.finalproject;
+package com.batch.mcs.finalproject.Models;
 
 import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
@@ -12,6 +12,10 @@ public class Users extends LiveData implements Parcelable{
     private String image;
     private String email;
     private String id;
+
+    public Users(){
+        //Empty constructor
+    }
 
     //All the getters
     public String getName() {
@@ -63,7 +67,7 @@ public class Users extends LiveData implements Parcelable{
         this.id = id;
     }
 
-    //Parcelable implementation
+    //Parcelable
     @Override
     public int describeContents() {
         return 0;
@@ -100,7 +104,7 @@ public class Users extends LiveData implements Parcelable{
         }
     };
 
-    //Override livedata methods
+    //Livedata
     @Override
     protected void onActive() {
         // Start listening

@@ -24,7 +24,6 @@
         android:text="@string/tv_group_description"
         android:layout_below="@id/tv_group_search_group_name"
         android:layout_centerInParent="true"
-        android:gravity="center_vertical"
-        />
+        android:gravity="center_vertical"/>
 
 </RelativeLayout>

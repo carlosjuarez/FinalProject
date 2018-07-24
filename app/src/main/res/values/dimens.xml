@@ -53,4 +53,5 @@
     <dimen name="caret_image_height">30dp</dimen>
     <dimen name="img_feed_margin_start">0dp</dimen>
     <dimen name="button_login_register_forgot_margin_bottom">128dp</dimen>
+    <dimen name="btn_recoverpassword">180dp</dimen>
 </resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GroupMembersFragment"
+    android:paddingStart="@dimen/no_dimension"
+    android:paddingEnd="@dimen/no_dimension"
+    android:paddingTop="@dimen/no_dimension"
+    android:paddingBottom="@dimen/no_dimension">
+
+    <EditText
+        android:id="@+id/et_fragment_group_members"
+        android:layout_width="@dimen/et_fragment_group_members_width"
+        android:layout_height="@dimen/te_button_height"
+        android:hint="@string/et_fragment_group_members_search"
+        android:inputType="text"
+        android:maxLines="@dimen/max_lines"
+        android:textSize="@dimen/title_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toStartOf="@+id/ib_fragment_group_members"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib_fragment_group_members"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/te_button_height"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_fragment_group_members"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/no_dimension"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_fragment_group_members" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">FinalProject</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sv_group_members_hint">Search for a group member</string>
     <string name="action_settings">Settings</string>
     <string name="button_login_submit">Log In</string>
@@ -24,7 +21,6 @@
     <string name="feeditem_descriptiondefault">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit sodales dolor in sodales. Duis</string>
     <string name="feed_item_location_default">Street Name, Num, City, State, ZipCode</string>
     <string name="feed_item_price_default">$ $ $ $</string>
-
     <string name="iv_image_description_user_image">User Image</string>
     <string name="tv_default_text_user_name">User Name</string>
     <string name="tv_default_text_user_status">User Status</string>

@@ -8,6 +8,7 @@
     <dimen name="margin_top_bottom">32dp</dimen>
     <dimen name="controls_margin_horizontal">8dp</dimen>
     <dimen name="te_button_height">45dp</dimen>
+    <dimen name="tv_login_margin_bottom">52dp</dimen>
     <dimen name="views_update_top_margin">100dp</dimen>
     <dimen name="views_update_bottom_margin">150dp</dimen>
     <dimen name="no_dimension_height">0dp</dimen>
@@ -25,6 +26,7 @@
     <dimen name="text_input_max_line">1</dimen>
     <dimen name="rv_search_group_margins">8dp</dimen>
     <dimen name="et_top_line_width">0.5dp</dimen>
+    <dimen name="guideline_login_position">0.50</dimen>
     <dimen name="et_top_line_item_noline">-2dp</dimen>
     <dimen name="et_top_line_item_line">1dp</dimen>
     <dimen name="margin_vertical_double">16dp</dimen>
@@ -35,4 +37,5 @@
     <dimen name="caret_image_width">30dp</dimen>
     <dimen name="caret_image_height">30dp</dimen>
     <dimen name="img_feed_margin_start">0dp</dimen>
+    <dimen name="button_login_register_forgot_margin_bottom">128dp</dimen>
 </resources>

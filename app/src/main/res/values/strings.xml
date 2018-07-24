@@ -28,5 +28,8 @@
     <string name="tv_recyclerview_chat_user_item_group_chat_text">+5</string>
     <string name="tv_group_name">GROUP NAME</string>
     <string name="tv_group_description">GROUP DESCRIPTION</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_city">City</string>
 
 </resources>

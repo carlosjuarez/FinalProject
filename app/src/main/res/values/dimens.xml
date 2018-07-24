@@ -2,7 +2,6 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_padding">8dp</dimen>
-    <string name="app_name">FinalProject</string>
     <dimen name="activity_vertical_padding">8dp</dimen>
     <dimen name="input_margin_start_to_end">8dp</dimen>
     <dimen name="title_text_size">16sp</dimen>

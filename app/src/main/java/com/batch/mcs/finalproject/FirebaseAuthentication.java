@@ -34,17 +34,14 @@ public class FirebaseAuthentication {
         }
 
         //Start sign in with email
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(context, "Log in Successful", Toast.LENGTH_SHORT).show();
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    //Change to next activity or set boolean flag to true to change activity
-                } else {
-                    //log in failed
-                    Toast.makeText(context, "Log in Not Successful", Toast.LENGTH_SHORT).show();
-                }
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        //TODO Change to next activity or set boolean flag to true to change activity
+                    }
             }
         });
     }

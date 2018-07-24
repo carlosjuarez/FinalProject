@@ -43,7 +43,9 @@ public class LoginActivity extends AppCompatActivity
     public void onClick(View v) {
         int i = v.getId();
         if(i == R.id.button_login_submit){
-            mSession.signIn(mEmailField.getText().toString(), mPasswordField.getText().toString(), mEmailField, mPasswordField);
+            mSession.signIn(mEmailField.getText()
+                    .toString(), mPasswordField.getText()
+                    .toString(), mEmailField, mPasswordField);
         }
     }
 }

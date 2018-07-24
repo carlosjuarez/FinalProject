@@ -14,6 +14,7 @@ public class Event extends LiveData implements Parcelable {
     private String id;
     private String date;
     private String location;
+    private enum privacy{PUBLIC, RESTRICTED, PRIVATE};
     private int price;
 
     public Event(){
@@ -95,23 +96,6 @@ public class Event extends LiveData implements Parcelable {
     }
 
     //Parcelable
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(adminId);
-        parcel.writeString(city);
-        parcel.writeString(image);
-        parcel.writeString(description);
-        parcel.writeString(id);
-        parcel.writeString(date);
-        parcel.writeString(location);
-        parcel.writeInt(price);
-    }
 
     protected Event(Parcel in) {
         name = in.readString();
@@ -137,6 +121,23 @@ public class Event extends LiveData implements Parcelable {
         }
     };
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(adminId);
+        parcel.writeString(city);
+        parcel.writeString(image);
+        parcel.writeString(description);
+        parcel.writeString(id);
+        parcel.writeString(date);
+        parcel.writeString(location);
+        parcel.writeInt(price);
+    }
     //Livedata
     @Override
     protected void onActive() {

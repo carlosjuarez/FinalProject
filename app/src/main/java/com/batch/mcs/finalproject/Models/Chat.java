@@ -10,8 +10,12 @@ public class Chat extends LiveData implements Parcelable {
 
     private String admin;
     private String id;
-    private List<Users> members;
+    private List<User> members;
     private List<Message> messages;
+
+    public Chat(){
+        //Empty constructor
+    }
 
     //All getters
     public String getAdmin() {
@@ -22,7 +26,7 @@ public class Chat extends LiveData implements Parcelable {
         return id;
     }
 
-    public List<Users> getMembers() {
+    public List<User> getMembers() {
         return members;
     }
 
@@ -40,7 +44,7 @@ public class Chat extends LiveData implements Parcelable {
         this.id = id;
     }
 
-    public void setMembers(List<Users> members) {
+    public void setMembers(List<User> members) {
         this.members = members;
     }
 
@@ -65,7 +69,7 @@ public class Chat extends LiveData implements Parcelable {
     protected Chat(Parcel in) {
         admin = in.readString();
         id = in.readString();
-        members = in.createTypedArrayList(Users.CREATOR);
+        members = in.createTypedArrayList(User.CREATOR);
         messages = in.createTypedArrayList(Message.CREATOR);
     }
 

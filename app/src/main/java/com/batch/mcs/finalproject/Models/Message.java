@@ -9,6 +9,10 @@ public class Message extends LiveData implements Parcelable{
     private String id;
     private String content;
 
+    public Message(){
+        //Empty constructor
+    }
+
     //All getters
     public String getId() {
         return id;
@@ -19,7 +23,6 @@ public class Message extends LiveData implements Parcelable{
     }
 
     //All setters
-
     public void setId(String id) {
         this.id = id;
     }

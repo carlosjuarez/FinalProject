@@ -4,7 +4,9 @@ import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Users extends LiveData implements Parcelable{
+import java.util.List;
+
+public class User extends LiveData implements Parcelable{
 
     private String name;
     private String lastName;
@@ -12,12 +14,17 @@ public class Users extends LiveData implements Parcelable{
     private String image;
     private String email;
     private String id;
+    private List<Chat> chats;
 
-    public Users(){
+    public User(){
         //Empty constructor
     }
 
     //All the getters
+    public List<Chat> getChats() {
+        return chats;
+    }
+
     public String getName() {
         return name;
     }
@@ -67,6 +74,10 @@ public class Users extends LiveData implements Parcelable{
         this.id = id;
     }
 
+    public void setChats(List<Chat> chats) {
+        this.chats = chats;
+    }
+
     //Parcelable
     @Override
     public int describeContents() {
@@ -81,26 +92,28 @@ public class Users extends LiveData implements Parcelable{
         parcel.writeString(image);
         parcel.writeString(email);
         parcel.writeString(id);
+        parcel.writeTypedList(chats);
     }
 
-    protected Users(Parcel in) {
+    protected User(Parcel in) {
         name = in.readString();
         lastName = in.readString();
         city = in.readString();
         image = in.readString();
         email = in.readString();
         id = in.readString();
+        chats = in.createTypedArrayList(Chat.CREATOR);
     }
 
-    public static final Creator<Users> CREATOR = new Creator<Users>() {
+    public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
-        public Users createFromParcel(Parcel in) {
-            return new Users(in);
+        public User createFromParcel(Parcel in) {
+            return new User(in);
         }
 
         @Override
-        public Users[] newArray(int size) {
-            return new Users[size];
+        public User[] newArray(int size) {
+            return new User[size];
         }
     };
 
@@ -114,4 +127,5 @@ public class Users extends LiveData implements Parcelable{
     protected void onInactive() {
         // Stop listening
     }
+
 }

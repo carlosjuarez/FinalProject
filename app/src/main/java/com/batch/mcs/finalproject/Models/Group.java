@@ -13,8 +13,13 @@ public class Group extends LiveData implements Parcelable {
     private String image;
     private String description;
     private String admin;
-    private List<Users> moderators;
-    private List<Users> members;
+    private List<User> moderators;
+    private List<User> members;
+    private List<Event> events;
+
+    public Group(){
+        //Empty constructor
+    }
 
     //All getters
     public String getName() {
@@ -37,12 +42,16 @@ public class Group extends LiveData implements Parcelable {
         return admin;
     }
 
-    public List<Users> getModerators() {
+    public List<User> getModerators() {
         return moderators;
     }
 
-    public List<Users> getMembers() {
+    public List<User> getMembers() {
         return members;
+    }
+
+    public List<Event> getEvents() {
+        return events;
     }
 
     //All setters
@@ -66,12 +75,16 @@ public class Group extends LiveData implements Parcelable {
         this.admin = admin;
     }
 
-    public void setModerators(List<Users> moderators) {
+    public void setModerators(List<User> moderators) {
         this.moderators = moderators;
     }
 
-    public void setMembers(List<Users> members) {
+    public void setMembers(List<User> members) {
         this.members = members;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 
     //Parcelable
@@ -89,15 +102,18 @@ public class Group extends LiveData implements Parcelable {
         parcel.writeString(admin);
         parcel.writeTypedList(moderators);
         parcel.writeTypedList(members);
+        parcel.writeTypedList(events);
     }
+
     protected Group(Parcel in) {
         name = in.readString();
         id = in.readString();
         image = in.readString();
         description = in.readString();
         admin = in.readString();
-        moderators = in.createTypedArrayList(Users.CREATOR);
-        members = in.createTypedArrayList(Users.CREATOR);
+        moderators = in.createTypedArrayList(User.CREATOR);
+        members = in.createTypedArrayList(User.CREATOR);
+        events = in.createTypedArrayList(Event.CREATOR);
     }
 
     public static final Creator<Group> CREATOR = new Creator<Group>() {
@@ -122,4 +138,5 @@ public class Group extends LiveData implements Parcelable {
     protected void onInactive() {
         // Stop listening
     }
+
 }

@@ -7,6 +7,7 @@ import android.os.Parcelable;
 public class Event extends LiveData implements Parcelable {
 
     private String name;
+    private String adminId;
     private String city;
     private String image;
     private String description;
@@ -15,9 +16,17 @@ public class Event extends LiveData implements Parcelable {
     private String location;
     private int price;
 
+    public Event(){
+        //Empty constructor
+    }
+
     //All getters
     public String getName() {
         return name;
+    }
+
+    public String getAdminId() {
+        return adminId;
     }
 
     public String getCity() {
@@ -81,16 +90,20 @@ public class Event extends LiveData implements Parcelable {
         this.price = price;
     }
 
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
+    }
+
     //Parcelable
     @Override
     public int describeContents() {
         return 0;
     }
 
-
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
+        parcel.writeString(adminId);
         parcel.writeString(city);
         parcel.writeString(image);
         parcel.writeString(description);
@@ -99,8 +112,10 @@ public class Event extends LiveData implements Parcelable {
         parcel.writeString(location);
         parcel.writeInt(price);
     }
+
     protected Event(Parcel in) {
         name = in.readString();
+        adminId = in.readString();
         city = in.readString();
         image = in.readString();
         description = in.readString();
@@ -132,4 +147,6 @@ public class Event extends LiveData implements Parcelable {
     protected void onInactive() {
         // Stop listening
     }
+
+
 }

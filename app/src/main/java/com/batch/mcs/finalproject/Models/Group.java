@@ -113,7 +113,6 @@ public class Group extends LiveData implements Parcelable {
     };
 
     //Livedata
-    //Livedata
     @Override
     protected void onActive() {
         // Start listening

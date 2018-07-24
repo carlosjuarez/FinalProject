@@ -20,6 +20,8 @@
     <string name="feeditem_descriptiondefault">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit sodales dolor in sodales. Duis</string>
     <string name="feed_item_location_default">Street Name, Num, City, State, ZipCode</string>
     <string name="feed_item_price_default">$ $ $ $</string>
+    <string name="et_fragment_group_members_search">Search for Member</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="iv_image_description_user_image">User Image</string>
     <string name="tv_default_text_user_name">User Name</string>

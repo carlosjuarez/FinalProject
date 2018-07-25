@@ -1,12 +1,12 @@
-package com.batch.mcs.finalproject.Models;
+package com.batch.mcs.finalproject.Repository.Models;
 
-import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
 import android.os.Parcelable;
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import java.util.List;
 
-public class User extends LiveData implements Parcelable{
+public class User extends FirebaseListener implements Parcelable{
 
     private String name;
     private String lastName;
@@ -15,6 +15,19 @@ public class User extends LiveData implements Parcelable{
     private String email;
     private String id;
     private List<Chat> chats;
+    private Query query;
+    private final RealtimeListener listener = new RealtimeListener();
+
+    public User(Query query) {
+        this.query = query;
+        listener.setQuery(query);
+
+    }
+
+    public User(DatabaseReference ref) {
+        this.query = ref;
+        listener.setQuery(query);
+    }
 
     public User(){
         //Empty constructor
@@ -120,12 +133,16 @@ public class User extends LiveData implements Parcelable{
     //Livedata
     @Override
     protected void onActive() {
-        // Start listening
+        query.addValueEventListener(listener);
     }
 
     @Override
     protected void onInactive() {
-        // Stop listening
+        query.removeEventListener(listener);
     }
 
+
 }
+
+
+

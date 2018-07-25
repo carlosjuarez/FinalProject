@@ -1,12 +1,12 @@
-package com.batch.mcs.finalproject.authentication;
+package com.batch.mcs.finalproject.firebase.authentication;
 
 import android.app.Activity;
+import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,11 +17,17 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class FirebaseAuthentication {
 
+    private static final String Tag = FirebaseAuthentication.class.getSimpleName();
+
     private Context context;
     private FirebaseAuth mAuth;
 
     public FirebaseAuthentication(Context context, FirebaseAuth mAuthenticate) {
         this.context = context;
+        this.mAuth = mAuthenticate;
+    }
+
+    public FirebaseAuthentication(FirebaseAuth mAuthenticate) {
         this.mAuth = mAuthenticate;
     }
 
@@ -64,7 +70,7 @@ public class FirebaseAuthentication {
         return valid;
     }
 
-    public void sendRecoveryPassword(String emailAddress) {
+    public void sendRecoveryPassword(final MutableLiveData<String> sendMessageResult, String emailAddress) {
 
         ActionCodeSettings actionCodeSettings = ActionCodeSettings.newBuilder()
                 .setUrl("https://finalproject.page.link")
@@ -77,10 +83,14 @@ public class FirebaseAuthentication {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(context, "Email send", Toast.LENGTH_SHORT).show();
+                            sendMessageResult.postValue("");
+                            Log.d(Tag, "sended");
                         } else {
-                            Toast.makeText(context, "Email not send", Toast.LENGTH_SHORT).show();
-                            Log.d("Firebase", task.getException().toString());
+                            if (task.getException() != null && task.getException().getMessage() != null) {
+                                String exceptionMessage = task.getException().getMessage();
+                                sendMessageResult.postValue(exceptionMessage);
+                            }
+                            Log.d(Tag, task.getException().toString());
                         }
                     }
                 });

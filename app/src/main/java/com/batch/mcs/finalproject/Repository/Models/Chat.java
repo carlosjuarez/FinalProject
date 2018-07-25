@@ -1,4 +1,4 @@
-package com.batch.mcs.finalproject.Models;
+package com.batch.mcs.finalproject.Repository.Models;
 
 import android.arch.lifecycle.LiveData;
 import android.os.Parcel;

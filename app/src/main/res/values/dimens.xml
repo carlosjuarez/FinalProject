@@ -57,4 +57,7 @@
     <dimen name="button_login_register_forgot_margin_bottom">128dp</dimen>
     <dimen name="et_fragment_group_members_width">357</dimen>
     <dimen name="btn_recoverpassword">180dp</dimen>
+    <dimen name="iv_drawer_user_info_main_user_image_square_size">65dp</dimen>
+    <dimen name="margin_vertical">8dp</dimen>
+    <dimen name="iv_user_menu_chat_user_image_square_size">40dp</dimen>
 </resources>

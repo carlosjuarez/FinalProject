@@ -31,10 +31,7 @@ public class FirebaseAuthentication {
         this.mAuth = mAuthenticate;
     }
 
-    public void signIn(String email, String password, EditText mEmailField, EditText mPasswordField) {
-        if (!validateForm(mEmailField, mPasswordField)) {
-            return;
-        }
+    public void signIn(String email, String password) {
 
         //Start sign in with email
         mAuth.signInWithEmailAndPassword(email, password)

@@ -47,4 +47,6 @@
     <string name="tv_group_list_header">Groups</string>
     <string name="tv_online_user_list_header">Online Friends</string>
     <string name="iv_group_image_content_description">Group Image</string>
+    <string name="et_hint_group_name">Group Name</string>
+    <string name="et_hint_group_description">Group Description</string>
 </resources>

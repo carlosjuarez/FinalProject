@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/input_margin_start_to_end"
+    android:layout_marginStart="@dimen/input_margin_start_to_end"
+    android:layout_marginTop="@dimen/input_margin_start_to_end"
+    android:layout_marginBottom="@dimen/input_margin_start_to_end">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/recycleview_chat_user_interaction_sent_guideline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/rv_chat_user_interaction_sent_guideline" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/recycleview_chat_user_interaction_sent_cardview"
+        android:layout_width="@dimen/recyleview_chat_user_interaction_sent_cardview_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recycleview_chat_user_interaction_sent_guideline"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/recycleview_chat_user_interaction_item_margin_start_to_end"
+            android:layout_marginEnd="@dimen/recycleview_chat_user_interaction_item_margin_start_to_end"
+            android:layout_marginStart="@dimen/recycleview_chat_user_interaction_item_margin_start_to_end"
+            android:layout_marginTop="@dimen/recycleview_chat_user_interaction_item_margin_start_to_end">
+
+            <TextView
+                android:id="@+id/recycleview_chat_user_interaction_sent_cardview_tv_message"
+                android:layout_width="@dimen/no_padding"
+                android:layout_height="wrap_content"
+                android:text="@string/et_type_message"
+                android:textSize="@dimen/title_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/recycleview_chat_user_interaction_sent_cardview_tv_timestamp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/recycleview_chat_user_interaction_sent_cardview_tv_timestamp"
+                android:layout_width="@dimen/recycleview_chat_user_interaction_sent_cardview_tv_timestamp_width"
+                android:layout_height="@dimen/recycleview_chat_user_interaction_sent_cardview_tv_timestamp_height"
+                android:layout_marginStart="@dimen/recycleview_chat_user_interaction_sent_cardview_tv_timestamp_margin_right"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycleview_chat_user_interaction_sent_cardview_tv_message"
+                android:text="@string/et_type_message"
+                android:textSize="@dimen/title_text_size"/>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

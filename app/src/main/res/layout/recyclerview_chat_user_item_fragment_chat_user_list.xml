@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:paddingStart="@dimen/activity_horizontal_padding"
+        android:paddingEnd="@dimen/activity_vertical_padding"
+        android:paddingTop="@dimen/activity_horizontal_padding"
+        android:paddingBottom="@dimen/activity_vertical_padding">
+
+        <ImageView
+            android:id="@+id/iv_recyclerview_chat_user_item_fragment_chat_user_list_user_image"
+            android:layout_width="@dimen/iv_user_menu_chat_user_image_square_size"
+            android:layout_height="@dimen/iv_user_menu_chat_user_image_square_size"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="@string/iv_image_description_user_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_recyclerview_chat_user_item_fragment_chat_user_list_user_name" />
+
+        <TextView
+            android:id="@+id/tv_recyclerview_chat_user_item_fragment_chat_user_list_user_name"
+            android:layout_width="@dimen/no_dimension"
+            android:layout_height="wrap_content"
+            android:hint="@string/tv_default_text_user_name"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_recyclerview_chat_user_item_fragment_chat_user_list_user_image"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

@@ -38,5 +38,8 @@
     <string name="btn_forgot_password_submit">Submit</string>
     <string name="btn_forgot_password_cancel">Cancel</string>
     <string name="et_type_message">Type message</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_city">City</string>
 
 </resources>

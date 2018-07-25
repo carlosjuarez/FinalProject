@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "825890321688-dc6utrerljb7o9oih2qqg8l28lc9oasa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.batch.mcs.finalproject",
+            "certificate_hash": "0a5c91bc572de73c2eab815b4981758e2f46b299"
+          }
+        },
+        {
           "client_id": "825890321688-j75i6aapcnr2cnkak7b3q0ulq40i4bf9.apps.googleusercontent.com",
           "client_type": 3
         }

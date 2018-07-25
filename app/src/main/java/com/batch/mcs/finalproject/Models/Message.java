@@ -4,13 +4,29 @@ import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Message extends LiveData implements Parcelable{
+public class Message extends LiveData implements Parcelable {
 
+    public static final Creator<Message> CREATOR = new Creator<Message>() {
+        @Override
+        public Message createFromParcel(Parcel in) {
+            return new Message(in);
+        }
+
+        @Override
+        public Message[] newArray(int size) {
+            return new Message[size];
+        }
+    };
     private String id;
     private String content;
 
-    public Message(){
+    public Message() {
         //Empty constructor
+    }
+
+    protected Message(Parcel in) {
+        id = in.readString();
+        content = in.readString();
     }
 
     //All getters
@@ -18,13 +34,13 @@ public class Message extends LiveData implements Parcelable{
         return id;
     }
 
-    public String getContent() {
-        return content;
-    }
-
     //All setters
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     public void setContent(String content) {
@@ -42,22 +58,6 @@ public class Message extends LiveData implements Parcelable{
         parcel.writeString(id);
         parcel.writeString(content);
     }
-    protected Message(Parcel in) {
-        id = in.readString();
-        content = in.readString();
-    }
-
-    public static final Creator<Message> CREATOR = new Creator<Message>() {
-        @Override
-        public Message createFromParcel(Parcel in) {
-            return new Message(in);
-        }
-
-        @Override
-        public Message[] newArray(int size) {
-            return new Message[size];
-        }
-    };
 
     //Livedata
     @Override

@@ -77,8 +77,8 @@
         android:layout_marginStart="@dimen/activity_vertical_margin"
         android:gravity="center"
         android:hint="@string/button_login_forgot"
-        android:textSize="@dimen/text_size"
         android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -97,7 +97,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tv_login_forgot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_login_submit"/>
+        app:layout_constraintTop_toBottomOf="@+id/button_login_submit" />
 
 
 </android.support.constraint.ConstraintLayout>

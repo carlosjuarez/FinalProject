@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatUserInteractionFragment"
-    android:paddingStart="@dimen/no_padding"
+    android:paddingBottom="@dimen/no_padding"
     android:paddingEnd="@dimen/no_padding"
+    android:paddingStart="@dimen/no_padding"
     android:paddingTop="@dimen/no_padding"
-    android:paddingBottom="@dimen/no_padding">
+    tools:context=".ChatUserInteractionFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_fragment_chat_user_interaction"
@@ -26,10 +26,10 @@
     <EditText
         android:id="@+id/et_fragment_chat_user_interaction"
         android:layout_width="@dimen/recyleview_chat_user_interaction_sent_cardview_width"
-        android:inputType="text"
         android:layout_height="@dimen/te_button_height"
         android:background="@drawable/et_top_line"
         android:hint="@string/et_type_message"
+        android:inputType="text"
         android:textSize="@dimen/title_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ib_fragment_chat_user_interaction"
@@ -40,8 +40,8 @@
         android:id="@+id/ib_fragment_chat_user_interaction"
         android:layout_width="@dimen/ib_fragment_chat_user_interaction_width"
         android:layout_height="@dimen/te_button_height"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/et_top_line"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="@dimen/ib_fragment_chat_user_interaction_horizontal_bias"
         app:layout_constraintStart_toEndOf="@+id/rv_fragment_chat_user_interaction"

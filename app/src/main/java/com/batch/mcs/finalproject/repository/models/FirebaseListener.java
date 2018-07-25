@@ -1,4 +1,4 @@
-package com.batch.mcs.finalproject.Repository.Models;
+package com.batch.mcs.finalproject.repository.models;
 
 import android.arch.lifecycle.LiveData;
 import android.util.Log;

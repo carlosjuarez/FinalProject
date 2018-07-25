@@ -1,9 +1,15 @@
-package com.batch.mcs.finalproject.repository.models;
+package com.batch.mcs.finalproject.Repository.Models;
 
+import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 
 public class User extends FirebaseListener implements Parcelable{

@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingStart="@dimen/activity_horizontal_padding"
+    android:paddingBottom="@dimen/activity_vertical_padding"
     android:paddingEnd="@dimen/activity_vertical_padding"
-    android:paddingTop="@dimen/activity_horizontal_padding"
-    android:paddingBottom="@dimen/activity_vertical_padding">
+    android:paddingStart="@dimen/activity_horizontal_padding"
+    android:paddingTop="@dimen/activity_horizontal_padding">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cv_drawer_user_info_user_card_view_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_vertical_double"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:cardElevation="@dimen/cardview_default_elevation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardElevation="@dimen/cardview_default_elevation">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,25 +27,25 @@
                 android:id="@+id/iv_drawer_user_info_user_image"
                 android:layout_width="@dimen/iv_drawer_user_info_main_user_image_square_size"
                 android:layout_height="@dimen/iv_drawer_user_info_main_user_image_square_size"
+                android:layout_marginBottom="@dimen/margin_vertical_double"
                 android:layout_marginEnd="@dimen/input_margin_start_to_end"
                 android:layout_marginStart="@dimen/input_margin_start_to_end"
                 android:layout_marginTop="@dimen/margin_vertical_double"
-                android:layout_marginBottom="@dimen/margin_vertical_double"
                 android:background="@mipmap/ic_launcher"
                 android:contentDescription="@string/iv_image_description_user_image"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_fragment_chat_user_name"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_drawer_user_info_user_name"
                 android:layout_width="@dimen/no_dimension"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/activity_horizontal_padding"
-                android:paddingEnd="@dimen/activity_horizontal_padding"
                 android:layout_marginEnd="@dimen/input_margin_start_to_end"
                 android:layout_marginStart="@dimen/input_margin_start_to_end"
+                android:paddingEnd="@dimen/activity_horizontal_padding"
+                android:paddingStart="@dimen/activity_horizontal_padding"
                 android:text="@string/tv_default_text_user_name"
                 app:layout_constraintBottom_toTopOf="@+id/et_drawer_user_info_user_status"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,10 +61,10 @@
                 android:paddingEnd="@dimen/input_margin_start_to_end"
                 android:paddingStart="@dimen/activity_horizontal_padding"
                 android:text="@string/tv_default_text_user_status"
-                app:layout_constraintTop_toBottomOf="@id/tv_drawer_user_info_user_name"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_drawer_user_info_user_image" />
+                app:layout_constraintStart_toEndOf="@+id/iv_drawer_user_info_user_image"
+                app:layout_constraintTop_toBottomOf="@id/tv_drawer_user_info_user_name" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -75,18 +74,18 @@
         android:id="@+id/btn_drawer_user_info_settings_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_vertical"
         android:layout_marginEnd="@dimen/input_margin_start_to_end"
         android:layout_marginStart="@dimen/input_margin_start_to_end"
         android:layout_marginTop="@dimen/margin_vertical"
-        android:layout_marginBottom="@dimen/margin_vertical"
-        android:text="@string/button_settings"
         android:background="@null"
-        android:textAlignment="textStart"
-        android:paddingStart="@dimen/activity_horizontal_padding"
         android:paddingEnd="@dimen/activity_horizontal_padding"
-        app:layout_constraintTop_toBottomOf="@+id/cv_drawer_user_info_user_card_view_layout"
+        android:paddingStart="@dimen/activity_horizontal_padding"
+        android:text="@string/button_settings"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/cv_drawer_user_info_user_card_view_layout" />
 
     <fragment
         android:id="@+id/fr_drawer_user_info_group_list_fragment"
@@ -95,10 +94,10 @@
         android:layout_marginBottom="@dimen/margin_vertical_double"
         android:layout_marginEnd="@dimen/input_margin_start_to_end"
         android:layout_marginStart="@dimen/input_margin_start_to_end"
-        app:layout_constraintTop_toBottomOf="@id/btn_drawer_user_info_settings_button"
         app:layout_constraintBottom_toTopOf="@id/fr_drawer_user_info_friends_list_fragment"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btn_drawer_user_info_settings_button" />
 
     <fragment
         android:id="@+id/fr_drawer_user_info_friends_list_fragment"
@@ -108,26 +107,26 @@
         android:layout_marginEnd="@dimen/input_margin_start_to_end"
         android:layout_marginStart="@dimen/input_margin_start_to_end"
         android:layout_marginTop="@dimen/margin_vertical_double"
-        app:layout_constraintTop_toBottomOf="@id/fr_drawer_user_info_group_list_fragment"
         app:layout_constraintBottom_toTopOf="@id/btn_drawer_user_info_sign_out_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/fr_drawer_user_info_group_list_fragment" />
 
     <Button
         android:id="@+id/btn_drawer_user_info_sign_out_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_vertical"
         android:layout_marginEnd="@dimen/input_margin_start_to_end"
         android:layout_marginStart="@dimen/input_margin_start_to_end"
         android:layout_marginTop="@dimen/margin_vertical"
-        android:layout_marginBottom="@dimen/margin_vertical"
-        android:text="@string/button_sign_out"
         android:background="@null"
-        android:textAlignment="textStart"
-        android:paddingStart="@dimen/activity_horizontal_padding"
         android:paddingEnd="@dimen/activity_horizontal_padding"
+        android:paddingStart="@dimen/activity_horizontal_padding"
+        android:text="@string/button_sign_out"
+        android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

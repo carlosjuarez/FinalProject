@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.batch.mcs.finalproject.authentication.FirebaseAuthentication;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -13,7 +14,7 @@ public class LoginActivity extends AppCompatActivity
     private FirebaseAuth mAuth;
     private EditText mEmailField;
     private EditText mPasswordField;
-    private FirebaseAuthentication mSession = new FirebaseAuthentication();
+    private FirebaseAuthentication mSession;
 
 
     @Override
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity
         //buttons
         findViewById(R.id.button_login_submit).setOnClickListener(this);
 
-        mSession.FirebaseAuthentication(this, mAuth);
+        mSession = new FirebaseAuthentication(this, mAuth);
     }
 
     @Override

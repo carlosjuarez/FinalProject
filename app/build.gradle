@@ -42,6 +42,7 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.google.firebase:firebase-auth:11.6.2'
+    implementation 'com.google.firebase:firebase-dynamic-links:11.6.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

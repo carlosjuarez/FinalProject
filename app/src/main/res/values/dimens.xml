@@ -35,4 +35,6 @@
     <dimen name="caret_image_width">30dp</dimen>
     <dimen name="caret_image_height">30dp</dimen>
     <dimen name="img_feed_margin_start">0dp</dimen>
+    <dimen name="margin_vertical">8dp</dimen>
+    <dimen name="iv_drawer_user_info_main_user_image_square_size">65dp</dimen>
 </resources>

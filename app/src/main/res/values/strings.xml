@@ -51,4 +51,10 @@
     <string name="et_hint_group_description">Group Description</string>
     <string name="email_send">Email sent</string>
     <string name="recovery_email_sended">Email sent, please review your email to change your password</string>
+    <string name="parameter_userid">userid</string>
+    <string name="user_logged_in">User Logged</string>
+    <string name="user_not_logged">Can\'t log user, check problems</string>
+    <string name="check_email_before">Verify your email before entering</string>
+    <string name="empty_values_login">There are some fields empty, please fill them before login in</string>
+    <string name="empty_values_recovery_password">Please fill the email field before continue</string>
 </resources>

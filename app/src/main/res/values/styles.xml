@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textViewStyle">@style/AppTheme.TextView</item>
         <item name="android:buttonStyle">@style/AppTheme.Button</item>
         <item name="editTextStyle">@style/AppTheme.EditText</item>
     </style>
@@ -24,8 +23,12 @@
         <item name="android:background">@color/colorActivityBackground</item>
     </style>
 
-    <style name="AppTheme.TextView" parent="android:TextAppearance.Widget.TextView">
+    <style name="AppTheme.FragmentLayoutStyle">
+        <item name="android:background">@color/colorFragmentBackground</item>
+    </style>
 
+    <style name="AppTheme.TabFragmentLayoutStyle">
+        <item name="android:background">@color/colorActivityBackground</item>
     </style>
 
     <style name="AppTheme.Button" parent="android:Widget.Button">
@@ -62,4 +65,19 @@
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
     </style>
+
+    <style name="AppTheme.SearchView">
+        <item name="android:background">@drawable/edit_text_background</item>
+    </style>
+
+    <style name="AppTheme.TextView" parent="android:TextAppearance.Widget.TextView">
+        <item name="android:background">@color/colorTextBody</item>
+    </style>
+
+    <style name="AppTheme.TextView.ChatTimeStamp" parent="android:TextAppearance.Widget.TextView">
+        <item name="android:textColor">@color/colorChatTimestampText</item>
+        <item name="android:textSize">@dimen/tv_chat_timestamp_text_size</item>
+        <item name="android:text">@string/tv_chat_timestamp</item>
+    </style>
+
 </resources>

@@ -45,7 +45,14 @@ public class LoginActivity extends BaseActivity {
                     if(firebaseResult.getMessage() != null && !firebaseResult.getMessage().isEmpty()){
                         Snackbar.make(activityLoginBinding.getRoot(),firebaseResult.getMessage(),Snackbar.LENGTH_SHORT).show();
                     }else if(firebaseResult.getResult()!=null){
-                        Snackbar.make(activityLoginBinding.getRoot(),firebaseResult.getResult(),Snackbar.LENGTH_SHORT).show();
+                        if(firebaseResult.getResult()==R.string.user_logged_in){
+                            if(loginUserViewModel.isUserLoggedAndVerified()){
+                                startApplication();
+                            }
+                        }else{
+                            Snackbar.make(activityLoginBinding.getRoot(),firebaseResult.getResult(),Snackbar.LENGTH_SHORT).show();
+                        }
+
                     }
                 }
 

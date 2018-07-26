@@ -2,17 +2,19 @@ package com.batch.mcs.finalproject.viewmodel;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.support.annotation.NonNull;
 
-import com.batch.mcs.finalproject.Models.User;
 import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.firebase.authentication.FirebaseAuthentication;
 import com.batch.mcs.finalproject.helperobjects.FirebaseResult;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginUserViewModel extends ViewModel {
 
-    private FirebaseAuth auth;
+    private FirebaseAuth mAuth;
     public String email = "";
     public String password = "";
     public FirebaseUser firebaseUser;
@@ -20,8 +22,13 @@ public class LoginUserViewModel extends ViewModel {
     private FirebaseAuthentication firebaseAuthentication;
 
     public LoginUserViewModel(){
-        auth = FirebaseAuth.getInstance();
-        firebaseAuthentication = new FirebaseAuthentication(auth);
+        if(mAuth ==null){
+            mAuth = FirebaseAuth.getInstance();
+        }
+        if(mAuth.getCurrentUser()!=null){
+            mAuth.getCurrentUser().reload();
+        }
+        firebaseAuthentication = new FirebaseAuthentication(mAuth);
 
         if(firebaseResult==null){
             firebaseResult = new MutableLiveData<>();
@@ -29,7 +36,7 @@ public class LoginUserViewModel extends ViewModel {
     }
 
     public boolean isUserLoggedAndVerified() {
-        firebaseUser = auth.getCurrentUser();
+        firebaseUser = mAuth.getCurrentUser();
         if(firebaseUser != null){
             if(firebaseUser.isEmailVerified()){
                 return true;

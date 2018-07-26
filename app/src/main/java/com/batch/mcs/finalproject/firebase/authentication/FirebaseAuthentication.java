@@ -26,7 +26,7 @@ public class FirebaseAuthentication {
         this.mAuth = mAuthenticate;
     }
 
-    public void loginUser(final MutableLiveData<FirebaseResult> sendMessageResult, String email, String password) {
+    public void loginUser(final MutableLiveData<FirebaseResult> firebaseResult, String email, String password) {
 
         //Start sign in with email
         mAuth.signInWithEmailAndPassword(email, password)
@@ -34,12 +34,12 @@ public class FirebaseAuthentication {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            sendMessageResult.postValue(new FirebaseResult(R.string.user_logged_in,null));
+                            firebaseResult.postValue(new FirebaseResult(R.string.user_logged_in,null));
                             Log.d(Tag, "sended");
                         } else {
                             if (task.getException() != null && task.getException().getMessage() != null) {
                                 String exceptionMessage = task.getException().getMessage();
-                                sendMessageResult.postValue(new FirebaseResult(null,exceptionMessage));
+                                firebaseResult.postValue(new FirebaseResult(null,exceptionMessage));
                             }
                             Log.d(Tag, task.getException().toString());
                         }
@@ -47,7 +47,27 @@ public class FirebaseAuthentication {
                 });
     }
 
-    public void sendRecoveryPassword(final MutableLiveData<FirebaseResult> sendMessageResult, String emailAddress) {
+    public void createUser(final MutableLiveData<FirebaseResult> firebaseResult, String emailAddress, String password){
+
+        mAuth.createUserWithEmailAndPassword(emailAddress, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            firebaseResult.postValue(new FirebaseResult(R.string.firebase_user_created,null));
+                            Log.d(Tag, "sended");
+                        } else {
+                            if (task.getException() != null && task.getException().getMessage() != null) {
+                                String exceptionMessage = task.getException().getMessage();
+                                firebaseResult.postValue(new FirebaseResult(null,exceptionMessage));
+                            }
+                            Log.d(Tag, task.getException().toString());
+                        }
+                    }
+                });
+    }
+
+    public void sendRecoveryPassword(final MutableLiveData<FirebaseResult> firebaseResult, String emailAddress) {
 
         ActionCodeSettings actionCodeSettings = ActionCodeSettings.newBuilder()
                 .setUrl("https://finalproject.page.link")
@@ -60,12 +80,12 @@ public class FirebaseAuthentication {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            sendMessageResult.postValue(new FirebaseResult(R.string.recovery_email_sended,null));
+                            firebaseResult.postValue(new FirebaseResult(R.string.recovery_email_sended,null));
                             Log.d(Tag, "sended");
                         } else {
                             if (task.getException() != null && task.getException().getMessage() != null) {
                                 String exceptionMessage = task.getException().getMessage();
-                                sendMessageResult.postValue(new FirebaseResult(null,exceptionMessage));
+                                firebaseResult.postValue(new FirebaseResult(null,exceptionMessage));
                             }
                             Log.d(Tag, task.getException().toString());
                         }
@@ -73,4 +93,28 @@ public class FirebaseAuthentication {
                 });
     }
 
+    public void sendValidateMail(final MutableLiveData<FirebaseResult> firebaseResult, FirebaseUser currentUser) {
+        ActionCodeSettings actionCodeSettings = ActionCodeSettings.newBuilder()
+                .setUrl("https://finalproject.page.link")
+                .setIOSBundleId("com.batch.mcs.finalproject")
+                .setAndroidPackageName("com.batch.mcs.finalproject", true, null)
+                .build();
+
+        currentUser.sendEmailVerification(actionCodeSettings)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            firebaseResult.postValue(new FirebaseResult(R.string.firebase_verification_email_sent,null));
+                            Log.d(Tag, "sended");
+                        } else {
+                            if (task.getException() != null && task.getException().getMessage() != null) {
+                                String exceptionMessage = task.getException().getMessage();
+                                firebaseResult.postValue(new FirebaseResult(null,exceptionMessage));
+                            }
+                            Log.d(Tag, task.getException().toString());
+                        }
+                    }
+                });
+    }
 }

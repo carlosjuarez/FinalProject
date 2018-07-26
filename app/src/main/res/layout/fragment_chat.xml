@@ -2,13 +2,12 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.TabFragmentLayoutStyle"
     android:id="@+id/cl_chat_list_parent_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:paddingEnd="@dimen/activity_horizontal_padding"
-    android:paddingStart="@dimen/activity_horizontal_padding">
-
+    android:gravity="center_horizontal">
 
     <ImageView
         android:id="@+id/iv_fragment_chat_user_image"
@@ -16,7 +15,7 @@
         android:layout_height="@dimen/iv_main_user_image_square_size"
         android:layout_marginBottom="@dimen/input_margin_start_to_end"
         android:layout_marginEnd="@dimen/input_margin_start_to_end"
-        android:layout_marginStart="@dimen/input_margin_start_to_end"
+        android:layout_marginStart="@dimen/margin_horizontal_double"
         android:layout_marginTop="@dimen/margin_vertical_double"
         android:background="@mipmap/ic_launcher"
         android:contentDescription="@string/iv_image_description_user_image"
@@ -30,7 +29,7 @@
         android:layout_width="@dimen/no_dimension"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/input_margin_start_to_end"
-        android:layout_marginEnd="@dimen/input_margin_start_to_end"
+        android:layout_marginEnd="@dimen/margin_horizontal_double"
         android:layout_marginStart="@dimen/input_margin_start_to_end"
         android:layout_marginTop="@dimen/input_margin_start_to_end"
         android:text="@string/tv_default_text_user_name"
@@ -44,7 +43,7 @@
         android:layout_width="@dimen/no_dimension"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/input_margin_start_to_end"
-        android:layout_marginEnd="@dimen/input_margin_start_to_end"
+        android:layout_marginEnd="@dimen/margin_horizontal_double"
         android:layout_marginStart="@dimen/input_margin_start_to_end"
         android:layout_marginTop="@dimen/input_margin_start_to_end"
         android:paddingEnd="@dimen/input_margin_start_to_end"
@@ -57,13 +56,13 @@
 
     <android.support.v7.widget.SearchView
         android:id="@+id/sv_fragment_chat_search_people"
+        style="@style/AppTheme.SearchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/input_margin_start_to_end"
-        android:layout_marginStart="@dimen/input_margin_start_to_end"
+        android:layout_marginEnd="@dimen/margin_horizontal_double"
+        android:layout_marginStart="@dimen/margin_horizontal_double"
         android:layout_marginTop="@dimen/margin_vertical_double"
         android:layout_marginBottom="@dimen/margin_vertical_double"
-        android:background="@drawable/sv_bottom_border_grey"
         app:layout_constraintBottom_toTopOf="@+id/rv_fragment_chat_chat_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,13 +72,12 @@
         android:id="@+id/rv_fragment_chat_chat_list"
         android:layout_width="match_parent"
         android:layout_height="@dimen/no_dimension"
-        android:layout_marginBottom="@dimen/input_margin_start_to_end"
-        android:layout_marginEnd="@dimen/input_margin_start_to_end"
-        android:layout_marginStart="@dimen/input_margin_start_to_end"
         android:layout_marginTop="@dimen/input_margin_start_to_end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sv_fragment_chat_search_people" />
+        app:layout_constraintTop_toBottomOf="@+id/sv_fragment_chat_search_people"
+        tools:listitem="@layout/recyclerview_chat_user_item_fragment_chat_user_list"/>
+
 
 </android.support.constraint.ConstraintLayout>

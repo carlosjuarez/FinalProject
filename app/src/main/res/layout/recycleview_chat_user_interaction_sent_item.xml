@@ -27,32 +27,31 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/recycleview_chat_user_interaction_item_margin_start_to_end"
-            android:layout_marginEnd="@dimen/recycleview_chat_user_interaction_item_margin_start_to_end"
-            android:layout_marginStart="@dimen/recycleview_chat_user_interaction_item_margin_start_to_end"
-            android:layout_marginTop="@dimen/recycleview_chat_user_interaction_item_margin_start_to_end">
+            android:paddingTop="@dimen/activity_vertical_padding"
+            android:paddingBottom="@dimen/activity_vertical_padding"
+            android:paddingStart="@dimen/activity_horizontal_padding"
+            android:paddingEnd="@dimen/activity_horizontal_padding">
 
             <TextView
                 android:id="@+id/recycleview_chat_user_interaction_sent_cardview_tv_message"
-                android:layout_width="@dimen/no_padding"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/et_type_message"
+                android:textAlignment="textEnd"
                 android:textSize="@dimen/title_text_size"
+                android:layout_marginBottom="@dimen/recycleview_chat_user_interaction_item_margin_start_to_end"
                 app:layout_constraintBottom_toTopOf="@+id/recycleview_chat_user_interaction_sent_cardview_tv_timestamp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/recycleview_chat_user_interaction_sent_cardview_tv_timestamp"
-                android:layout_width="@dimen/recycleview_chat_user_interaction_sent_cardview_tv_timestamp_width"
-                android:layout_height="@dimen/recycleview_chat_user_interaction_sent_cardview_tv_timestamp_height"
-                android:layout_marginStart="@dimen/recycleview_chat_user_interaction_sent_cardview_tv_timestamp_margin_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/et_type_message"
-                android:textSize="@dimen/title_text_size"
+                style="@style/AppTheme.TextView.ChatTimeStamp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recycleview_chat_user_interaction_sent_cardview_tv_message" />
 
 

@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.ActivityLayoutStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/no_padding"
@@ -27,7 +28,6 @@
         android:id="@+id/et_fragment_chat_user_interaction"
         android:layout_width="@dimen/recyleview_chat_user_interaction_sent_cardview_width"
         android:layout_height="@dimen/te_button_height"
-        android:background="@drawable/et_top_line"
         android:hint="@string/et_type_message"
         android:inputType="text"
         android:textSize="@dimen/title_text_size"
@@ -40,12 +40,14 @@
         android:id="@+id/ib_fragment_chat_user_interaction"
         android:layout_width="@dimen/ib_fragment_chat_user_interaction_width"
         android:layout_height="@dimen/te_button_height"
+        android:contentDescription="@string/ib_send_button_description"
         android:background="@drawable/et_top_line"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="@dimen/ib_fragment_chat_user_interaction_horizontal_bias"
         app:layout_constraintStart_toEndOf="@+id/rv_fragment_chat_user_interaction"
-        app:layout_constraintTop_toBottomOf="@+id/rv_fragment_chat_user_interaction" />
+        app:layout_constraintTop_toBottomOf="@+id/rv_fragment_chat_user_interaction"
+        android:layout_marginEnd="@dimen/margin_horizontal_double"/>
 
 
 </android.support.constraint.ConstraintLayout>

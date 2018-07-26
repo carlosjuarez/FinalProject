@@ -2,10 +2,10 @@
 <resources>
     <color name="colorPrimary">#14A76C</color>
     <!-- do not change this color code, coz some other colors depend on this one -->
-    <color name="colorPrimaryDark">#14A76C</color>
+    <color name="colorPrimaryDark">#707070</color>
     <color name="colorAccent">#14A76C</color>
     <color name="colorActivityBackground">#f4f4f4</color>
-    <color name="colorButtonBackground">@color/colorPrimaryDark</color>
+    <color name="colorButtonBackground">#14A76C</color>
     <color name="colorButtonText">@color/colorActivityBackground</color>
     <color name="colorButtonTextAlternate">@color/colorButtonBackground</color>
     <color name="colorEditTextBackground">#e7e7e7</color>
@@ -14,4 +14,9 @@
     <color name="colorTextHeader">#747474</color>
     <color name="colorHintHeader">#747474</color>
     <color name="colorMainHeader">#14A76C</color>
+    <color name="colorMenuUserName">#272727</color>
+    <color name="colorMenuUserStatus">#272727</color>
+    <color name="colorMenuUserStatusBackground">#25000000</color>
+    <color name="colorMenuOption">#747474</color>
+    <color name="colorUserMenuBackground">#EAE7DC</color>
 </resources>

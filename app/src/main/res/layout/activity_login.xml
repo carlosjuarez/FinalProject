@@ -26,6 +26,9 @@
         </android.support.design.widget.AppBarLayout>
 
         <android.support.constraint.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/AppTheme.ActivityLayoutStyle"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -82,8 +85,7 @@
             <Button
                 android:id="@+id/button_login_submit"
                 android:layout_width="match_parent"
-                android:textSize="@dimen/text_size"
-                android:layout_height="@dimen/te_button_height"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/views_update_bottom_margin"
                 android:layout_marginEnd="@dimen/input_margin_start_to_end"
                 android:layout_marginStart="@dimen/input_margin_start_to_end"
@@ -99,7 +101,7 @@
             <TextView
                 android:id="@+id/tv_login_forgot"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/te_button_height"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/tv_login_margin_bottom"
                 android:layout_marginEnd="@dimen/activity_vertical_margin"
                 android:layout_marginStart="@dimen/activity_vertical_margin"
@@ -115,8 +117,9 @@
 
             <Button
                 android:id="@+id/button_login_register"
+                style="@style/AppTheme.ButtonAlternate"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/te_button_height"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_vertical_double"
                 android:layout_marginEnd="@dimen/activity_vertical_margin"
                 android:layout_marginStart="@dimen/activity_vertical_margin"

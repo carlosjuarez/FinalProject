@@ -23,6 +23,7 @@
         </android.support.design.widget.AppBarLayout>
         <android.support.constraint.ConstraintLayout
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            style="@style/AppTheme.ActivityLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingBottom="@dimen/activity_vertical_padding"

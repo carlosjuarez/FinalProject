@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/AppTheme.TextView</item>
+        <item name="android:buttonStyle">@style/AppTheme.Button</item>
+        <item name="editTextStyle">@style/AppTheme.EditText</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -16,4 +19,47 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.ActivityLayoutStyle">
+        <item name="android:background">@color/colorActivityBackground</item>
+    </style>
+
+    <style name="AppTheme.TextView" parent="android:TextAppearance.Widget.TextView">
+
+    </style>
+
+    <style name="AppTheme.Button" parent="android:Widget.Button">
+        <item name="android:background">@drawable/default_button_background</item>
+        <item name="android:textColor">@color/colorButtonText</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="AppTheme.ButtonAlternate" parent="android:Widget.Button">
+        <item name="android:background">@drawable/alternate_button_background</item>
+        <item name="android:textColor">@color/colorButtonTextAlternate</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="AppTheme.TextInputLayout">
+        <item name="android:background">@color/colorEditTextBackground</item>
+    </style>
+
+    <style name="AppTheme.EditText" parent="android:Widget.EditText">
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:textColor">@color/colorEditTextColor</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
 </resources>

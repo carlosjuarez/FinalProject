@@ -1,9 +1,7 @@
 package com.batch.mcs.finalproject;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.batch.mcs.finalproject.R;
+import android.support.v7.app.AppCompatActivity;
 
 public class UpdatePasswordActivity extends AppCompatActivity {
 

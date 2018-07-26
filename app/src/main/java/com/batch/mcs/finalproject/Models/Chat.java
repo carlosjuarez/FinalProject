@@ -8,13 +8,31 @@ import java.util.List;
 
 public class Chat extends LiveData implements Parcelable {
 
+    public static final Creator<Chat> CREATOR = new Creator<Chat>() {
+        @Override
+        public Chat createFromParcel(Parcel in) {
+            return new Chat(in);
+        }
+
+        @Override
+        public Chat[] newArray(int size) {
+            return new Chat[size];
+        }
+    };
     private String admin;
     private String id;
     private List<User> members;
     private List<Message> messages;
 
-    public Chat(){
+    public Chat() {
         //Empty constructor
+    }
+
+    protected Chat(Parcel in) {
+        admin = in.readString();
+        id = in.readString();
+        members = in.createTypedArrayList(User.CREATOR);
+        messages = in.createTypedArrayList(Message.CREATOR);
     }
 
     //All getters
@@ -22,30 +40,30 @@ public class Chat extends LiveData implements Parcelable {
         return admin;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public List<User> getMembers() {
-        return members;
-    }
-
-    public List<Message> getMessages() {
-        return messages;
+    public void setAdmin(String admin) {
+        this.admin = admin;
     }
 
     //All setters
 
-    public void setAdmin(String admin) {
-        this.admin = admin;
+    public String getId() {
+        return id;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
+    public List<User> getMembers() {
+        return members;
+    }
+
     public void setMembers(List<User> members) {
         this.members = members;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
     }
 
     public void setMessages(List<Message> messages) {
@@ -65,23 +83,4 @@ public class Chat extends LiveData implements Parcelable {
         parcel.writeTypedList(members);
         parcel.writeTypedList(messages);
     }
-
-    protected Chat(Parcel in) {
-        admin = in.readString();
-        id = in.readString();
-        members = in.createTypedArrayList(User.CREATOR);
-        messages = in.createTypedArrayList(Message.CREATOR);
-    }
-
-    public static final Creator<Chat> CREATOR = new Creator<Chat>() {
-        @Override
-        public Chat createFromParcel(Parcel in) {
-            return new Chat(in);
-        }
-
-        @Override
-        public Chat[] newArray(int size) {
-            return new Chat[size];
-        }
-    };
 }

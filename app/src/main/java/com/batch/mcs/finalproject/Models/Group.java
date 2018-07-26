@@ -8,6 +8,17 @@ import java.util.List;
 
 public class Group extends LiveData implements Parcelable {
 
+    public static final Creator<Group> CREATOR = new Creator<Group>() {
+        @Override
+        public Group createFromParcel(Parcel in) {
+            return new Group(in);
+        }
+
+        @Override
+        public Group[] newArray(int size) {
+            return new Group[size];
+        }
+    };
     private String name;
     private String id;
     private String image;
@@ -17,8 +28,19 @@ public class Group extends LiveData implements Parcelable {
     private List<User> members;
     private List<Event> events;
 
-    public Group(){
+    public Group() {
         //Empty constructor
+    }
+
+    protected Group(Parcel in) {
+        name = in.readString();
+        id = in.readString();
+        image = in.readString();
+        description = in.readString();
+        admin = in.readString();
+        moderators = in.createTypedArrayList(User.CREATOR);
+        members = in.createTypedArrayList(User.CREATOR);
+        events = in.createTypedArrayList(Event.CREATOR);
     }
 
     //All getters
@@ -26,61 +48,61 @@ public class Group extends LiveData implements Parcelable {
         return name;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getAdmin() {
-        return admin;
-    }
-
-    public List<User> getModerators() {
-        return moderators;
-    }
-
-    public List<User> getMembers() {
-        return members;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
     //All setters
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
+    public String getImage() {
+        return image;
+    }
+
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
+    public String getAdmin() {
+        return admin;
+    }
+
     public void setAdmin(String admin) {
         this.admin = admin;
+    }
+
+    public List<User> getModerators() {
+        return moderators;
     }
 
     public void setModerators(List<User> moderators) {
         this.moderators = moderators;
     }
 
+    public List<User> getMembers() {
+        return members;
+    }
+
     public void setMembers(List<User> members) {
         this.members = members;
+    }
+
+    public List<Event> getEvents() {
+        return events;
     }
 
     public void setEvents(List<Event> events) {
@@ -104,29 +126,6 @@ public class Group extends LiveData implements Parcelable {
         parcel.writeTypedList(members);
         parcel.writeTypedList(events);
     }
-
-    protected Group(Parcel in) {
-        name = in.readString();
-        id = in.readString();
-        image = in.readString();
-        description = in.readString();
-        admin = in.readString();
-        moderators = in.createTypedArrayList(User.CREATOR);
-        members = in.createTypedArrayList(User.CREATOR);
-        events = in.createTypedArrayList(Event.CREATOR);
-    }
-
-    public static final Creator<Group> CREATOR = new Creator<Group>() {
-        @Override
-        public Group createFromParcel(Parcel in) {
-            return new Group(in);
-        }
-
-        @Override
-        public Group[] newArray(int size) {
-            return new Group[size];
-        }
-    };
 
     //Livedata
     @Override

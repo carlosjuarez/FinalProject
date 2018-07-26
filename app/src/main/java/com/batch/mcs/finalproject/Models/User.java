@@ -6,8 +6,19 @@ import android.os.Parcelable;
 
 import java.util.List;
 
-public class User extends LiveData implements Parcelable{
+public class User extends LiveData implements Parcelable {
 
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
     private String name;
     private String lastName;
     private String city;
@@ -16,8 +27,18 @@ public class User extends LiveData implements Parcelable{
     private String id;
     private List<Chat> chats;
 
-    public User(){
+    public User() {
         //Empty constructor
+    }
+
+    protected User(Parcel in) {
+        name = in.readString();
+        lastName = in.readString();
+        city = in.readString();
+        image = in.readString();
+        email = in.readString();
+        id = in.readString();
+        chats = in.createTypedArrayList(Chat.CREATOR);
     }
 
     //All the getters
@@ -25,28 +46,12 @@ public class User extends LiveData implements Parcelable{
         return chats;
     }
 
+    public void setChats(List<Chat> chats) {
+        this.chats = chats;
+    }
+
     public String getName() {
         return name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getId() {
-        return id;
     }
 
     //All the setters
@@ -54,28 +59,44 @@ public class User extends LiveData implements Parcelable{
         this.name = name;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     public void setCity(String city) {
         this.city = city;
     }
 
+    public String getImage() {
+        return image;
+    }
+
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getId() {
+        return id;
     }
 
-    public void setChats(List<Chat> chats) {
-        this.chats = chats;
+    public void setId(String id) {
+        this.id = id;
     }
 
     //Parcelable
@@ -94,28 +115,6 @@ public class User extends LiveData implements Parcelable{
         parcel.writeString(id);
         parcel.writeTypedList(chats);
     }
-
-    protected User(Parcel in) {
-        name = in.readString();
-        lastName = in.readString();
-        city = in.readString();
-        image = in.readString();
-        email = in.readString();
-        id = in.readString();
-        chats = in.createTypedArrayList(Chat.CREATOR);
-    }
-
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
 
     //Livedata
     @Override

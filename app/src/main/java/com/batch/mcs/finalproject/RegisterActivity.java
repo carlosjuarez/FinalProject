@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.batch.mcs.finalproject.databinding.ActivityRegisterBinding;
 import com.batch.mcs.finalproject.helperobjects.FirebaseResult;
+import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.RegisterUserViewModel;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -38,11 +39,18 @@ public class RegisterActivity extends AppCompatActivity {
                     }else if(firebaseResult.getResult()!=null){
                         if(firebaseResult.getResult() == R.string.firebase_user_created){
                             registerUserViewModel.createUser();
-                        }else if(firebaseResult.getResult() == R.string.firebase_verification_email_sent){
-                            finish();
                         }
                         Snackbar.make(activityRegisterBinding.getRoot(),firebaseResult.getResult(),Snackbar.LENGTH_SHORT).show();
                     }
+                }
+            }
+        });
+
+        registerUserViewModel.getUserLiveData().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(@Nullable User user) {
+                if (user != null) {
+                    Snackbar.make(activityRegisterBinding.getRoot(),"User: "+user.getId()+" created",Snackbar.LENGTH_SHORT).show();
                 }
             }
         });

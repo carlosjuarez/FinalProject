@@ -1,16 +1,24 @@
 package com.batch.mcs.finalproject.firebase.firestore;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.batch.mcs.finalproject.Models.Group;
-import com.batch.mcs.finalproject.Models.User;
+
+import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.ReturnValueFromLoad;
+import com.batch.mcs.finalproject.helperobjects.FirebaseResult;
+import com.batch.mcs.finalproject.models.Group;
+import com.batch.mcs.finalproject.models.User;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,12 +34,14 @@ public class FirebaseDatabase {
         this.db = db;
     }
 
-    public void createUser(User user){
+    public void createUser(final User user, final MutableLiveData<User> userLiveData){
 
-        DocumentReference newUserRef = db.collection("users").document();
-        String myId = newUserRef.getId();
-        user.setId(myId);
-        newUserRef.set(user);
+        db.collection("users").document().set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                userLiveData.postValue(user);
+            }
+        });
     }
 
     public void createGroup(User user, Group group){

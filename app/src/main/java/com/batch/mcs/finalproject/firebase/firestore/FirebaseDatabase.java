@@ -1,4 +1,4 @@
-package com.batch.mcs.finalproject.firebase.authentication;
+package com.batch.mcs.finalproject.firebase.firestore;
 
 import android.support.annotation.NonNull;
 import android.util.Log;

@@ -66,4 +66,9 @@
     <string name="field_emailAddress_empty">field email is empty</string>
     <string name="field_lastName_empty">field last name is empty</string>
     <string name="field_firstName_empty">field first name is empty</string>
+    <string name="button_settings_button_image">Settings button image</string>
+    <string name="button_signout_button_image">Signout button image</string>
+    <string name="tv_chat_timestamp">timestamp</string>
+    <string name="ib_send_button_description">Send Button</string>
+    <string name="update_comment">Update Comment</string>
 </resources>

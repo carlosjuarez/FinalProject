@@ -57,4 +57,13 @@
     <string name="check_email_before">Verify your email before entering</string>
     <string name="empty_values_login">There are some fields empty, please fill them before login in</string>
     <string name="empty_values_recovery_password">Please fill the email field before continue</string>
+    <string name="password_different">Password and Confirm Password are different</string>
+    <string name="firebase_verification_email_sent">Please check and verify your email</string>
+    <string name="firebase_user_created">User created</string>
+    <string name="field_confirmPassword_empty">Confirm Password is empty</string>
+    <string name="field_password_empty">Field password is empty</string>
+    <string name="field_city_empty">Field city is empty</string>
+    <string name="field_emailAddress_empty">field email is empty</string>
+    <string name="field_lastName_empty">field last name is empty</string>
+    <string name="field_firstName_empty">field first name is empty</string>
 </resources>

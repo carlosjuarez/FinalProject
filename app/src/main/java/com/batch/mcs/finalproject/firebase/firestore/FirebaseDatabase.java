@@ -36,7 +36,7 @@ public class FirebaseDatabase {
 
     public void createUser(final User user, final MutableLiveData<User> userLiveData){
 
-        db.collection("users").document().set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("users").document(user.getId()).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 userLiveData.postValue(user);

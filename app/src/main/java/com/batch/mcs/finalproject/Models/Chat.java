@@ -24,8 +24,9 @@ public class Chat extends LiveData implements Parcelable {
     private List<User> members;
     private List<Message> messages;
 
-    public Chat() {
+    public Chat(String admin) {
         //Empty constructor
+        this.admin = admin;
     }
 
     protected Chat(Parcel in) {

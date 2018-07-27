@@ -4,9 +4,38 @@ import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User extends LiveData implements Parcelable {
+    private String name;
+    private String lastName;
+    private String city;
+    private String image;
+    private String email;
+    private String id;
+    private Map<String, Boolean> myGroups;
+
+    public User() {
+        //Empty constructor
+    }
+
+    public User(String name, String lastName, String city, String email) {
+        this.name = name;
+        this.lastName = lastName;
+        this.city = city;
+        this.email = email;
+    }
+
+    protected User(Parcel in) {
+        name = in.readString();
+        lastName = in.readString();
+        city = in.readString();
+        image = in.readString();
+        email = in.readString();
+        id = in.readString();
+    }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
@@ -19,42 +48,11 @@ public class User extends LiveData implements Parcelable {
             return new User[size];
         }
     };
-    private String name;
-    private String lastName;
-    private String city;
-    private String image;
-    private String email;
-    private String id;
-    private List<Chat> chats;
-
-    public User() {
-        //Empty constructor
-    }
-
-    protected User(Parcel in) {
-        name = in.readString();
-        lastName = in.readString();
-        city = in.readString();
-        image = in.readString();
-        email = in.readString();
-        id = in.readString();
-        chats = in.createTypedArrayList(Chat.CREATOR);
-    }
-
-    //All the getters
-    public List<Chat> getChats() {
-        return chats;
-    }
-
-    public void setChats(List<Chat> chats) {
-        this.chats = chats;
-    }
 
     public String getName() {
         return name;
     }
 
-    //All the setters
     public void setName(String name) {
         this.name = name;
     }
@@ -99,21 +97,12 @@ public class User extends LiveData implements Parcelable {
         this.id = id;
     }
 
-    //Parcelable
-    @Override
-    public int describeContents() {
-        return 0;
+    public Map<String, Boolean> getMyGroups() {
+        return myGroups;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(lastName);
-        parcel.writeString(city);
-        parcel.writeString(image);
-        parcel.writeString(email);
-        parcel.writeString(id);
-        parcel.writeTypedList(chats);
+    public void setMyGroups(Map<String, Boolean> myGroups) {
+        this.myGroups = myGroups;
     }
 
     //Livedata
@@ -127,4 +116,31 @@ public class User extends LiveData implements Parcelable {
         // Stop listening
     }
 
+    //Database
+    public Map<String, Object> toMap() {
+        Map<String, Object> result = new HashMap<>();
+        result.put("name", name);
+        result.put("lastName", lastName);
+        result.put("id", id);
+        result.put("email", email);
+        result.put("city", city);
+        result.put("image", image);
+
+        return result;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(lastName);
+        parcel.writeString(city);
+        parcel.writeString(image);
+        parcel.writeString(email);
+        parcel.writeString(id);
+    }
 }

@@ -4,9 +4,12 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.view.View;
 
+import com.batch.mcs.finalproject.ReturnValueFromLoad;
 import com.batch.mcs.finalproject.firebase.firestore.FirebaseDatabase;
 import com.batch.mcs.finalproject.models.User;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
 
 public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<User> mutableLiveData;
@@ -23,4 +26,5 @@ public class MainActivityViewModel extends ViewModel {
     public MutableLiveData<User> getMutableLiveData() {
         return mutableLiveData;
     }
+
 }

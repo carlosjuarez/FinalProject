@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -78,24 +79,24 @@ public class FirebaseDatabase {
 
     }
 
-    public MutableLiveData<User> loadUser(String idUser, final MutableLiveData<User> userLiveData){
+    public MutableLiveData<User> loadUser(String idUser, final MutableLiveData<User> mutableLiveData){
 
         final DocumentReference docRef = db.collection("users").document(idUser);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 try {
-
-                   // User user = documentSnapshot.getData() .toObject(User.class);
-                    //userLiveData.postValue(user);
+                    User user = new Gson().fromJson(documentSnapshot.getData().toString(), User.class);
+                    mutableLiveData.setValue(user);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
+
             }
 
         });
 
-        return userLiveData;
+        return mutableLiveData;
     }
 
 

@@ -143,4 +143,17 @@ public class User extends LiveData implements Parcelable {
         parcel.writeString(email);
         parcel.writeString(id);
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", city='" + city + '\'' +
+                ", image='" + image + '\'' +
+                ", email='" + email + '\'' +
+                ", id='" + id + '\'' +
+                ", myGroups=" + myGroups +
+                '}';
+    }
 }

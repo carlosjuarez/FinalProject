@@ -78,17 +78,24 @@ public class FirebaseDatabase {
 
     }
 
-    public void loadUser(String idUser, final ReturnValueFromLoad returnValuegFromLoad){
+    public MutableLiveData<User> loadUser(String idUser, final MutableLiveData<User> userLiveData){
 
-        DocumentReference docRef = db.collection("users").document(idUser);
+        final DocumentReference docRef = db.collection("users").document(idUser);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                returnValuegFromLoad.saveLoadedSnapshow(documentSnapshot);
+                try {
+
+                   // User user = documentSnapshot.getData() .toObject(User.class);
+                    //userLiveData.postValue(user);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
 
         });
 
+        return userLiveData;
     }
 
 

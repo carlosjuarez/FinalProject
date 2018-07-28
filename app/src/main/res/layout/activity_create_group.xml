@@ -38,7 +38,9 @@
             android:hint="@string/et_hint_group_name"
             android:inputType="text"
             android:layout_marginEnd="@dimen/input_margin_start_to_end"
-            android:layout_marginStart="@dimen/input_margin_start_to_end"/>
+            android:layout_marginStart="@dimen/input_margin_start_to_end"
+            android:maxLines="1"
+            android:singleLine="true"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -60,7 +62,9 @@
             android:hint="@string/et_hint_group_description"
             android:inputType="text"
             android:layout_marginEnd="@dimen/activity_vertical_padding"
-            android:layout_marginStart="@dimen/activity_vertical_padding" />
+            android:layout_marginStart="@dimen/activity_vertical_padding"
+            android:maxLines="1"
+            android:singleLine="true"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button

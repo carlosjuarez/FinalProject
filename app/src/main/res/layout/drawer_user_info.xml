@@ -47,6 +47,7 @@
                 android:paddingEnd="@dimen/activity_horizontal_padding"
                 android:paddingStart="@dimen/activity_horizontal_padding"
                 android:text="@string/tv_default_text_user_name"
+                android:maxLines="1"
                 android:textColor="@color/colorMenuUserName"
                 app:layout_constraintBottom_toTopOf="@+id/et_drawer_user_info_user_status"
                 app:layout_constraintEnd_toEndOf="parent"

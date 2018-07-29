@@ -16,6 +16,7 @@
         android:layout_marginStart="@dimen/input_margin_start_to_end"
         android:layout_marginTop="@dimen/margin_vertical"
         android:text="@string/tv_group_list_header"
+        android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

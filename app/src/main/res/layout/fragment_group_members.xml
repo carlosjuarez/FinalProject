@@ -16,6 +16,7 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_vertical_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:maxLines="1"
         app:defaultQueryHint="@string/sv_group_members_hint"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"

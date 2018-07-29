@@ -50,7 +50,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_first_name"
                     android:inputType="textPersonName"
-                    android:singleLine="true"
                     android:maxLines="1"
                     android:text="@={viewModel.firstName}"/>
 
@@ -76,7 +75,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_last_name"
                     android:inputType="textPersonName"
-                    android:singleLine="true"
                     android:maxLines="1"
                     android:text="@={viewModel.lastName}"/>
 
@@ -101,7 +99,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_email"
                     android:inputType="textEmailAddress"
-                    android:singleLine="true"
                     android:maxLines="1"
                     android:text="@={viewModel.emailAddress}"/>
 
@@ -127,7 +124,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_city"
                     android:inputType="textNoSuggestions"
-                    android:singleLine="true"
                     android:maxLines="1"
                     android:text="@={viewModel.city}"/>
 
@@ -153,7 +149,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/password_hint"
                     android:inputType="textPassword"
-                    android:singleLine="true"
                     android:maxLines="1"
                     android:text="@={viewModel.password}"/>
 
@@ -179,7 +174,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/confirm_password_hint"
                     android:inputType="textPassword"
-                    android:singleLine="true"
                     android:maxLines="1"
                     android:text="@={viewModel.confirmPassword}"/>
 

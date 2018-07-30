@@ -10,7 +10,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 
-public class MainActivityViewModel extends ViewModel {
+public class AppViewModel extends ViewModel {
     private MutableLiveData<User> mutableLiveData;
 
     public void init(String userId) {

@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:text="@string/tv_default_text_user_name"
+            android:maxLines="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_recyclerview_chat_user_item_fragment_chat_user_list_user_image"

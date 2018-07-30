@@ -56,7 +56,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_name"
                     android:inputType="textEmailAddress"
-                    android:text="@={viewmodel.email}"/>
+                    android:text="@={viewmodel.email}"
+                    android:maxLines="1"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -78,7 +79,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_password"
                     android:inputType="textPassword"
-                    android:text="@={viewmodel.password}"/>
+                    android:text="@={viewmodel.password}"
+                    android:maxLines="1"/>
             </android.support.design.widget.TextInputLayout>
 
 

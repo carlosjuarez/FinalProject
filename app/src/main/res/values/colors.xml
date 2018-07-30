@@ -22,4 +22,8 @@
     <color name="colorFragmentBackground">#fff</color>
     <color name="colorChatTimestampText">#b9b9b9</color>
     <color name="colorTabBackground">#14A76C</color>
+    <color name="tv_chat_receiver_text_color">#000</color>
+    <color name="cv_chat_receiver_text_background">#fff</color>
+    <color name="tv_chat_sender_text_color">#fff</color>
+    <color name="cv_chat_sender_text_background">@color/colorPrimary</color>
 </resources>

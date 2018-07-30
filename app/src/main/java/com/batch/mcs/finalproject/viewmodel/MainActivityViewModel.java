@@ -4,7 +4,6 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.view.View;
 
-import com.batch.mcs.finalproject.ReturnValueFromLoad;
 import com.batch.mcs.finalproject.firebase.firestore.FirebaseDatabase;
 import com.batch.mcs.finalproject.models.User;
 import com.google.firebase.firestore.DocumentSnapshot;

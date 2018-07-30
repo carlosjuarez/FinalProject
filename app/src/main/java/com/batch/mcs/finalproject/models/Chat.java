@@ -1,12 +1,29 @@
 package com.batch.mcs.finalproject.models;
 
-import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
 import android.os.Parcelable;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.util.List;
+public class Chat implements Parcelable {
 
-public class Chat extends LiveData implements Parcelable {
+    private String admin;
+    private String id;
+    private Map<String, Boolean> members;
+    private Map<String, Boolean> messages;
+
+    public Chat() {
+        //Empty constructor
+    }
+
+    public Chat(String admin) {
+        this.admin = admin;
+    }
+
+    protected Chat(Parcel in) {
+        admin = in.readString();
+        id = in.readString();
+    }
 
     public static final Creator<Chat> CREATOR = new Creator<Chat>() {
         @Override
@@ -19,24 +36,7 @@ public class Chat extends LiveData implements Parcelable {
             return new Chat[size];
         }
     };
-    private String admin;
-    private String id;
-    private List<User> members;
-    private List<Message> messages;
 
-    public Chat(String admin) {
-        //Empty constructor
-        this.admin = admin;
-    }
-
-    protected Chat(Parcel in) {
-        admin = in.readString();
-        id = in.readString();
-        members = in.createTypedArrayList(User.CREATOR);
-        messages = in.createTypedArrayList(Message.CREATOR);
-    }
-
-    //All getters
     public String getAdmin() {
         return admin;
     }
@@ -44,8 +44,6 @@ public class Chat extends LiveData implements Parcelable {
     public void setAdmin(String admin) {
         this.admin = admin;
     }
-
-    //All setters
 
     public String getId() {
         return id;
@@ -55,33 +53,37 @@ public class Chat extends LiveData implements Parcelable {
         this.id = id;
     }
 
-    public List<User> getMembers() {
+    public Map<String, Boolean> getMembers() {
         return members;
     }
 
-    public void setMembers(List<User> members) {
+    public void setMembers(Map<String, Boolean> members) {
         this.members = members;
     }
 
-    public List<Message> getMessages() {
+    public Map<String, Boolean> getMessages() {
         return messages;
     }
 
-    public void setMessages(List<Message> messages) {
+    public void setMessages(Map<String, Boolean> messages) {
         this.messages = messages;
     }
 
-    //Parcelable
     @Override
     public int describeContents() {
         return 0;
     }
 
+    public Map<String, Object> toMap() {
+        Map<String, Object> result = new HashMap<>();
+        result.put("admin", admin);
+        result.put("id", id);
+        return result;
+    }
+
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(admin);
-        parcel.writeString(id);
-        parcel.writeTypedList(members);
-        parcel.writeTypedList(messages);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(admin);
+        dest.writeString(id);
     }
 }

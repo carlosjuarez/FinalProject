@@ -1,10 +1,12 @@
 package com.batch.mcs.finalproject.models;
 
-import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Event extends LiveData implements Parcelable {
+import java.util.HashMap;
+import java.util.Map;
+
+public class Event implements Parcelable {
 
     public static final Creator<Event> CREATOR = new Creator<Event>() {
         @Override
@@ -27,6 +29,7 @@ public class Event extends LiveData implements Parcelable {
     private String location;
     private int price;
 
+
     public Event() {
         //Empty constructor
     }
@@ -42,6 +45,7 @@ public class Event extends LiveData implements Parcelable {
         location = in.readString();
         price = in.readInt();
     }
+
 
     //All getters
     public String getName() {
@@ -137,18 +141,20 @@ public class Event extends LiveData implements Parcelable {
         parcel.writeInt(price);
     }
 
-    //Livedata
-    @Override
-    protected void onActive() {
-        // Start listening
-    }
+    public Map<String, Object> toMap() {
+        Map<String, Object> result = new HashMap<>();
+        result.put("name", name);
+        result.put("description", description);
+        result.put("adminId", adminId);
+        result.put("id", id);
+        result.put("date", date);
+        result.put("city", city);
+        result.put("image", image);
+        result.put("location", location);
+        result.put("price", price);
 
-    @Override
-    protected void onInactive() {
-        // Stop listening
+        return result;
     }
-
-    private enum privacy {PUBLIC, RESTRICTED, PRIVATE}
 
 
 }

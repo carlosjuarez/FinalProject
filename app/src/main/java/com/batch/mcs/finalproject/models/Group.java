@@ -1,22 +1,19 @@
 package com.batch.mcs.finalproject.models;
 
-import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class Group extends LiveData implements Parcelable {
+public class Group implements Parcelable {
     private String name;
     private String id;
     private String image;
     private String description;
     private String idAdmin;
-    private List<String> idModerators;
-    private List<String> idMembers;
-    private List<String> idEvents;
+    private Map<String, Boolean>  idModerators;
+    private Map<String, Boolean>  idMembers;
+    private Map<String, Boolean> idEvents;
 
     public Group() {
         //Empty constructor
@@ -33,9 +30,6 @@ public class Group extends LiveData implements Parcelable {
         image = in.readString();
         description = in.readString();
         idAdmin = in.readString();
-        idModerators = in.createStringArrayList();
-        idMembers = in.createStringArrayList();
-        idEvents = in.createStringArrayList();
     }
 
     public static final Creator<Group> CREATOR = new Creator<Group>() {
@@ -90,39 +84,28 @@ public class Group extends LiveData implements Parcelable {
         this.idAdmin = idAdmin;
     }
 
-    public List<String> getIdModerators() {
+    public Map<String, Boolean> getIdModerators() {
         return idModerators;
     }
 
-    public void setIdModerators(List<String> idModerators) {
+    public void setIdModerators(Map<String, Boolean> idModerators) {
         this.idModerators = idModerators;
     }
 
-    public List<String> getIdMembers() {
+    public Map<String, Boolean> getIdMembers() {
         return idMembers;
     }
 
-    public void setIdMembers(List<String> idMembers) {
+    public void setIdMembers(Map<String, Boolean> idMembers) {
         this.idMembers = idMembers;
     }
 
-    public List<String> getIdEvents() {
+    public Map<String, Boolean> getIdEvents() {
         return idEvents;
     }
 
-    public void setIdEvents(List<String> idEvents) {
+    public void setIdEvents(Map<String, Boolean> idEvents) {
         this.idEvents = idEvents;
-    }
-
-    //Livedata
-    @Override
-    protected void onActive() {
-        // Start listening
-    }
-
-    @Override
-    protected void onInactive() {
-        // Stop listening
     }
 
     //Database
@@ -137,20 +120,18 @@ public class Group extends LiveData implements Parcelable {
         return result;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(id);
-        parcel.writeString(image);
-        parcel.writeString(description);
-        parcel.writeString(idAdmin);
-        parcel.writeStringList(idModerators);
-        parcel.writeStringList(idMembers);
-        parcel.writeStringList(idEvents);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(id);
+        dest.writeString(image);
+        dest.writeString(description);
+        dest.writeString(idAdmin);
     }
 }

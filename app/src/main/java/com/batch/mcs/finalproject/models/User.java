@@ -1,14 +1,11 @@
 package com.batch.mcs.finalproject.models;
 
-import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class User extends LiveData implements Parcelable {
+public class User implements Parcelable {
     private String name;
     private String lastName;
     private String city;
@@ -16,6 +13,8 @@ public class User extends LiveData implements Parcelable {
     private String email;
     private String id;
     private Map<String, Boolean> myGroups;
+    private Map<String, Boolean> groups;
+    private Map<String, Boolean> chats;
 
     public User() {
         //Empty constructor
@@ -105,15 +104,20 @@ public class User extends LiveData implements Parcelable {
         this.myGroups = myGroups;
     }
 
-    //Livedata
-    @Override
-    protected void onActive() {
-        // Start listening
+    public Map<String, Boolean> getGroups() {
+        return groups;
     }
 
-    @Override
-    protected void onInactive() {
-        // Stop listening
+    public void setGroups(Map<String, Boolean> groups) {
+        this.groups = groups;
+    }
+
+    public Map<String, Boolean> getChats() {
+        return chats;
+    }
+
+    public void setChats(Map<String, Boolean> chats) {
+        this.chats = chats;
     }
 
     //Database
@@ -130,21 +134,6 @@ public class User extends LiveData implements Parcelable {
     }
 
     @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(lastName);
-        parcel.writeString(city);
-        parcel.writeString(image);
-        parcel.writeString(email);
-        parcel.writeString(id);
-    }
-
-    @Override
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
@@ -155,5 +144,20 @@ public class User extends LiveData implements Parcelable {
                 ", id='" + id + '\'' +
                 ", myGroups=" + myGroups +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(lastName);
+        dest.writeString(city);
+        dest.writeString(image);
+        dest.writeString(email);
+        dest.writeString(id);
     }
 }

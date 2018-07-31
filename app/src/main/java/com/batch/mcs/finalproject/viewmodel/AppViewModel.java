@@ -40,10 +40,10 @@ public class AppViewModel extends ViewModel {
             firebaseDatabase.loadUser(userId, liveUser);
         }
 
-        if(liveGroup == null){
-            liveGroup = new MutableLiveData<>();
-            firebaseDatabase.loadGroup(liveUser.getValue().getId(), liveGroup);
-        }
+//        if(liveGroup == null){
+//            liveGroup = new MutableLiveData<>();
+//            firebaseDatabase.loadGroup(liveUser.getValue().getId(), liveGroup);
+//        }
 
         if(liveGroupAdmin == null){
             liveGroupAdmin = new MutableLiveData<>();
@@ -55,15 +55,10 @@ public class AppViewModel extends ViewModel {
             firebaseDatabase.loadGroupMember(liveUser.getValue(), liveGroupMember);
         }
 
-        if(liveGroupMember == null){
-            liveGroupMember = new MutableLiveData<>();
-            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupMember);
-        }
-
-        if(liveGroupAll == null){
-            liveGroupAll = new MutableLiveData<>();
-            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAll);
-        }
+//        if(liveGroupAll == null){
+//            liveGroupAll = new MutableLiveData<>();
+//            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAll);
+//        }
 
         if(liveEvent == null){
             liveEvent = new MutableLiveData<>();

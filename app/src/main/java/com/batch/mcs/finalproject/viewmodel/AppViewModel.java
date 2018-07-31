@@ -83,16 +83,16 @@ public class AppViewModel extends ViewModel {
                 }
             }
         }
-
-        if(liveChat == null){
-            liveChat = new MutableLiveData<>();
-            firebaseDatabase.loadChat(liveUser.getValue().getId(), liveChat);
-        }
-
-        if(liveMessage == null){
-            liveMessage = new MutableLiveData<>();
-            firebaseDatabase.loadMessage(liveChat.getValue().getId(), liveMessage);
-        }
+//
+//        if(liveChat == null){
+//            liveChat = new MutableLiveData<>();
+//            firebaseDatabase.loadChat(liveUser.getValue().getId(), liveChat);
+//        }
+//
+//        if(liveMessage == null){
+//            liveMessage = new MutableLiveData<>();
+//            firebaseDatabase.loadMessage(liveChat.getValue().getId(), liveMessage);
+//        }
     }
 
     public void saveGroup(Group group){

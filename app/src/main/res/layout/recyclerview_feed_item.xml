@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+    <android.support.constraint.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/activity_vertical_padding"
+        android:paddingBottom="@dimen/activity_vertical_padding"
+        android:paddingStart="@dimen/activity_horizontal_padding"
+        android:paddingEnd="@dimen/activity_horizontal_padding">
+
+        <ImageView
+            android:id="@+id/img_feeditem_image"
+            android:layout_width="@dimen/img_feed_item_width"
+            android:layout_height="@dimen/img_feed_item_height"
+            android:layout_marginStart="@dimen/img_feed_margin_start"
+            android:layout_marginTop="@dimen/input_margin_top_to_bottom"
+            android:contentDescription="@string/img_feeditem_content_description"
+            android:src="@drawable/image_nia_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_feeditem_title"
+            android:layout_width="@dimen/no_dimension_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/input_margin_start_to_end"
+            android:layout_marginStart="@dimen/input_margin_start_to_end"
+            android:layout_marginTop="@dimen/input_margin_top_to_bottom"
+            android:text="@string/feed_item_titledefault"
+            android:textSize="@dimen/title_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_feeditem_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_feeditem_description"
+            android:layout_width="@dimen/no_dimension_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/input_margin_start_to_end"
+            android:layout_marginStart="@dimen/input_margin_start_to_end"
+            android:layout_marginTop="@dimen/input_margin_top_to_bottom"
+            android:text="@string/feeditem_descriptiondefault"
+            android:textSize="@dimen/text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_feeditem_image"
+            app:layout_constraintTop_toBottomOf="@+id/tv_feeditem_title" />
+
+        <TextView
+            android:id="@+id/tv_feeditem_location"
+            android:layout_width="@dimen/no_dimension_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/input_margin_start_to_end"
+            android:layout_marginStart="@dimen/input_margin_start_to_end"
+            android:layout_marginTop="@dimen/input_margin_top_to_bottom"
+            android:text="@string/feed_item_location_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_feeditem_image"
+            app:layout_constraintTop_toBottomOf="@+id/tv_feeditem_description" />
+
+        <TextView
+            android:id="@+id/tv_feeditem_price"
+            android:layout_width="@dimen/no_dimension_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/input_margin_start_to_end"
+            android:layout_marginTop="@dimen/input_margin_top_to_bottom"
+            android:text="@string/feed_item_price_default"
+            app:layout_constraintStart_toEndOf="@+id/img_feeditem_image"
+            app:layout_constraintTop_toBottomOf="@+id/tv_feeditem_location" />
+
+        <ImageView
+            android:id="@+id/iv_feeditem_show_update_comments"
+            android:contentDescription="@string/update_comment"
+            android:layout_width="@dimen/caret_image_width"
+            android:layout_height="@dimen/caret_image_height"
+            android:layout_marginEnd="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:src="@drawable/image_nia_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_feeditem_location" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_feeditem_update_comments"
+            android:layout_width="@dimen/no_dimension_width"
+            android:layout_height="@dimen/no_dimension_height"
+            android:layout_marginBottom="@dimen/margin_top_bottom"
+            android:layout_marginTop="@dimen/margin_top_bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_feeditem_show_update_comments" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

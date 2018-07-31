@@ -1,10 +1,12 @@
 package com.batch.mcs.finalproject.models;
 
-import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Message extends LiveData implements Parcelable {
+import java.util.HashMap;
+import java.util.Map;
+
+public class Message implements Parcelable {
 
     public static final Creator<Message> CREATOR = new Creator<Message>() {
         @Override
@@ -17,6 +19,7 @@ public class Message extends LiveData implements Parcelable {
             return new Message[size];
         }
     };
+
     private String id;
     private String content;
 
@@ -47,6 +50,15 @@ public class Message extends LiveData implements Parcelable {
         this.content = content;
     }
 
+    //Database
+    public Map<String, Object> toMap() {
+        Map<String, Object> result = new HashMap<>();
+        result.put("id", id);
+        result.put("content", content);
+
+        return result;
+    }
+
     //Parcelable
     @Override
     public int describeContents() {
@@ -59,14 +71,4 @@ public class Message extends LiveData implements Parcelable {
         parcel.writeString(content);
     }
 
-    //Livedata
-    @Override
-    protected void onActive() {
-        // Start listening
-    }
-
-    @Override
-    protected void onInactive() {
-        // Stop listening
-    }
 }

@@ -32,7 +32,7 @@ public class CreateGroupViewModel extends ViewModel {
     public void saveGroup(Group group){
         firebaseFirestore= FirebaseFirestore.getInstance();
         firebaseDatabase = new FirebaseDatabase(firebaseFirestore);
-        String gId = firebaseDatabase.createGroup(admin,group);
+        String gId = firebaseDatabase.saveGroup(admin,group);
         if(admin.getMyGroups()!=null){
             admin.getMyGroups().put(gId,true);
         }else{

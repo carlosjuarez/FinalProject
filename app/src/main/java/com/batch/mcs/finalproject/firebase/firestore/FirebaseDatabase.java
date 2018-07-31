@@ -3,11 +3,13 @@ package com.batch.mcs.finalproject.firebase.firestore;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
-import com.batch.mcs.finalproject.models.Chat;
-import com.batch.mcs.finalproject.models.Event;
+
+
+import com.batch.mcs.finalproject.R;
+import com.batch.mcs.finalproject.helperobjects.FirebaseResult;
 import com.batch.mcs.finalproject.models.Group;
-import com.batch.mcs.finalproject.models.Message;
 import com.batch.mcs.finalproject.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -15,7 +17,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.SetOptions;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -24,7 +29,7 @@ import java.util.Map;
 import static android.content.ContentValues.TAG;
 
 
-public class FirebaseDatabase{
+public class FirebaseDatabase {
 
     FirebaseFirestore db;
 
@@ -42,266 +47,52 @@ public class FirebaseDatabase{
         });
     }
 
-    public void createGroup(User user, Group group){
-
+    public String createGroup(User user, Group group){
         String admin = user.getId();
         group.setIdAdmin(admin);
-        DocumentReference newGroupRef = db.collection("groups").document();
+        DocumentReference newGroupRef = db.collection("group").document();
         String myGId = newGroupRef.getId();
         group.setId(myGId);
         newGroupRef.set(group);
-        DocumentReference newUserRef = db.collection("users").document(admin);
 
-        if(user.getMyGroups() == null){
-            Map<String, Boolean> test = new HashMap<>();
-            test.put(myGId, true);
-            user.setMyGroups(test);
-        }else {
-            user.getMyGroups().put(myGId, true);
-        }
-
-        newUserRef.update("myGroups",user.getMyGroups())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully updated!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error updating document", e);
-                    }
-                });
-
-    }
-
-    public void saveEvent(Group group, Event event){
-
-        String admin = group.getId();
-        event.setAdminId(admin);
-        DocumentReference newEventRef = db.collection("events").document();
-        String myEId = newEventRef.getId();
-        event.setId(myEId);
-        newEventRef.set(event);
-        DocumentReference newGroupRef = db.collection("groups").document();
-
-        if(group.getIdEvents() == null){
-            Map<String, Boolean> test = new HashMap<>();
-            test.put(myEId, true);
-            group.setIdEvents(test);
-        }else {
-            group.getIdEvents().put(myEId, true);
-        }
-
-        newGroupRef.update("idEvents",group.getIdEvents())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully updated!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error updating document", e);
-                    }
-                });
-
-    }
-
-    public void saveChat(User creator,User member, Chat chat){
-
-        String creatorId = creator.getId();
-        String memberId = member.getId();
-        chat.setAdmin(creatorId);
-        DocumentReference newChatRef = db.collection("chats").document();
-        String myCId = newChatRef.getId();
-        chat.setId(myCId);
-        newChatRef.set(chat);
-        DocumentReference newCreatorRef = db.collection("users").document(creatorId);
-        DocumentReference newMemberRef = db.collection("users").document(memberId);
-
-        if(creator.getChats() == null){
-            Map<String, Boolean> test = new HashMap<>();
-            test.put(myCId, true);
-            creator.setChats(test);
-        }else {
-            creator.getChats().put(myCId, true);
-        }
-
-        newCreatorRef.update("chats",creator.getChats())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully updated!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error updating document", e);
-                    }
-                });
-
-        if(member.getChats() == null){
-            Map<String, Boolean> test = new HashMap<>();
-            test.put(myCId, true);
-            member.setChats(test);
-        }else {
-            member.getChats().put(myCId, true);
-        }
-
-        newMemberRef.update("chats",member.getChats())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully updated!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error updating document", e);
-                    }
-                });
-
-    }
-
-    public void saveMessage(Chat chat, Message message){
-
-        String admin = chat.getId();
-        DocumentReference newMessageRef = db.collection("messages").document();
-        String myMId = newMessageRef.getId();
-        message.setId(myMId);
-        newMessageRef.set(message);
-        DocumentReference newChatRef = db.collection("chats").document(admin);
-
-        if(chat.getMessages() == null){
-            Map<String, Boolean> test = new HashMap<>();
-            test.put(myMId, true);
-            chat.setMessages(test);
-        }else {
-            chat.getMessages().put(myMId, true);
-        }
-
-        newChatRef.update("chats",chat.getMessages())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully updated!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error updating document", e);
-                    }
-                });
+        return myGId;
 
     }
 
     public MutableLiveData<User> loadUser(String idUser, final MutableLiveData<User> mutableLiveData){
 
         final DocumentReference docRef = db.collection("users").document(idUser);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                try {
-                    User user = new Gson().fromJson(documentSnapshot.getData().toString(), User.class);
-                    mutableLiveData.setValue(user);
-                }catch (Exception e){
-                    e.printStackTrace();
+            public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                try{
+                    if(e!=null){
+                        throw e;
+                    }else{
+                        User user = new Gson().fromJson(snapshot.getData().toString(), User.class);
+                        mutableLiveData.setValue(user);
+                    }
+                }catch (Exception ex){
+                    ex.printStackTrace();
                 }
 
-            }
-
-        });
-
-        return mutableLiveData;
-    }
-
-    public MutableLiveData<Group> loadGroup(String idGroup, final MutableLiveData<Group> mutableLiveData){
-
-        final DocumentReference docRef = db.collection("groups").document(idGroup);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                try {
-                    Group group = new Gson().fromJson(documentSnapshot.getData().toString(), Group.class);
-                    mutableLiveData.setValue(group);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
 
             }
-
-        });
-
-        return mutableLiveData;
-    }
-
-    public MutableLiveData<Event> loadEvent(String idEvent, final MutableLiveData<Event> mutableLiveData){
-
-        final DocumentReference docRef = db.collection("events").document(idEvent);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                try {
-                    Event event = new Gson().fromJson(documentSnapshot.getData().toString(), Event.class);
-                    mutableLiveData.setValue(event);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-
-            }
-
-        });
-
-        return mutableLiveData;
-    }
-
-    public MutableLiveData<Chat> loadChat(String idChat, final MutableLiveData<Chat> mutableLiveData){
-
-        final DocumentReference docRef = db.collection("chats").document(idChat);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                try {
-                    Chat chats = new Gson().fromJson(documentSnapshot.getData().toString(), Chat.class);
-                    mutableLiveData.setValue(chats);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-
-            }
-
-        });
-
-        return mutableLiveData;
-    }
-
-    public MutableLiveData<Message> loadMessage(String idChat, final MutableLiveData<Message> mutableLiveData){
-
-        final DocumentReference docRef = db.collection("chats").document(idChat);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                try {
-                    Message message = new Gson().fromJson(documentSnapshot.getData().toString(), Message.class);
-                    mutableLiveData.setValue(message);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-
-            }
-
         });
 
         return mutableLiveData;
     }
 
 
+    public void updateUser(User user){
+        db.collection("users").document(user.getId()).set(user, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 }
 
 

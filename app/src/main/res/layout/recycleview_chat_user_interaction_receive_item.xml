@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,54 +10,64 @@
     android:layout_marginTop="@dimen/input_margin_start_to_end">
 
     <android.support.constraint.Guideline
-        android:id="@+id/recycleview_chat_user_interaction_recieve_guideline"
+        android:id="@+id/recycleview_chat_user_interaction_receive_guideline"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="@dimen/rv_chat_user_interaction_receive_guideline" />
+        app:layout_constraintGuide_percent="@dimen/rv_chat_user_interaction_receive_guideline"/>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/recycleview_chat_user_interaction_sent_cardview"
-        android:layout_width="@dimen/recyleview_chat_user_interaction_sent_cardview_width"
+    <RelativeLayout
+        android:layout_width="@dimen/no_dimension"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/recycleview_chat_user_interaction_recieve_guideline"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/recycleview_chat_user_interaction_receive_guideline">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
+        <android.support.v7.widget.CardView
+            app:cardBackgroundColor="@color/cv_chat_receiver_text_background"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/activity_vertical_padding"
-            android:paddingBottom="@dimen/activity_vertical_padding"
-            android:paddingStart="@dimen/activity_horizontal_padding"
-            android:paddingEnd="@dimen/activity_horizontal_padding">
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            app:cardCornerRadius="@dimen/cv_default_radius">
 
-            <TextView
-                android:id="@+id/recycleview_chat_user_interaction_recieve_cardview_tv_message"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/et_type_message"
-                android:textSize="@dimen/title_text_size"
-                android:textAlignment="textStart"
-                android:layout_marginBottom="@dimen/recycleview_chat_user_interaction_item_margin_start_to_end"
-                app:layout_constraintBottom_toTopOf="@+id/recycleview_chat_user_interaction_recieve_cardview_tv_timestamp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:paddingTop="@dimen/activity_vertical_padding"
+                android:paddingBottom="@dimen/activity_vertical_padding"
+                android:paddingStart="@dimen/activity_horizontal_padding"
+                android:paddingEnd="@dimen/activity_horizontal_padding">
 
-            <TextView
-                android:id="@+id/recycleview_chat_user_interaction_recieve_cardview_tv_timestamp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/AppTheme.TextView.ChatTimeStamp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycleview_chat_user_interaction_recieve_cardview_tv_message" />
+                <TextView
+                    android:id="@+id/recycleview_chat_user_interaction_recieve_cardview_tv_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/et_type_message"
+                    android:textSize="@dimen/title_text_size"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/tv_chat_receiver_text_color"
+                    android:layout_marginBottom="@dimen/recycleview_chat_user_interaction_item_margin_start_to_end"
+                    app:layout_constraintBottom_toTopOf="@+id/recycleview_chat_user_interaction_recieve_cardview_tv_timestamp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        </android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/recycleview_chat_user_interaction_recieve_cardview_tv_timestamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AppTheme.TextView.ChatTimeStamp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recycleview_chat_user_interaction_recieve_cardview_tv_message" />
+
+            </android.support.constraint.ConstraintLayout>
 
 
-    </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
 
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

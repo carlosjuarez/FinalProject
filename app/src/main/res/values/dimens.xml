@@ -7,7 +7,7 @@
     <dimen name="title_text_size">16sp</dimen>
     <dimen name="margin_top_bottom">32dp</dimen>
     <dimen name="controls_margin_horizontal">8dp</dimen>
-    <dimen name="te_button_height">45dp</dimen>
+    <dimen name="te_button_height">40dp</dimen>
     <dimen name="tv_login_margin_bottom">52dp</dimen>
     <dimen name="views_update_top_margin">100dp</dimen>
     <dimen name="rv_fragment_chat_user_interaction_height">468dp</dimen>
@@ -62,5 +62,6 @@
     <dimen name="ib_width_create_group_picture">186dp</dimen>
     <dimen name="ib_height_create_group_picture">158dp</dimen>
     <dimen name="activity_horizontal_padding_double">16dp</dimen>
-    <dimen name="tv_chat_timestamp_text_size">10sp</dimen>
+    <dimen name="tv_chat_timestamp_text_size">12sp</dimen>
+    <dimen name="cv_default_radius">5dp</dimen>
 </resources>

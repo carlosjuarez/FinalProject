@@ -16,7 +16,7 @@
         android:layout_marginStart="@dimen/input_margin_start_to_end"
         android:layout_marginTop="@dimen/margin_vertical"
         android:text="@string/tv_group_list_header"
-        app:layout_constraintBottom_toTopOf="@+id/rv_fragment_group_list_groups_reclycler_view"
+        android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,8 +25,9 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_fragment_group_list_groups_reclycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/no_dimension"
         android:layout_marginBottom="@dimen/margin_vertical"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginEnd="@dimen/input_margin_start_to_end"
         android:layout_marginStart="@dimen/input_margin_start_to_end"
         app:layout_constraintBottom_toBottomOf="parent"

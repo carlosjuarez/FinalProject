@@ -1,11 +1,8 @@
 package com.batch.mcs.finalproject.viewmodel;
 
-import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.media.Image;
 import android.os.Handler;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -16,7 +13,6 @@ import com.batch.mcs.finalproject.BR;
 import com.batch.mcs.finalproject.CalendarDisplayFragment;
 import com.batch.mcs.finalproject.CalendarFeedFragment;
 import com.batch.mcs.finalproject.ChatFragment;
-import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.SearchFragment;
 
 import java.util.ArrayList;
@@ -47,7 +43,6 @@ public class TabViewModel extends BaseObservable {
         adapter.addFrag(new CalendarFeedFragment(), "Feed");
         adapter.addFrag(new ChatFragment(), "Chat");
         adapter.addFrag(new SearchFragment(), "Search");
-
         notifyPropertyChanged(BR.pagerAdapter);
     }
 

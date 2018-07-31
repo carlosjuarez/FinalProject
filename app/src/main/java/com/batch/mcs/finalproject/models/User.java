@@ -3,6 +3,7 @@ package com.batch.mcs.finalproject.models;
 import android.arch.lifecycle.LiveData;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.ArrayMap;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +16,7 @@ public class User extends LiveData implements Parcelable {
     private String image;
     private String email;
     private String id;
-    private Map<String, Boolean> myGroups;
+    private Map<String, Boolean> myGroups = new ArrayMap<>();
 
     public User() {
         //Empty constructor

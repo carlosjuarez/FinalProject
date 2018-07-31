@@ -102,7 +102,7 @@ public class RegisterUserViewModel extends ViewModel {
         newUser.setEmail(emailAddress);
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         FirebaseDatabase firebaseDatabase = new FirebaseDatabase(firebaseFirestore);
-        firebaseDatabase.createUser(newUser,userLiveData);
+        firebaseDatabase.saveUser(newUser,userLiveData);
         sendVerificationEmail();
     }
 

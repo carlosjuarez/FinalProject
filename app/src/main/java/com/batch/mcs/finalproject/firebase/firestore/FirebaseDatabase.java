@@ -94,7 +94,6 @@ public class FirebaseDatabase{
         String myMId = newMessageRef.getId();
         message.setId(myMId);
         newMessageRef.set(message);
-        DocumentReference newChatRef = db.collection("chats").document(admin);
 
         return myMId;
     }
@@ -124,7 +123,32 @@ public class FirebaseDatabase{
         return mutableLiveData;
     }
 
-    public MutableLiveData<List<Group>> loadGroupAdmin(User user, final MutableLiveData<List<Group>> mutableLiveData){
+    public MutableLiveData<Group> loadGroup(String idGroup, final MutableLiveData<Group> mutableLiveData) {
+
+        final DocumentReference docRef = db.collection("groups").document(idGroup);
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                try {
+                    if (e != null) {
+                        throw e;
+                    } else {
+                        Group group = new Gson().fromJson(snapshot.getData().toString(), Group.class);
+                        mutableLiveData.setValue(group);
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+
+        });
+
+        return mutableLiveData;
+    }
+
+        public MutableLiveData<List<Group>> loadGroupAdmin(User user, final MutableLiveData<List<Group>> mutableLiveData){
         final List<Group> groups = new ArrayList<>();
 
         for(String idGroup : user.getMyGroups().keySet()) {

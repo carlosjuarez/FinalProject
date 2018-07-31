@@ -1,10 +1,8 @@
 package com.batch.mcs.finalproject.firebase.firestore;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import com.batch.mcs.finalproject.models.Chat;
 import com.batch.mcs.finalproject.models.Event;
 import com.batch.mcs.finalproject.models.Group;
@@ -12,7 +10,6 @@ import com.batch.mcs.finalproject.models.Message;
 import com.batch.mcs.finalproject.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -23,14 +20,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.gson.Gson;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import static android.content.ContentValues.TAG;
-
 
 public class FirebaseDatabase{
 
@@ -94,7 +85,6 @@ public class FirebaseDatabase{
         String myMId = newMessageRef.getId();
         message.setId(myMId);
         newMessageRef.set(message);
-        DocumentReference newChatRef = db.collection("chats").document(admin);
 
         return myMId;
     }
@@ -124,7 +114,50 @@ public class FirebaseDatabase{
         return mutableLiveData;
     }
 
-    public MutableLiveData<List<Group>> loadGroupAdmin(User user, final MutableLiveData<List<Group>> mutableLiveData){
+    public MutableLiveData<List<User>> loadUserAll(final MutableLiveData<List<User>> mutableLiveData){
+
+        db.collection("users").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                //add error
+                ArrayList<User> users = new ArrayList<>();
+                for(QueryDocumentSnapshot snapshot: queryDocumentSnapshots){
+                    User user = new Gson().fromJson(snapshot.getData().toString(), User.class);
+                    users.add(user);
+                }
+                mutableLiveData.postValue(users);
+            }
+        });
+
+        return mutableLiveData;
+    }
+
+    public MutableLiveData<Group> loadGroup(String idGroup, final MutableLiveData<Group> mutableLiveData) {
+
+        final DocumentReference docRef = db.collection("groups").document(idGroup);
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                try {
+                    if (e != null) {
+                        throw e;
+                    } else {
+                        Group group = new Gson().fromJson(snapshot.getData().toString(), Group.class);
+                        mutableLiveData.setValue(group);
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+
+        });
+
+        return mutableLiveData;
+    }
+
+        public MutableLiveData<List<Group>> loadGroupAdmin(User user, final MutableLiveData<List<Group>> mutableLiveData){
         final List<Group> groups = new ArrayList<>();
 
         for(String idGroup : user.getMyGroups().keySet()) {
@@ -185,7 +218,7 @@ public class FirebaseDatabase{
 
     }
 
-    public MutableLiveData<List<Group>> loadGroupAll(String idGroup, final MutableLiveData<List<Group>> mutableLiveData){
+    public MutableLiveData<List<Group>> loadGroupAll(final MutableLiveData<List<Group>> mutableLiveData){
 
         db.collection("groups").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -227,6 +260,37 @@ public class FirebaseDatabase{
         return mutableLiveData;
     }
 
+    public MutableLiveData<List<Event>> loadEventsGroup(Group group, final MutableLiveData<List<Event>> mutableLiveData){
+        final List<Event> events = new ArrayList<>();
+
+        for(String idEvent : group.getIdEvents().keySet()) {
+            final DocumentReference docRef = db.collection("events").document(idEvent);
+            docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                    @Nullable FirebaseFirestoreException e) {
+                    try {
+                        if (e != null) {
+                            throw e;
+                        } else {
+                            Event event = new Gson().fromJson(snapshot.getData().toString(), Event.class);
+                            events.add(event);
+
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                }
+
+            });
+        }
+
+        mutableLiveData.postValue(events);
+        return mutableLiveData;
+
+    }
+
     public MutableLiveData<Chat> loadChat(String idChat, final MutableLiveData<Chat> mutableLiveData){
 
         final DocumentReference docRef = db.collection("chats").document(idChat);
@@ -250,6 +314,37 @@ public class FirebaseDatabase{
         });
 
         return mutableLiveData;
+    }
+
+    public MutableLiveData<List<Chat>> loadChatUsers(User user, final MutableLiveData<List<Chat>> mutableLiveData){
+        final List<Chat> chats = new ArrayList<>();
+
+        for(String idChat : user.getChats().keySet()) {
+            final DocumentReference docRef = db.collection("chats").document(idChat);
+            docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                    @Nullable FirebaseFirestoreException e) {
+                    try {
+                        if (e != null) {
+                            throw e;
+                        } else {
+                            Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+                            chats.add(chat);
+
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                }
+
+            });
+        }
+
+        mutableLiveData.postValue(chats);
+        return mutableLiveData;
+
     }
 
     public MutableLiveData<Message> loadMessage(String idChat, final MutableLiveData<Message> mutableLiveData){
@@ -276,7 +371,6 @@ public class FirebaseDatabase{
 
         return mutableLiveData;
     }
-
 
     public void updateUser(User user){
         db.collection("users").document(user.getId()).set(user, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {

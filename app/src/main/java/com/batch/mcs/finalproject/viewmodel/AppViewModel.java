@@ -65,7 +65,7 @@ public class AppViewModel extends ViewModel {
             firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAll);
         }
 
-        if(liveEvent == null && liveGroupMember != null && liveGroupAdmin != null){
+        if(liveEvent == null){
             liveEvent = new MutableLiveData<>();
             for(int i = 0; i < liveGroupAdmin.getValue().size(); i++) {
                 Map<String, Boolean> map = liveGroupAdmin.getValue().get(i).getIdEvents();

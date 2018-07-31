@@ -1,8 +1,6 @@
 package com.batch.mcs.finalproject.models;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -133,7 +131,7 @@ public class MockFactory {
         event1.setName("Lightsaber Battles");
         event1.setDescription("Join us for an epic lightsaber battle");
         event1.setCity("Atlanta");
-        event1.setDate(getDateTime(new GregorianCalendar(2018,8,14,15,21)));
+        event1.setDate("August 21, 2018");
         event1.setPrice(15);
         event1.setLocation("101 Marietta St NW #3110, Atlanta, GA 30303");
 
@@ -146,7 +144,7 @@ public class MockFactory {
         event2.setName("Movie Marathon");
         event2.setDescription("Join us for an epic Star Wars Movie Marathon");
         event2.setCity("Decatur");
-        event2.setDate(getDateTime(new GregorianCalendar(2018,8,21,18,10)));
+        event2.setDate("September 15, 2018");
         event2.setPrice(21);
         event2.setLocation("10 Rimington Ln, Decatur, GA 30030");
 
@@ -159,7 +157,7 @@ public class MockFactory {
         event3.setName("Movie Marathon");
         event3.setDescription("Join us for an epic Star Trek Movie Marathon");
         event3.setCity("East Point");
-        event3.setDate(getDateTime(new GregorianCalendar(2018,9,5,18,0)));
+        event3.setDate("August 28, 2018");
         event3.setPrice(10);
         event3.setLocation("2924 Briarwood Blvd, East Point, GA 30344");
 
@@ -172,7 +170,7 @@ public class MockFactory {
         event4.setName("Movie Marathon");
         event4.setDescription("Join us for an epic Battlestar Galactica Movie Marathon");
         event4.setCity("Marietta");
-        event4.setDate(getDateTime(new GregorianCalendar(2018,9,11,17,0)));
+        event4.setDate("October 20, 2018");
         event4.setPrice(8);
         event4.setLocation("1775 Parkway Pl, Marietta, GA 30067");
 
@@ -226,9 +224,4 @@ public class MockFactory {
         return eventList;
     }
 
-    private static String getDateTime(GregorianCalendar dateTime){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d, y 'at' hh:mma 'Local Time'");
-        System.out.println(dateFormat.format(dateTime.getTime()));
-        return dateFormat.format(dateTime.getTime());
-    }
 }

@@ -1,46 +1,33 @@
 package com.batch.mcs.finalproject;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import com.batch.mcs.finalproject.databinding.FragmentMainBinding;
+import android.support.v7.widget.Toolbar;
 
-import com.batch.mcs.finalproject.models.User;
-import com.batch.mcs.finalproject.viewmodel.MainActivityViewModel;
+import com.batch.mcs.finalproject.databinding.ActivityMainBinding;
+import com.batch.mcs.finalproject.viewmodel.AppViewModel;
 import com.batch.mcs.finalproject.viewmodel.TabViewModel;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        String userId = getIntent().getExtras().getString(getString(R.string.parameter_userid));
+        ActivityMainBinding activityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        setSupportActionBar((Toolbar) activityBinding.toolbarlayout.findViewById(R.id.toolbar));
 
-        MainActivityViewModel mainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
+        String userId = Objects.requireNonNull(getIntent().getExtras()).getString(getString(R.string.parameter_userid));
 
-        mainActivityViewModel.init(userId);
+        AppViewModel appViewModel = ViewModelProviders.of(this).get(AppViewModel.class);
+        appViewModel.init(userId);
 
-        mainActivityViewModel.getMutableLiveData().observe(this, new Observer<User>() {
-            @Override
-            public void onChanged(@Nullable User user) {
-                if(user != null){
-                    Snackbar.make(findViewById(R.id.show_content_frame), user.toString(), Snackbar.LENGTH_LONG).show();
-                }
-            }
-        });
+        TabViewModel tabViewModel = new TabViewModel(this);
+        activityBinding.setTabViewModel(tabViewModel);
 
-        FragmentMainBinding binding= DataBindingUtil.setContentView(this, R.layout.fragment_main);
-
-        TabViewModel tabViewModel= new TabViewModel(this);
-
-        binding.setTabViewModel(tabViewModel);
     }
 }

@@ -9,8 +9,8 @@ public class Chat implements Parcelable {
 
     private String admin;
     private String id;
-    private Map<String, Boolean> members;
-    private Map<String, Boolean> messages;
+    private Map<String, Boolean> members = null;
+    private Map<String, Boolean> messages = null;
 
     public Chat() {
         //Empty constructor

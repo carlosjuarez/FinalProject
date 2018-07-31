@@ -12,9 +12,9 @@ public class User implements Parcelable {
     private String image;
     private String email;
     private String id;
-    private Map<String, Boolean> myGroups;
-    private Map<String, Boolean> groups;
-    private Map<String, Boolean> chats;
+    private Map<String, Boolean> myGroups = null;
+    private Map<String, Boolean> groups = null;
+    private Map<String, Boolean> chats = null;
 
     public User() {
         //Empty constructor

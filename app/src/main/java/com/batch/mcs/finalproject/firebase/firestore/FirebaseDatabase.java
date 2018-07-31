@@ -4,10 +4,6 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 import android.util.Log;
-
-
-import com.batch.mcs.finalproject.R;
-import com.batch.mcs.finalproject.helperobjects.FirebaseResult;
 import com.batch.mcs.finalproject.models.Chat;
 import com.batch.mcs.finalproject.models.Event;
 import com.batch.mcs.finalproject.models.Group;
@@ -28,7 +24,7 @@ import java.util.Map;
 import static android.content.ContentValues.TAG;
 
 
-public class FirebaseDatabase {
+public class FirebaseDatabase{
 
     FirebaseFirestore db;
 
@@ -53,7 +49,7 @@ public class FirebaseDatabase {
         DocumentReference newGroupRef = db.collection("groups").document();
         String myGId = newGroupRef.getId();
         group.setId(myGId);
-        newGroupRef.set(group.toMap());
+        newGroupRef.set(group);
         DocumentReference newUserRef = db.collection("users").document(admin);
 
         if(user.getMyGroups() == null){
@@ -87,7 +83,7 @@ public class FirebaseDatabase {
         DocumentReference newEventRef = db.collection("events").document();
         String myEId = newEventRef.getId();
         event.setId(myEId);
-        newEventRef.set(event.toMap());
+        newEventRef.set(event);
         DocumentReference newGroupRef = db.collection("groups").document();
 
         if(group.getIdEvents() == null){
@@ -114,25 +110,49 @@ public class FirebaseDatabase {
 
     }
 
-    public void saveChat(User user, Chat chat){
+    public void saveChat(User creator,User member, Chat chat){
 
-        String admin = user.getId();
-        chat.setAdmin(admin);
+        String creatorId = creator.getId();
+        String memberId = member.getId();
+        chat.setAdmin(creatorId);
         DocumentReference newChatRef = db.collection("chats").document();
         String myCId = newChatRef.getId();
         chat.setId(myCId);
-        newChatRef.set(chat.toMap());
-        DocumentReference newUserRef = db.collection("users").document(admin);
+        newChatRef.set(chat);
+        DocumentReference newCreatorRef = db.collection("users").document(creatorId);
+        DocumentReference newMemberRef = db.collection("users").document(memberId);
 
-        if(user.getChats() == null){
+        if(creator.getChats() == null){
             Map<String, Boolean> test = new HashMap<>();
             test.put(myCId, true);
-            user.setChats(test);
+            creator.setChats(test);
         }else {
-            user.getChats().put(myCId, true);
+            creator.getChats().put(myCId, true);
         }
 
-        newUserRef.update("chats",user.getChats())
+        newCreatorRef.update("chats",creator.getChats())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error updating document", e);
+                    }
+                });
+
+        if(member.getChats() == null){
+            Map<String, Boolean> test = new HashMap<>();
+            test.put(myCId, true);
+            member.setChats(test);
+        }else {
+            member.getChats().put(myCId, true);
+        }
+
+        newMemberRef.update("chats",member.getChats())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -154,7 +174,7 @@ public class FirebaseDatabase {
         DocumentReference newMessageRef = db.collection("messages").document();
         String myMId = newMessageRef.getId();
         message.setId(myMId);
-        newMessageRef.set(message.toMap());
+        newMessageRef.set(message);
         DocumentReference newChatRef = db.collection("chats").document(admin);
 
         if(chat.getMessages() == null){

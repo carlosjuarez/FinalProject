@@ -11,9 +11,9 @@ public class Group implements Parcelable {
     private String image;
     private String description;
     private String idAdmin;
-    private Map<String, Boolean>  idModerators;
-    private Map<String, Boolean>  idMembers;
-    private Map<String, Boolean> idEvents;
+    private Map<String, Boolean>  idModerators = null;
+    private Map<String, Boolean>  idMembers = null;
+    private Map<String, Boolean> idEvents = null;
 
     public Group() {
         //Empty constructor

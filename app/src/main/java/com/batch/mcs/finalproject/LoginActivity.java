@@ -1,5 +1,6 @@
 package com.batch.mcs.finalproject;
 
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -13,17 +14,26 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.batch.mcs.finalproject.databinding.ActivityLoginBinding;
+import com.batch.mcs.finalproject.firebase.firestore.FirebaseDatabase;
 import com.batch.mcs.finalproject.helperobjects.FirebaseResult;
+import com.batch.mcs.finalproject.models.MockFactory;
+import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.LoginUserViewModel;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends BaseActivity {
 
     LoginUserViewModel loginUserViewModel;
     ActivityLoginBinding activityLoginBinding;
+    MockFactory factory = new MockFactory();
+    MutableLiveData<User> mutableLiveData = new MutableLiveData<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
 
         loginUserViewModel = ViewModelProviders.of(this).get(LoginUserViewModel.class);
 
@@ -92,7 +102,27 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void logUser(View view) {
+
         loginUserViewModel.loginUser();
+
+//        FirebaseFirestore ff = FirebaseFirestore.getInstance();
+//        FirebaseDatabase fb = new FirebaseDatabase(ff);
+//
+//        for(int i=0; i<factory.getUsersArrayList().size(); i++) {
+//            fb.saveUser(factory.getUsersArrayList().get(i), mutableLiveData);
+//        }
+//
+//        for(int i=0; i<factory.getGroupsArrayList().size(); i++){
+//            fb.saveGroup(factory.getUsersArrayList().get(0), factory.getGroupsArrayList().get(i));
+//        }
+//
+//
+//        fb.saveEvent(factory.getGroupsArrayList().get(0), factory.getEventsArrayList().get(0));
+//        fb.saveEvent(factory.getGroupsArrayList().get(0), factory.getEventsArrayList().get(1));
+//        fb.saveEvent(factory.getGroupsArrayList().get(1), factory.getEventsArrayList().get(2));
+//        fb.saveEvent(factory.getGroupsArrayList().get(2), factory.getEventsArrayList().get(3));
+
+
     }
 
     public void callPasswordForgotten(View view) {

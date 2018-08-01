@@ -44,24 +44,26 @@ public class FirebaseDatabase{
     public String saveGroup(User user, Group group){
         String admin = user.getId();
         group.setIdAdmin(admin);
-        DocumentReference newGroupRef = db.collection("group").document();
-        String myGId = newGroupRef.getId();
-        group.setId(myGId);
+        DocumentReference newGroupRef = db.collection("group").document(group.getId());
+//        DocumentReference newGroupRef = db.collection("group").document();
+        //String myGId = newGroupRef.getId();
+        //group.setId(myGId);
         newGroupRef.set(group);
 
-        return myGId;
+        return group.getId();
     }
 
     public String saveEvent(Group group, Event event){
 
         String admin = group.getId();
         event.setAdminId(admin);
-        DocumentReference newEventRef = db.collection("events").document();
-        String myEId = newEventRef.getId();
-        event.setId(myEId);
+        DocumentReference newEventRef = db.collection("events").document(event.getId());
+        //DocumentReference newEventRef = db.collection("events").document();
+        //String myEId = newEventRef.getId();
+        //event.setId(myEId);
         newEventRef.set(event);
 
-        return myEId;
+        return event.getId();
 
     }
 

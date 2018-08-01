@@ -16,18 +16,21 @@ import com.batch.mcs.finalproject.ChatFragment;
 import com.batch.mcs.finalproject.SearchFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class TabViewModel extends BaseObservable {
     FragmentActivity mContext;
     ViewPagerAdapter adapter;
 
-    public TabViewModel(FragmentActivity context){
+    public TabViewModel(FragmentActivity context, final HashMap<String, Fragment> fragments){
         mContext= context;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                createViewPager();
+                createViewPager(fragments);
             }
         }, 1000);
     }
@@ -37,12 +40,14 @@ public class TabViewModel extends BaseObservable {
         return adapter;
     }
 
-    private void createViewPager(){
+    private void createViewPager(HashMap fragments){
         adapter= new ViewPagerAdapter(mContext.getSupportFragmentManager());
-        adapter.addFrag(new CalendarDisplayFragment(), "Calendar");
-        adapter.addFrag(new CalendarFeedFragment(), "Feed");
-        adapter.addFrag(new ChatFragment(), "Chat");
-        adapter.addFrag(new SearchFragment(), "Search");
+        Iterator<Map.Entry<String, Fragment>> it= fragments.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry<String, Fragment> entry = it.next();
+            adapter.addFrag(entry.getValue(), entry.getKey());
+        }
+
         notifyPropertyChanged(BR.pagerAdapter);
     }
 

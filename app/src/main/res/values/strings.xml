@@ -72,4 +72,6 @@
     <string name="ib_send_button_description">Send Button</string>
     <string name="update_comment">Update Comment</string>
     <string name="parameter_user">parameter_user</string>
+    <string name="parameter_group">parameter_group</string>
+    <string name="error_onattach_callgroupdisplaylistener">The class must implement CallGroupDisplayListener</string>
 </resources>

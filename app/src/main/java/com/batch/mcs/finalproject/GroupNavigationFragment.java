@@ -1,13 +1,18 @@
 package com.batch.mcs.finalproject;
 
 import android.content.res.Resources;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.batch.mcs.finalproject.databinding.FragmentGroupNavigationBinding;
 import com.batch.mcs.finalproject.models.Group;
+import com.batch.mcs.finalproject.viewmodel.TabViewModel;
+
+import java.util.HashMap;
 
 public class GroupNavigationFragment extends BaseFragment {
 
@@ -35,8 +40,15 @@ public class GroupNavigationFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_group_navigation, container, false);
+        HashMap<String, Fragment> groupTabs= new HashMap<String, Fragment>();
+        groupTabs.put("Calendar", new GroupCalendarDisplayFragment());
+        groupTabs.put("Feed", new GroupFeedDisplayFragment());
+        groupTabs.put("Members", new GroupMembersDisplayFragment());
+
+        FragmentGroupNavigationBinding fragmentGroupNavigationBinding= DataBindingUtil.inflate(inflater, R.layout.fragment_group_navigation, container, false);
+        TabViewModel groupTabViewModel= new TabViewModel(getActivity(), groupTabs);
+        fragmentGroupNavigationBinding.setGroupTabViewModel(groupTabViewModel);
+        return fragmentGroupNavigationBinding.getRoot();
     }
 
     @Override

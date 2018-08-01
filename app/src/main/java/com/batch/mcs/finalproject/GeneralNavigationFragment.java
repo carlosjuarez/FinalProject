@@ -15,6 +15,9 @@ import com.batch.mcs.finalproject.databinding.FragmentGeneralNavigationBinding;
 import com.batch.mcs.finalproject.interfaces.CallGroupDisplayListener;
 import com.batch.mcs.finalproject.viewmodel.TabViewModel;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,8 +39,14 @@ public class GeneralNavigationFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        HashMap<String, Fragment> userTabs= new HashMap<String, Fragment>();
+        userTabs.put("Calendar", new CalendarDisplayFragment());
+        userTabs.put("Feed", new CalendarFeedFragment());
+        userTabs.put("Chat", new ChatFragment());
+        userTabs.put("Search", new SearchFragment());
+
         FragmentGeneralNavigationBinding fragmentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_general_navigation,container,false);
-        TabViewModel tabViewModel = new TabViewModel(getActivity());
+        TabViewModel tabViewModel = new TabViewModel(getActivity(), userTabs);
         fragmentBinding.setTabViewModel(tabViewModel);
 
         //De alguna forma tenemos que pasar el listener a los fragments para usar algo como

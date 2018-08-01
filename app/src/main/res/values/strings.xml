@@ -74,4 +74,10 @@
     <string name="parameter_user">parameter_user</string>
     <string name="parameter_group">parameter_group</string>
     <string name="error_onattach_callgroupdisplaylistener">The class must implement CallGroupDisplayListener</string>
+    <string name="et_hint_event_name">Event name</string>
+    <string name="et_hint_event_description">Event Description</string>
+    <string name="et_hint_event_city">City</string>
+    <string name="et_hint_event_location">Address</string>
+    <string name="et_hint_event_date">Date</string>
+    <string name="et_hint_event_price">Price</string>
 </resources>

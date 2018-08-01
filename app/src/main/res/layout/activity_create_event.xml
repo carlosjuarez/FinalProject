@@ -45,7 +45,7 @@
                         android:layout_height="@dimen/ib_height_create_event_picture"
                         android:layout_marginTop="@dimen/margin_vertical"
                         android:layout_marginBottom="@dimen/margin_vertical"
-                        android:contentDescription="@string/iv_event_image_content_description"
+
                         android:src="@android:drawable/ic_menu_search"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

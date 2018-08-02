@@ -6,6 +6,15 @@ import java.util.Map;
 
 public class MockFactory {
 
+    public static final String iamhungry = "I am hungry"; // 1
+    public static final String hihungrymynamesjoe = "Hi Hungry, My name's Joe"; // 2
+    public static final String youareamazing = "You are amazing"; // 3
+    public static final String iamnotamzingiamcarlos = "I am not amazing, I am Carlos"; // 4
+    public static final String iwillworkontheprojecttomorrow = "I will work on the project tomorrow"; // 5
+    public static final String youdoyougirl = "You do you girl"; // 6
+    public static final String itisverycommonyouknow = "It is very common, you know"; // 7
+    public static final String noidontknow = "No, I don't know"; // 8
+
     private User userCarlos;
     private User userMohammad;
     private User userJoe;
@@ -201,7 +210,7 @@ public class MockFactory {
         msg1.setId("50001");
         msg1.setCreator(userAlvaro.getId());
         msg1.setChatId(chat1.getId());
-        msg1.setContent(MessageList.youareamazing);
+        msg1.setContent(youareamazing);
         chatMap1.put(msg1.getId(), true);
         messages.add(msg1);
 
@@ -209,7 +218,7 @@ public class MockFactory {
         msg2.setId("50002");
         msg2.setCreator(userCarlos.getId());
         msg2.setChatId(chat1.getId());
-        msg2.setContent(MessageList.iamnotamzingiamcarlos);
+        msg2.setContent(iamnotamzingiamcarlos);
         chatMap1.put(msg2.getId(), true);
         messages.add(msg2);
 
@@ -232,7 +241,7 @@ public class MockFactory {
         msg3.setId("50003");
         msg3.setCreator(userMohammad.getId());
         msg3.setChatId(chat2.getId());
-        msg3.setContent(MessageList.iamhungry);
+        msg3.setContent(iamhungry);
         chatMap2.put(msg3.getId(), true);
         messages.add(msg3);
 
@@ -240,7 +249,7 @@ public class MockFactory {
         msg4.setId("50004");
         msg4.setCreator(userJoe.getId());
         msg4.setChatId(chat2.getId());
-        msg4.setContent(MessageList.hihungrymynamesjoe);
+        msg4.setContent(hihungrymynamesjoe);
         chatMap2.put(msg4.getId(), true);
         messages.add(msg4);
 
@@ -263,7 +272,7 @@ public class MockFactory {
         msg5.setId("50005");
         msg5.setCreator(userJoe.getId());
         msg5.setChatId(chat3.getId());
-        msg5.setContent(MessageList.iwillworkontheprojecttomorrow);
+        msg5.setContent(iwillworkontheprojecttomorrow);
         chatMap3.put(msg5.getId(), true);
         messages.add(msg5);
 
@@ -271,7 +280,7 @@ public class MockFactory {
         msg6.setId("50006");
         msg6.setCreator(userAlvaro.getId());
         msg6.setChatId(chat3.getId());
-        msg6.setContent(MessageList.youdoyougirl);
+        msg6.setContent(youdoyougirl);
         chatMap3.put(msg6.getId(), true);
         messages.add(msg6);
 
@@ -294,7 +303,7 @@ public class MockFactory {
         msg7.setId("50007");
         msg7.setCreator(userMohammad.getId());
         msg7.setChatId(chat4.getId());
-        msg7.setContent(MessageList.itisverycommonyouknow);
+        msg7.setContent(itisverycommonyouknow);
         chatMap4.put(msg7.getId(), true);
         messages.add(msg7);
 
@@ -302,7 +311,7 @@ public class MockFactory {
         msg8.setId("50008");
         msg8.setCreator(userCarlos.getId());
         msg8.setChatId(chat4.getId());
-        msg8.setContent(MessageList.noidontknow);
+        msg8.setContent(noidontknow);
         chatMap4.put(msg8.getId(), true);
         messages.add(msg8);
 

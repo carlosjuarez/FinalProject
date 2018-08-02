@@ -14,7 +14,6 @@ public class User implements Parcelable {
     private String id;
     private Map<String, Boolean> myGroups = null;
     private Map<String, Boolean> groups = null;
-    private Map<String, Boolean> chats = null;
 
     public User() {
         //Empty constructor
@@ -110,14 +109,6 @@ public class User implements Parcelable {
 
     public void setGroups(Map<String, Boolean> groups) {
         this.groups = groups;
-    }
-
-    public Map<String, Boolean> getChats() {
-        return chats;
-    }
-
-    public void setChats(Map<String, Boolean> chats) {
-        this.chats = chats;
     }
 
     //Database

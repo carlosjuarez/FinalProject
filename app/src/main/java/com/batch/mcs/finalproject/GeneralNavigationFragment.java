@@ -5,15 +5,17 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.telecom.Call;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.batch.mcs.finalproject.databinding.ActivityMainBinding;
+import com.batch.mcs.finalproject.adapters.ViewPagerAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentGeneralNavigationBinding;
 import com.batch.mcs.finalproject.interfaces.CallGroupDisplayListener;
 import com.batch.mcs.finalproject.viewmodel.TabViewModel;
+import com.batch.mcs.finalproject.views.CalendarDisplayFragment;
+import com.batch.mcs.finalproject.views.CalendarFeedFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,18 +41,21 @@ public class GeneralNavigationFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        FragmentGeneralNavigationBinding fragmentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_general_navigation,container,false);
+        ViewPager viewPager = fragmentBinding.showViewPager;
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
+
         HashMap<String, Fragment> userTabs= new HashMap<String, Fragment>();
-        userTabs.put("Calendar", new CalendarDisplayFragment());
+        userTabs.put("Calendar", CalendarDisplayFragment.getInstance());
         userTabs.put("Feed", new CalendarFeedFragment());
         userTabs.put("Chat", new ChatFragment());
         userTabs.put("Search", new SearchFragment());
 
-        FragmentGeneralNavigationBinding fragmentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_general_navigation,container,false);
-        TabViewModel tabViewModel = new TabViewModel(getActivity(), userTabs);
-        fragmentBinding.setTabViewModel(tabViewModel);
-
-        //De alguna forma tenemos que pasar el listener a los fragments para usar algo como
-        //listener.showGroupNavigation(group);
+        for(Map.Entry<String, Fragment> entry : userTabs.entrySet()){
+            viewPagerAdapter.addFrag(entry.getValue(), entry.getKey());
+        }
+        viewPager.setAdapter(viewPagerAdapter);
+        fragmentBinding.showTabs.setupWithViewPager(viewPager);
         return fragmentBinding.getRoot();
     }
 

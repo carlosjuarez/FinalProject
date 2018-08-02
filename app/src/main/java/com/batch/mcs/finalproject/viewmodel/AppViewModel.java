@@ -27,7 +27,8 @@ public class AppViewModel extends ViewModel {
     private MutableLiveData<Group> liveGroup;
     private MutableLiveData<List<Group>> liveGroupAdmin = new MutableLiveData<>();
     private MutableLiveData<List<Group>> liveGroupMember = new MutableLiveData<>();
-    private MutableLiveData<List<Group>> liveGroupAll;
+    private MutableLiveData<List<Group>> liveGroupAll ;
+    private MutableLiveData<List<Event>> liveEventAll = new MutableLiveData<>();
     private MutableLiveData<Event> liveEvent;
     private MutableLiveData<Chat> liveChat;
     private MutableLiveData<Message> liveMessage;
@@ -208,4 +209,6 @@ public class AppViewModel extends ViewModel {
     public MutableLiveData<List<Chat>> getLiveUserChats() {
         return liveUserChats;
     }
+
+    public MutableLiveData<List<Event>> getLiveEventAll() { return liveEventAll; }
 }

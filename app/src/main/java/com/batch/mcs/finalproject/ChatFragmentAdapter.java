@@ -23,9 +23,6 @@ public class ChatFragmentAdapter extends RecyclerView.Adapter<ChatFragmentAdapte
     private Context context;
     private List<Chat> chatList;
     private List<Chat> chatListFilter;
-    private  FilterChat filterChat;
-
-
 
     public ChatFragmentAdapter(Context context, List<Chat> chatList) {
         this.context = context;
@@ -70,39 +67,39 @@ public class ChatFragmentAdapter extends RecyclerView.Adapter<ChatFragmentAdapte
 
     @Override
     public Filter getFilter() {
-        if (filterChat == null) {
-            filterChat = new FilterChat();
-        }
-        return filterChat;
-    }
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    chatListFilter = chatList;
+                } else {
+                    List<Chat> filteredList = new ArrayList<>();
+                    for (Chat row : chatList) {
 
-    private class FilterChat extends Filter {
-
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            FilterResults filterResults = new FilterResults();
-            if (charSequence == null || charSequence.length() == 0) {
-                filterResults.values = chatList;
-                filterResults.count = chatList.size();
-            } else {
-                List<Chat> chats = new ArrayList<>();
-                for (Chat chat : chatList) {
-                    if (chat.getAdminName().toUpperCase().contains(charSequence.toString().toUpperCase())) {
-                        chats.add(chat);
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.getAdminName().toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(row);
+                        }
                     }
-                }
-                filterResults.values = chats;
-                filterResults.count = chats.size();
-            }
-            return filterResults;
-        }
 
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                    chatListFilter = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = chatListFilter;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 chatListFilter = (ArrayList<Chat>) filterResults.values;
                 notifyDataSetChanged();
             }
-        }
+        };
+    }
+
 
 
 

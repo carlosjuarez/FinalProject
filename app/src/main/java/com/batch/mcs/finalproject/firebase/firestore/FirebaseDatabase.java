@@ -80,7 +80,7 @@ public class FirebaseDatabase {
         //chat.setAdmin(creatorId);
         DocumentReference newChatRef = db.collection("chats").document(chat.getId());
         String myCId = newChatRef.getId();
-        //chat.setId(myCId);
+        chat.setId(myCId);
         newChatRef.set(chat);
 
         return myCId;
@@ -387,6 +387,61 @@ public class FirebaseDatabase {
             return mutableLiveData;
         }
 
+//    public MutableLiveData<List<Chat>> loadChatUsers(User user, final MutableLiveData<List<Chat>> mutableLiveData) {
+//        final List<Chat> chats = new ArrayList<>();
+//
+//        for (String idChat : user.getChats().keySet()) {
+//            final DocumentReference docRef = db.collection("chats").document(idChat);
+//            docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//                @Override
+//                public void onEvent(@Nullable DocumentSnapshot snapshot,
+//                                    @Nullable FirebaseFirestoreException e) {
+//                    try {
+//                        if (e != null) {
+//                            throw e;
+//                        } else {
+//                            Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+//                            chats.add(chat);
+//
+//                        }
+//                    } catch (Exception ex) {
+//                        ex.printStackTrace();
+//                    }
+//
+//                }
+//
+//            });
+//        }
+//
+//        mutableLiveData.postValue(chats);
+//        return mutableLiveData;
+//
+//    }
+
+//    public MutableLiveData<Chat> loadChat(String idChat, final MutableLiveData<Chat> mutableLiveData) {
+//
+//        final DocumentReference docRef = db.collection("chats").document(idChat);
+//        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot snapshot,
+//                                @Nullable FirebaseFirestoreException e) {
+//                try {
+//                    if (e != null) {
+//                        throw e;
+//                    } else {
+//                        Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+//                        mutableLiveData.setValue(chat);
+//                    }
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
+//
+//            }
+//
+//        });
+//
+//        return mutableLiveData;
+//    }
         public void loadChatMessages (Activity activity, String chatId, final MutableLiveData<List<Message>> mutableLiveData){
             final List<Message> messages = new ArrayList<>();
 

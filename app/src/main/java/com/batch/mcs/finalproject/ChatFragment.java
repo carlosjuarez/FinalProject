@@ -42,9 +42,10 @@ public class ChatFragment extends BaseFragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentChatBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chat,container,false);
+        final FragmentChatBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chat,container,false);
         AppViewModel appViewModel = ViewModelProviders.of(getActivity()).get(AppViewModel.class);
         List<User> userList = mockFactory.getUsersArrayList();
+
 
         User user =  userList.get(0);
         binding.setUser(user);
@@ -78,8 +79,10 @@ public class ChatFragment extends BaseFragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 adapter.getFilter().filter(query);
-
-                Toast.makeText(getActivity(), query, Toast.LENGTH_LONG).show();
+                recyclerView = (RecyclerView) binding.rvFragmentChatChatList;
+                recyclerView.setHasFixedSize(false);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                recyclerView.setAdapter(adapter);
                 return false;
             }
 
@@ -88,10 +91,8 @@ public class ChatFragment extends BaseFragment {
                 return false;
             }
         });
-        recyclerView = (RecyclerView) binding.rvFragmentChatChatList;
-        recyclerView.setHasFixedSize(false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
+
+
         return binding.getRoot();
     }
 

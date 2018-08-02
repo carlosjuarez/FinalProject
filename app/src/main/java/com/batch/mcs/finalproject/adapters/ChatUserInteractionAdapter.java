@@ -51,11 +51,9 @@ public class ChatUserInteractionAdapter extends RecyclerView.Adapter<ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ChatItem item = items.get(position);
         holder.bindType(item);
-
-
     }
 
     @Override

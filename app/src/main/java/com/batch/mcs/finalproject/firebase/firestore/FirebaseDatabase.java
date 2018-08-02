@@ -1,6 +1,8 @@
 package com.batch.mcs.finalproject.firebase.firestore;
 
+import android.app.Activity;
 import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -331,9 +333,10 @@ public class FirebaseDatabase {
     }
 
     public MutableLiveData<Chat> loadChat(String idChat, final MutableLiveData<Chat> mutableLiveData) {
+    public MutableLiveData<Chat> loadChat(Activity activity,String idChat, final MutableLiveData<Chat> mutableLiveData) {
 
         final DocumentReference docRef = db.collection("chats").document(idChat);
-        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        docRef.addSnapshotListener(activity,new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
                                 @Nullable FirebaseFirestoreException e) {
@@ -355,11 +358,67 @@ public class FirebaseDatabase {
         return mutableLiveData;
     }
 
-    public MutableLiveData<List<Chat>> loadChatUsers(User user, final MutableLiveData<List<Chat>> mutableLiveData) {
-        final List<Chat> chats = new ArrayList<>();
+//    public MutableLiveData<List<Chat>> loadChatUsers(User user, final MutableLiveData<List<Chat>> mutableLiveData) {
+//        final List<Chat> chats = new ArrayList<>();
+//
+//        for (String idChat : user.getChats().keySet()) {
+//            final DocumentReference docRef = db.collection("chats").document(idChat);
+//            docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//                @Override
+//                public void onEvent(@Nullable DocumentSnapshot snapshot,
+//                                    @Nullable FirebaseFirestoreException e) {
+//                    try {
+//                        if (e != null) {
+//                            throw e;
+//                        } else {
+//                            Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+//                            chats.add(chat);
+//
+//                        }
+//                    } catch (Exception ex) {
+//                        ex.printStackTrace();
+//                    }
+//
+//                }
+//
+//            });
+//        }
+//
+//        mutableLiveData.postValue(chats);
+//        return mutableLiveData;
+//
+//    }
 
-        for (String idChat : user.getChats().keySet()) {
-            final DocumentReference docRef = db.collection("chats").document(idChat);
+//    public MutableLiveData<Chat> loadChat(String idChat, final MutableLiveData<Chat> mutableLiveData) {
+//
+//        final DocumentReference docRef = db.collection("chats").document(idChat);
+//        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot snapshot,
+//                                @Nullable FirebaseFirestoreException e) {
+//                try {
+//                    if (e != null) {
+//                        throw e;
+//                    } else {
+//                        Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+//                        mutableLiveData.setValue(chat);
+//                    }
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
+//
+//            }
+//
+//        });
+//
+//        return mutableLiveData;
+//    }
+
+    public MutableLiveData<List<Message>> loadChatMessages(Chat chat, final MutableLiveData<List<Message>> mutableLiveData) {
+        final List<Message> messages = new ArrayList<>();
+
+        for (String idChat : chat.getMessages().keySet()) {
+            final DocumentReference docRef = db.collection("messages").document(idChat);
             docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot snapshot,
@@ -368,8 +427,8 @@ public class FirebaseDatabase {
                         if (e != null) {
                             throw e;
                         } else {
-                            Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
-                            chats.add(chat);
+                            Message message = new Gson().fromJson(snapshot.getData().toString(), Message.class);
+                            messages.add(message);
 
                         }
                     } catch (Exception ex) {
@@ -381,7 +440,7 @@ public class FirebaseDatabase {
             });
         }
 
-        mutableLiveData.postValue(chats);
+        mutableLiveData.postValue(messages);
         return mutableLiveData;
 
     }

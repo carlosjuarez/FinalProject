@@ -7,16 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.batch.mcs.finalproject.interfaces.ChatItem;
+import com.batch.mcs.finalproject.models.Chat;
 
 import java.util.List;
 
-public class ChatUserInteractionAdapter extends RecyclerView.Adapter<ViewHolder>{
+public class ChatUserInteractionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private  Context context;
     private List<ChatItem> items;
 
-    public ChatUserInteractionAdapter(List<ChatItem> items){
+    public ChatUserInteractionAdapter(Context context,List<ChatItem> items){
         this.context = context;
         this.items = items;
     }
@@ -28,35 +28,32 @@ public class ChatUserInteractionAdapter extends RecyclerView.Adapter<ViewHolder>
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int type) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = null;
         switch (type) {
             case ChatItem.SENT:
                 view = LayoutInflater
                         .from(viewGroup.getContext())
-                        .inflate(R.layout.recycleview_chat_user_interaction_sent_item, viewGroup, false);
-                return new ViewHolderSent(view);
+                        .inflate(R.layout.type_a, viewGroup, false);
+                return new ViewHolderA(view);
             case ChatItem.RECEIVED:
                 view = LayoutInflater
                         .from(viewGroup.getContext())
-                        .inflate(R.layout.recycleview_chat_user_interaction_receive_item, viewGroup, false);
-                return new ViewHolderReceived(view) {
-                };
+                        .inflate(R.layout.type_b, viewGroup, false);
+                return new ViewHolderB(view);
         }
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ChatItem item = items.get(position);
         holder.bindType(item);
-
-
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return 0;
     }
 }
 

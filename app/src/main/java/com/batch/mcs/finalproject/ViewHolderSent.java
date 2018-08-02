@@ -3,7 +3,7 @@ package com.batch.mcs.finalproject;
 import android.view.View;
 import android.widget.TextView;
 
-import com.batch.mcs.finalproject.interfaces.ChatItem;
+import com.batch.mcs.finalproject.models.Chat;
 
 public class ViewHolderSent extends ViewHolder{
     private final TextView mTextView;
@@ -15,7 +15,6 @@ public class ViewHolderSent extends ViewHolder{
     }
 
     public void bindType(ChatItem item) {
-        mTextView.setText(((ChatSentItem) item).getText());
+        mTextView.setText((() item).getText());
     }
 }
-

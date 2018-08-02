@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding activityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar((Toolbar) activityBinding.toolbarlayout.findViewById(R.id.toolbar));
 
-        String userId = Objects.requireNonNull(getIntent().getExtras()).getString(getString(R.string.parameter_userid));
+//        String userId = Objects.requireNonNull(getIntent().getExtras()).getString(getString(R.string.parameter_userid));
+
+        String userId = "10025";
 
         AppViewModel appViewModel = ViewModelProviders.of(this).get(AppViewModel.class);
         appViewModel.init(userId);

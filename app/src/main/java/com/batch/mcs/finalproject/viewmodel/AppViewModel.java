@@ -10,6 +10,7 @@ import com.batch.mcs.finalproject.models.Chat;
 import com.batch.mcs.finalproject.models.Event;
 import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.models.Message;
+import com.batch.mcs.finalproject.models.MockFactory;
 import com.batch.mcs.finalproject.models.User;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -45,39 +46,39 @@ public class AppViewModel extends ViewModel {
 //            firebaseDatabase.loadGroup(liveUser.getValue().getId(), liveGroup);
 //        }
 
-        if(liveGroupAdmin == null){
-            liveGroupAdmin = new MutableLiveData<>();
-            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAdmin);
-        }
-
-        if(liveGroupMember == null){
-            liveGroupMember = new MutableLiveData<>();
-            firebaseDatabase.loadGroupMember(liveUser.getValue(), liveGroupMember);
-        }
+//        if(liveGroupAdmin == null){
+//            liveGroupAdmin = new MutableLiveData<>();
+//            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAdmin);
+//        }
+//
+//        if(liveGroupMember == null){
+//            liveGroupMember = new MutableLiveData<>();
+//            firebaseDatabase.loadGroupMember(liveUser.getValue(), liveGroupMember);
+//        }
 
 //        if(liveGroupAll == null){
 //            liveGroupAll = new MutableLiveData<>();
 //            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAll);
 //        }
 
-        if(liveEvent == null){
-            liveEvent = new MutableLiveData<>();
-            for(int i = 0; i < liveGroupAdmin.getValue().size(); i++) {
-                Map<String, Boolean> map = liveGroupAdmin.getValue().get(i).getIdEvents();
-                    Set<String> set = map.keySet();
-                    for(String eId : set) {
-                        firebaseDatabase.loadEvent(eId, liveEvent);
-                    }
-                }
-
-            for(int i = 0; i < liveGroupMember.getValue().size(); i++) {
-                Map<String, Boolean> map = liveGroupMember.getValue().get(i).getIdEvents();
-                Set<String> set = map.keySet();
-                for(String eId : set) {
-                    firebaseDatabase.loadEvent(eId, liveEvent);
-                }
-            }
-        }
+//        if(liveEvent == null){
+//            liveEvent = new MutableLiveData<>();
+//            for(int i = 0; i < liveGroupAdmin.getValue().size(); i++) {
+//                Map<String, Boolean> map = liveGroupAdmin.getValue().get(i).getIdEvents();
+//                    Set<String> set = map.keySet();
+//                    for(String eId : set) {
+//                        firebaseDatabase.loadEvent(eId, liveEvent);
+//                    }
+//                }
+//
+//            for(int i = 0; i < liveGroupMember.getValue().size(); i++) {
+//                Map<String, Boolean> map = liveGroupMember.getValue().get(i).getIdEvents();
+//                Set<String> set = map.keySet();
+//                for(String eId : set) {
+//                    firebaseDatabase.loadEvent(eId, liveEvent);
+//                }
+//            }
+//        }
 //
 //        if(liveChat == null){
 //            liveChat = new MutableLiveData<>();
@@ -147,6 +148,12 @@ public class AppViewModel extends ViewModel {
     public void updateliveUser(User user){
         liveUser.setValue(user);
         firebaseDatabase.updateUser(user);
+    }
+
+    public void initMockGroups(){
+        MockFactory factory = new MockFactory();
+        liveGroupAll = new MutableLiveData<>();
+        liveGroupAll.setValue(factory.getGroupsArrayList());
     }
 
     public void updateliveGroup(Group group){

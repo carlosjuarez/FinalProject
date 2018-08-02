@@ -42,7 +42,7 @@ public class TabViewModel extends BaseObservable {
         adapter.addFrag(new CalendarDisplayFragment(), "Calendar");
         adapter.addFrag(new CalendarFeedFragment(), "Feed");
         adapter.addFrag(new ChatFragment(), "Chat");
-        adapter.addFrag(new SearchFragment(), "Search");
+        adapter.addFrag(SearchFragment.getInstance(), "Search");
         notifyPropertyChanged(BR.pagerAdapter);
     }
 

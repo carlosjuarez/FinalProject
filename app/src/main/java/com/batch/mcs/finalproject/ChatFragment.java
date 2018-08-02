@@ -33,7 +33,7 @@ public class ChatFragment extends BaseFragment {
 
     MockFactory mockFactory = new MockFactory();
     RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private ChatFragmentAdapter adapter;
 
     public static ChatFragment getInstance(){
         ChatFragment chatFragment = new ChatFragment();
@@ -50,7 +50,7 @@ public class ChatFragment extends BaseFragment {
         binding.setUser(user);
         User recipient = userList.get(1);
 
-        Chat chat = new Chat();
+        final Chat chat = new Chat();
 
         chat.setId("111111");
         chat.setAdmin(user.getId());
@@ -65,13 +65,20 @@ public class ChatFragment extends BaseFragment {
         message.setContent("Hello");
         map.put(message.getId(),true);
         chat.setMessages(map);
-        List<Chat> chatList = new ArrayList<>();
-
+        final List<Chat> chatList = new ArrayList<>();
         chatList.add(chat);
+        Chat chat2 = new Chat();
+        chat2.setId("11111");
+        chat2.setAdmin(user.getId()+1);
+        chat2.setMemberName("Juan Gomez");
+        chatList.add(chat2);
+        adapter = new ChatFragmentAdapter(getContext(), chatList);
 
         binding.svFragmentChatSearchPeople.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
+
                 Toast.makeText(getActivity(), query, Toast.LENGTH_LONG).show();
                 return false;
             }
@@ -81,13 +88,10 @@ public class ChatFragment extends BaseFragment {
                 return false;
             }
         });
-
-        adapter = new ChatFragmentAdapter(getContext(),chatList);
         recyclerView = (RecyclerView) binding.rvFragmentChatChatList;
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-
         return binding.getRoot();
     }
 

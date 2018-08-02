@@ -1,9 +1,14 @@
 package com.batch.mcs.finalproject;
 
+import android.databinding.ViewDataBinding;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.batch.mcs.finalproject.models.Chat;
+import com.batch.mcs.finalproject.databinding.RecycleviewChatUserInteractionReceiveItemBinding;
+import com.batch.mcs.finalproject.databinding.RecycleviewChatUserInteractionSentItemBinding;
+
+import io.opencensus.stats.ViewData;
 
 public class ViewHolderSent extends ViewHolder{
     private final TextView mTextView;
@@ -15,6 +20,7 @@ public class ViewHolderSent extends ViewHolder{
     }
 
     public void bindType(ChatItem item) {
-        mTextView.setText((() item).getText());
+        mTextView.setText(((ChatSentItem) item).getText());
     }
 }
+

@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="User"
+            type="com.batch.mcs.finalproject.models.User"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
     style="@style/AppTheme.TabFragmentLayoutStyle"
     android:id="@+id/cl_chat_list_parent_layout"
     android:layout_width="match_parent"
@@ -32,7 +38,8 @@
         android:layout_marginEnd="@dimen/margin_horizontal_double"
         android:layout_marginStart="@dimen/input_margin_start_to_end"
         android:layout_marginTop="@dimen/input_margin_start_to_end"
-        android:text="@string/tv_default_text_user_name"
+        android:hint="@string/tv_default_text_user_name"
+        android:text="@{User.name}"
         android:maxLines="1"
         app:layout_constraintBottom_toTopOf="@+id/et_fragment_chat_user_status"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,3 +90,4 @@
 
 
 </android.support.constraint.ConstraintLayout>
+</layout>

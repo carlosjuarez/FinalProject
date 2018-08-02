@@ -4,15 +4,20 @@ import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.batch.mcs.finalproject.adapters.ViewPagerAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentGroupNavigationBinding;
 import com.batch.mcs.finalproject.models.Group;
-import com.batch.mcs.finalproject.viewmodel.TabViewModel;
+import com.batch.mcs.finalproject.views.GroupCalendarDisplayFragment;
+import com.batch.mcs.finalproject.views.GroupFeedFragment;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class GroupNavigationFragment extends BaseFragment {
 
@@ -40,14 +45,21 @@ public class GroupNavigationFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        HashMap<String, Fragment> groupTabs= new HashMap<String, Fragment>();
-        groupTabs.put("Calendar", new GroupCalendarDisplayFragment());
-        groupTabs.put("Feed", new GroupFeedDisplayFragment());
+        FragmentGroupNavigationBinding fragmentGroupNavigationBinding= DataBindingUtil.inflate(inflater, R.layout.fragment_group_navigation, container, false);
+
+        ViewPager viewPager = fragmentGroupNavigationBinding.showGroupViewPager;
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
+
+        LinkedHashMap<String, Fragment> groupTabs= new LinkedHashMap<>();
+        groupTabs.put("Calendar", GroupCalendarDisplayFragment.getInstance());
+        groupTabs.put("Feed", GroupFeedFragment.getInstance());
         groupTabs.put("Members", new GroupMembersDisplayFragment());
 
-        FragmentGroupNavigationBinding fragmentGroupNavigationBinding= DataBindingUtil.inflate(inflater, R.layout.fragment_group_navigation, container, false);
-        TabViewModel groupTabViewModel= new TabViewModel(getActivity(), groupTabs);
-        fragmentGroupNavigationBinding.setGroupTabViewModel(groupTabViewModel);
+        for(Map.Entry<String, Fragment> entry : groupTabs.entrySet()){
+            viewPagerAdapter.addFrag(entry.getValue(), entry.getKey());
+        }
+        viewPager.setAdapter(viewPagerAdapter);
+        fragmentGroupNavigationBinding.showTabs.setupWithViewPager(viewPager);
         return fragmentGroupNavigationBinding.getRoot();
     }
 

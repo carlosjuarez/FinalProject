@@ -40,7 +40,7 @@
     <dimen name="img_margin_start">8dp</dimen>
     <dimen name="input_margin_top_to_bottom">8dp</dimen>
     <dimen name="text_size">12sp</dimen>
-    <item name="constraintguide_calendar_display" format="float" type="dimen">0.5</item>
+    <item name="constraintguide_calendar_display" format="float" type="dimen">0.6</item>
     <dimen name="no_dimension">0dp</dimen>
     <dimen name="text_input_max_line">1</dimen>
     <dimen name="rv_search_group_margins">8dp</dimen>

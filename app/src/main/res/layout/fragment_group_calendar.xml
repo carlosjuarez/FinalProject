@@ -17,7 +17,7 @@
 
         <fragment
             android:id="@+id/fl_calendardisplay_calendarframe"
-            android:name="com.batch.mcs.finalproject.views.CalendarEventsFragment"
+            android:name="com.batch.mcs.finalproject.views.GroupCalendarEventsDisplayFragment"
             android:layout_width="@dimen/no_dimension_width"
             android:layout_height="@dimen/no_dimension_height"
             android:layout_marginBottom="@dimen/controls_margin_horizontal"
@@ -25,11 +25,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout="@layout/fragment_calendar_events"/>
+            tools:layout="@layout/fragment_group_calendar_events"/>
 
         <fragment
             android:id="@+id/fl_calendardisplay_feedframe"
-            android:name="com.batch.mcs.finalproject.views.CalendarFeedFragment"
+            android:name="com.batch.mcs.finalproject.views.GroupCalendarFeedDisplayFragment"
             android:layout_width="@dimen/no_dimension_width"
             android:layout_height="@dimen/no_dimension_height"
             android:layout_marginTop="@dimen/controls_margin_horizontal"
@@ -37,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gl_calendardisplay_separator"
-            tools:layout="@layout/fragment_calendar_feed"/>
+            tools:layout="@layout/fragment_group_calendar_feed"/>
 
 
     </android.support.constraint.ConstraintLayout>

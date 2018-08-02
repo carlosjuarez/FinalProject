@@ -7,13 +7,11 @@ import android.util.ArrayMap;
 import com.batch.mcs.finalproject.firebase.firestore.FirebaseDatabase;
 import com.batch.mcs.finalproject.models.Event;
 import com.batch.mcs.finalproject.models.Group;
-import com.batch.mcs.finalproject.models.User;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Map;
 
 public class CreateEventViewModel extends ViewModel {
-    CreateEventViewModel createEventViewModel;
 
     public String groupAdmin="";
     public String eventName= "";

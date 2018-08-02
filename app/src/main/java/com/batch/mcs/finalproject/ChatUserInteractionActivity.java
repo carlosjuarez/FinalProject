@@ -30,8 +30,8 @@ public class ChatUserInteractionActivity extends AppCompatActivity{
 
         ActivityChatUserInteractionBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_chat_user_interaction);
 
-        Bundle bundle = new Bundle();
-        Chat chat1 = bundle.getParcelable("Chat");
+
+        Chat chat1 = getIntent().getBundleExtra("BUNDLE").getParcelable("Chat");
 
 
 

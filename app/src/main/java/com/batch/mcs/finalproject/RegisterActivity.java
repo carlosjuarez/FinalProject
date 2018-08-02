@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         activityRegisterBinding = DataBindingUtil.setContentView(this,R.layout.activity_register);
-        setSupportActionBar((Toolbar) activityRegisterBinding.toolbarlayout.findViewById(R.id.toolbar));
+        setSupportActionBar((Toolbar) activityRegisterBinding.toolbarlayout.toolbar);
         activityRegisterBinding.setViewModel(registerUserViewModel);
 
         registerUserViewModel.getFirebaseResult().observe(this, new Observer<FirebaseResult>() {
@@ -41,6 +41,9 @@ public class RegisterActivity extends AppCompatActivity {
                             registerUserViewModel.createUser();
                         }
                         Snackbar.make(activityRegisterBinding.getRoot(),firebaseResult.getResult(),Snackbar.LENGTH_SHORT).show();
+                        if(firebaseResult.getResult() == R.string.firebase_verification_email_sent){
+                            finish();
+                        }
                     }
                 }
             }

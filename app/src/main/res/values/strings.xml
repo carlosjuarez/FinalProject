@@ -80,4 +80,6 @@
     <string name="et_hint_event_location">Address</string>
     <string name="et_hint_event_date">Date</string>
     <string name="et_hint_event_price">Price</string>
+    <string name="navigation_drawer_open">Open Menu</string>
+    <string name="navigation_drawer_close">Close Menu</string>
 </resources>

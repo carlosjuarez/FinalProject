@@ -32,6 +32,11 @@ public class ChatViewModel extends ViewModel {
             liveChat = new MutableLiveData<>();
             firebaseDatabase.loadChat(userId, liveChat);
         }
+
+        if(liveChat == null){
+            liveChat = new MutableLiveData<>();
+            firebaseDatabase.loadChat(userId, liveChat);
+        }
     }
 
 

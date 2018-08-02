@@ -40,11 +40,9 @@ public class TabViewModel extends BaseObservable {
         return adapter;
     }
 
-    private void createViewPager(HashMap fragments){
+    private void createViewPager(HashMap<String, Fragment> fragmentsHash){
         adapter= new ViewPagerAdapter(mContext.getSupportFragmentManager());
-        Iterator<Map.Entry<String, Fragment>> it= fragments.entrySet().iterator();
-        while(it.hasNext()){
-            Map.Entry<String, Fragment> entry = it.next();
+        for(Map.Entry<String, Fragment> entry : fragmentsHash.entrySet()){
             adapter.addFrag(entry.getValue(), entry.getKey());
         }
 

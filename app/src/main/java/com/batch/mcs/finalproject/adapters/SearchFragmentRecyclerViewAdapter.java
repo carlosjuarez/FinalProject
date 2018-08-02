@@ -1,9 +1,8 @@
 package com.batch.mcs.finalproject.adapters;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,8 @@ import android.widget.Filterable;
 
 import com.batch.mcs.finalproject.BR;
 import com.batch.mcs.finalproject.R;
+import com.batch.mcs.finalproject.databinding.RecyclerviewGroupInformationItemBinding;
+import com.batch.mcs.finalproject.interfaces.ViewClickListener;
 import com.batch.mcs.finalproject.models.Group;
 
 import java.util.ArrayList;
@@ -22,26 +23,32 @@ public class SearchFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Sear
 
     private List<Group> groups;
     private List<Group> filteredGroups;
-    private Context context;
+    private ViewClickListener listener;
 
-    public SearchFragmentRecyclerViewAdapter(List<Group> groups, Context context){
+    public SearchFragmentRecyclerViewAdapter(List<Group> groups, ViewClickListener listener){
         this.groups = groups;
         this.filteredGroups = groups;
-        this.context = context;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        View itemView = inflater.inflate(R.layout.recyclerview_group_information_item,viewGroup, false);
-        return new RecyclerViewHolder(itemView);
+        RecyclerviewGroupInformationItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.recyclerview_group_information_item, viewGroup, false);
+        return new RecyclerViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-        Group group = filteredGroups.get(position);
-        holder.getBinding().setVariable(BR.groupItem, group);
+        final Group group = filteredGroups.get(position);
+        holder.binding.setVariable(BR.groupItem, group);
+        CardView cardView = holder.binding.cvGroupSearchView;
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.clickListener(group);
+            }
+        });
     }
 
     @Override
@@ -83,16 +90,11 @@ public class SearchFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Sear
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        private ViewDataBinding binding;
+        private RecyclerviewGroupInformationItemBinding binding;
 
-        public RecyclerViewHolder(View itemView) {
-            super(itemView);
-            binding = DataBindingUtil.bind(itemView);
-
-        }
-
-        public ViewDataBinding getBinding() {
-            return binding;
+        public RecyclerViewHolder(RecyclerviewGroupInformationItemBinding itemView) {
+            super(itemView.getRoot());
+            binding = DataBindingUtil.bind(itemView.getRoot());
         }
     }
 }

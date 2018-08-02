@@ -3,10 +3,8 @@ package com.batch.mcs.finalproject;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -16,17 +14,19 @@ import android.view.ViewGroup;
 
 import com.batch.mcs.finalproject.adapters.SearchFragmentRecyclerViewAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentSearchBinding;
+import com.batch.mcs.finalproject.interfaces.ViewClickListener;
 import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
 
 import java.util.List;
 
-public class SearchFragment extends BaseFragment {
+public class SearchFragment extends BaseFragment implements ViewClickListener {
 
     FragmentSearchBinding fragmentSearchBinding;
     View view;
     SearchFragmentRecyclerViewAdapter adapter;
     RecyclerView recyclerView;
+    AppViewModel appViewModel;
 
     public static SearchFragment getInstance(){
         return new SearchFragment();
@@ -39,8 +39,9 @@ public class SearchFragment extends BaseFragment {
 
         view = fragmentSearchBinding.getRoot();
 
-        AppViewModel appViewModel = ViewModelProviders.of(this).get(AppViewModel.class);
+        appViewModel = ViewModelProviders.of(this).get(AppViewModel.class);
         appViewModel.initMockGroups();
+
         appViewModel.getLiveGroupAll().observe(this, new Observer<List<Group>>() {
             @Override
             public void onChanged(@Nullable List<Group> groups) {
@@ -48,7 +49,7 @@ public class SearchFragment extends BaseFragment {
                 SearchView searchView = fragmentSearchBinding.svSearchLayout;
                 search(searchView);
 
-                adapter = new SearchFragmentRecyclerViewAdapter(groups, getContext());
+                adapter = new SearchFragmentRecyclerViewAdapter(groups, SearchFragment.this);
                 recyclerView = fragmentSearchBinding.rvSearchLayout;
                 recyclerView.setHasFixedSize(false);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -76,4 +77,8 @@ public class SearchFragment extends BaseFragment {
         });
     }
 
+    @Override
+    public void clickListener(Group group) {
+        appViewModel.addGroup(group);
+    }
 }

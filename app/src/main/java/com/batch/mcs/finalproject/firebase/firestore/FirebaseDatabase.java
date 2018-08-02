@@ -166,7 +166,7 @@ public class FirebaseDatabase {
     public MutableLiveData<List<Group>> loadGroupAdmin(final User user, final MutableLiveData<List<Group>> mutableLiveData) {
         final List<Group> groups = new ArrayList<>();
 
-        if (user.getMyGroups() != null) {
+        if(user.getMyGroups()!=null){
             for (String idGroup : user.getMyGroups().keySet()) {
                 final DocumentReference docRef = db.collection("group").document(idGroup);
                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -178,7 +178,7 @@ public class FirebaseDatabase {
                                 Group group = document.toObject(Group.class);
                                 //Group group = new Gson().fromJson(document.getData().toString(), Group.class);
                                 groups.add(group);
-                                if (groups.size() == user.getMyGroups().size()) {
+                                if(groups.size() == user.getMyGroups().size()){
                                     mutableLiveData.postValue(groups);
                                 }
                             } else {
@@ -200,7 +200,7 @@ public class FirebaseDatabase {
         //User a query to query all the groupd where member.id = user.getid
         final List<Group> groups = new ArrayList<>();
 
-        if (user.getGroups() != null) {
+        if(user.getGroups()!=null){
             for (String idGroup : user.getGroups().keySet()) {
                 final DocumentReference docRef = db.collection("groups").document(idGroup);
                 docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -386,6 +386,61 @@ public class FirebaseDatabase {
             return mutableLiveData;
         }
 
+//    public MutableLiveData<List<Chat>> loadChatUsers(User user, final MutableLiveData<List<Chat>> mutableLiveData) {
+//        final List<Chat> chats = new ArrayList<>();
+//
+//        for (String idChat : user.getChats().keySet()) {
+//            final DocumentReference docRef = db.collection("chats").document(idChat);
+//            docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//                @Override
+//                public void onEvent(@Nullable DocumentSnapshot snapshot,
+//                                    @Nullable FirebaseFirestoreException e) {
+//                    try {
+//                        if (e != null) {
+//                            throw e;
+//                        } else {
+//                            Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+//                            chats.add(chat);
+//
+//                        }
+//                    } catch (Exception ex) {
+//                        ex.printStackTrace();
+//                    }
+//
+//                }
+//
+//            });
+//        }
+//
+//        mutableLiveData.postValue(chats);
+//        return mutableLiveData;
+//
+//    }
+
+//    public MutableLiveData<Chat> loadChat(String idChat, final MutableLiveData<Chat> mutableLiveData) {
+//
+//        final DocumentReference docRef = db.collection("chats").document(idChat);
+//        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot snapshot,
+//                                @Nullable FirebaseFirestoreException e) {
+//                try {
+//                    if (e != null) {
+//                        throw e;
+//                    } else {
+//                        Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+//                        mutableLiveData.setValue(chat);
+//                    }
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
+//
+//            }
+//
+//        });
+//
+//        return mutableLiveData;
+//    }
         public void loadChatMessages (Activity activity, String chatId, final MutableLiveData<List<Message>> mutableLiveData){
             final List<Message> messages = new ArrayList<>();
 

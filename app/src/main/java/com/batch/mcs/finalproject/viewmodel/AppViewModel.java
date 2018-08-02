@@ -119,15 +119,15 @@ public class AppViewModel extends ViewModel {
 
     public void saveChat(Chat chat, User creator, User member){
         String cId = firebaseDatabase.saveChat(creator, member, chat);
-        if(creator.getChats()!=null){
-            creator.getChats().put(cId,true);
-        }else{
-            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
-            map.put(cId,true);
-            creator.setChats(map);
-        }
-        updateliveUser(creator);
-        updateliveUser(member);
+//        if(creator.getChats()!=null){
+//            creator.getChats().put(cId,true);
+//        }else{
+//            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
+//            map.put(cId,true);
+//            creator.setChats(map);
+//        }
+//        updateliveUser(creator);
+//        updateliveUser(member);
 
     }
 

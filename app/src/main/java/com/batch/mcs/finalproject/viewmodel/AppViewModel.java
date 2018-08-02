@@ -69,6 +69,10 @@ public class AppViewModel extends ViewModel {
         }
     }
 
+    public void initUserChats(){
+        firebaseDatabase.loadMyChats(liveUser.getValue().getId(), liveUserChats);
+    }
+
     public void initEvents() {
         if (liveEvent == null) {
             liveEvent = new MutableLiveData<>();

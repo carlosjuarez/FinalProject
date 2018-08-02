@@ -23,62 +23,72 @@ public class AppViewModel extends ViewModel {
 
     FirebaseFirestore firebaseFirestore;
     FirebaseDatabase firebaseDatabase;
-    private MutableLiveData<User> liveUser;
+    private MutableLiveData<User> liveUser = new MutableLiveData<>();
     private MutableLiveData<Group> liveGroup;
-    private MutableLiveData<List<Group>> liveGroupAdmin;
-    private MutableLiveData<List<Group>> liveGroupMember;
+    private MutableLiveData<List<Group>> liveGroupAdmin = new MutableLiveData<>();
+    private MutableLiveData<List<Group>> liveGroupMember = new MutableLiveData<>();
     private MutableLiveData<List<Group>> liveGroupAll;
     private MutableLiveData<Event> liveEvent;
     private MutableLiveData<Chat> liveChat;
     private MutableLiveData<Message> liveMessage;
+    private MutableLiveData<List<Chat>> liveUserChats = new MutableLiveData<>();
 
-    public void init(String userId) {
-        if(liveUser == null){
-            firebaseFirestore= FirebaseFirestore.getInstance();
-            firebaseDatabase = new FirebaseDatabase(firebaseFirestore);
-            liveUser = new MutableLiveData<>();
+    public AppViewModel(){
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseDatabase = new FirebaseDatabase(firebaseFirestore);
+    }
+
+    public void initUser(String userId) {
+        if (userId != null && !userId.isEmpty()){
             firebaseDatabase.loadUser(userId, liveUser);
         }
+    }
 
-//        if(liveGroup == null){
-//            liveGroup = new MutableLiveData<>();
-//            firebaseDatabase.loadGroup(liveUser.getValue().getId(), liveGroup);
-//        }
+    public void initGroup(String idGroup){
+        firebaseDatabase.loadGroup(idGroup, liveGroup);
+    }
 
-        if(liveGroupAdmin == null){
-            liveGroupAdmin = new MutableLiveData<>();
+    public void initUserGroups() {
+        if(liveUser.getValue()!=null){
             firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAdmin);
-        }
-
-        if(liveGroupMember == null){
-            liveGroupMember = new MutableLiveData<>();
             firebaseDatabase.loadGroupMember(liveUser.getValue(), liveGroupMember);
         }
+    }
 
-//        if(liveGroupAll == null){
-//            liveGroupAll = new MutableLiveData<>();
-//            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAll);
-//        }
+    public void initAllGroups(){
+        if(liveGroupAll == null){
+            liveGroupAll = new MutableLiveData<>();
+            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAll);
+        }
+    }
 
-        if(liveEvent == null){
+    public void initEvents() {
+        if (liveEvent == null) {
             liveEvent = new MutableLiveData<>();
-            for(int i = 0; i < liveGroupAdmin.getValue().size(); i++) {
+            for (int i = 0; i < liveGroupAdmin.getValue().size(); i++) {
                 Map<String, Boolean> map = liveGroupAdmin.getValue().get(i).getIdEvents();
-                    Set<String> set = map.keySet();
-                    for(String eId : set) {
-                        firebaseDatabase.loadEvent(eId, liveEvent);
-                    }
+                Set<String> set = map.keySet();
+                for (String eId : set) {
+                    firebaseDatabase.loadEvent(eId, liveEvent);
                 }
+            }
 
-            for(int i = 0; i < liveGroupMember.getValue().size(); i++) {
+            for (int i = 0; i < liveGroupMember.getValue().size(); i++) {
                 Map<String, Boolean> map = liveGroupMember.getValue().get(i).getIdEvents();
                 Set<String> set = map.keySet();
-                for(String eId : set) {
+                for (String eId : set) {
                     firebaseDatabase.loadEvent(eId, liveEvent);
                 }
             }
         }
-//
+    }
+
+    public void initUserChats(){
+
+        if(liveUserChats == null){
+            liveUserChats = new MutableLiveData<>();
+            firebaseDatabase.loadChatUsers(liveUser.getValue(),liveUserChats);
+        }
 //        if(liveChat == null){
 //            liveChat = new MutableLiveData<>();
 //            firebaseDatabase.loadChat(liveUser.getValue().getId(), liveChat);
@@ -89,6 +99,8 @@ public class AppViewModel extends ViewModel {
 //            firebaseDatabase.loadMessage(liveChat.getValue().getId(), liveMessage);
 //        }
     }
+
+
 
     public void saveGroup(Group group){
         String gId = firebaseDatabase.saveGroup(liveUser.getValue(),group);
@@ -191,5 +203,9 @@ public class AppViewModel extends ViewModel {
 
     public MutableLiveData<Message> getLiveMessage() {
         return liveMessage;
+    }
+
+    public MutableLiveData<List<Chat>> getLiveUserChats() {
+        return liveUserChats;
     }
 }

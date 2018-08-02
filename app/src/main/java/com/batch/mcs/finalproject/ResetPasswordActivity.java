@@ -27,7 +27,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         activityResetPasswordBinding = DataBindingUtil.setContentView(this, R.layout.activity_reset_password);
-        setSupportActionBar((Toolbar) activityResetPasswordBinding.toolbarlayout.findViewById(R.id.toolbar));
+        setSupportActionBar((Toolbar) activityResetPasswordBinding.toolbarlayout.toolbar);
 
         resetPasswordViewModel = new ResetPasswordViewModel();
         resetPasswordViewModel.getErrorMessage().observe(this, new Observer<String>() {
@@ -46,6 +46,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                 Snackbar.make(activityResetPasswordBinding.getRoot(),firebaseResult.getMessage(),Snackbar.LENGTH_SHORT).show();
                             }else if(firebaseResult.getResult()!=null){
                                 Snackbar.make(activityResetPasswordBinding.getRoot(),firebaseResult.getResult(),Snackbar.LENGTH_SHORT).show();
+                                if(firebaseResult.getResult() == R.string.recovery_email_sended){
+                                    finish();
+                                }
                             }
                         }
                     }

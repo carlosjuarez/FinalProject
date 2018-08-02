@@ -10,20 +10,17 @@ import android.widget.Filterable;
 
 import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.databinding.RecyclerviewFeedItemBinding;
-import com.batch.mcs.finalproject.databinding.RecyclerviewGroupInformationItemFragmentGroupListBinding;
 import com.batch.mcs.finalproject.models.Event;
-import com.batch.mcs.finalproject.models.Group;
-import com.batch.mcs.finalproject.views.CalendarDisplayFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CalendarFeedEventListAdapter extends RecyclerView.Adapter<CalendarFeedEventListAdapter.ViewHolder> implements Filterable {
+public class FeedEventListAdapter extends RecyclerView.Adapter<FeedEventListAdapter.ViewHolder> implements Filterable {
 
     private List<Event> eventList;
     private List<Event> eventListFiltered;
 
-    public CalendarFeedEventListAdapter(List<Event> events){
+    public FeedEventListAdapter(List<Event> events){
         this.eventList = events;
         eventListFiltered = eventList;
     }
@@ -31,9 +28,9 @@ public class CalendarFeedEventListAdapter extends RecyclerView.Adapter<CalendarF
 
     @NonNull
     @Override
-    public CalendarFeedEventListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FeedEventListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         RecyclerviewFeedItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.recyclerview_feed_item, parent, false);
-        return new CalendarFeedEventListAdapter.ViewHolder(binding);
+        return new FeedEventListAdapter.ViewHolder(binding);
     }
 
     @Override
@@ -61,7 +58,7 @@ public class CalendarFeedEventListAdapter extends RecyclerView.Adapter<CalendarF
 
                         // name match condition. this might differ depending on your requirement
                         // here we are looking for name or phone number match
-                        if (row.getDate().toLowerCase().contains(charString.toLowerCase())) {
+                        if (row.getName().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(row);
                         }
                     }

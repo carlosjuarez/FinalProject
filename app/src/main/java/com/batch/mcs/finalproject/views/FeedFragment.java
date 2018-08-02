@@ -1,50 +1,71 @@
 package com.batch.mcs.finalproject.views;
 
+
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.batch.mcs.finalproject.BaseFragment;
 import com.batch.mcs.finalproject.R;
-import com.batch.mcs.finalproject.adapters.CalendarFeedEventListAdapter;
-import com.batch.mcs.finalproject.adapters.UserGroupListAdapter;
+import com.batch.mcs.finalproject.adapters.FeedEventListAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentCalendarFeedBinding;
-import com.batch.mcs.finalproject.helperobjects.SelectDate;
+import com.batch.mcs.finalproject.databinding.FragmentFeedBinding;
 import com.batch.mcs.finalproject.models.Event;
 import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
 
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class CalendarFeedFragment extends BaseFragment {
+public class FeedFragment extends Fragment {
 
     RecyclerView recyclerView;
-    CalendarFeedEventListAdapter calendarFeedEventListAdapter;
+    FeedEventListAdapter feedEventListAdapter;
 
+    public FeedFragment() {
+        // Required empty public constructor
+    }
 
-    public CalendarFeedFragment() {
+    public static FeedFragment getInstance() {
+        FeedFragment fragment = new FeedFragment();
+        return fragment;
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-        FragmentCalendarFeedBinding fragmentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_calendar_feed, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        FragmentFeedBinding fragmentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_feed, container, false);
         final AppViewModel appViewModel = ViewModelProviders.of(getActivity()).get(AppViewModel.class);
 
-        recyclerView = fragmentBinding.rvCalendardisplayFeed;
+        fragmentBinding.svSearchLayout.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if(feedEventListAdapter!=null){
+                    feedEventListAdapter.getFilter().filter(query);
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        recyclerView = fragmentBinding.rvDisplayFeed;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(true);
@@ -63,20 +84,13 @@ public class CalendarFeedFragment extends BaseFragment {
             }
         });
 
-        appViewModel.getSelectDateFilter().observe(this, new Observer<SelectDate>() {
-            @Override
-            public void onChanged(@Nullable SelectDate selectDate) {
-                calendarFeedEventListAdapter.getFilter().filter(selectDate.getMonth()+"."+selectDate.getDay()+"."+selectDate.getYear());
-            }
-        });
-
         return fragmentBinding.getRoot();
     }
 
     private void setupRecyclerView(List<Event> events) {
-        calendarFeedEventListAdapter = new CalendarFeedEventListAdapter(events);
-        recyclerView.setAdapter(calendarFeedEventListAdapter);
-        calendarFeedEventListAdapter.notifyDataSetChanged();
+        feedEventListAdapter = new FeedEventListAdapter(events);
+        recyclerView.setAdapter(feedEventListAdapter);
+        feedEventListAdapter.notifyDataSetChanged();
     }
 
 }

@@ -299,6 +299,37 @@ public class FirebaseDatabase {
 
     }
 
+    public MutableLiveData<List<Event>> loadEventsAll(User user, final MutableLiveData<List<Event>> mutableLiveData) {
+        final List<Event> events = new ArrayList<>();
+
+        /*for (String idEvent : group.getIdEvents().keySet()) {
+            final DocumentReference docRef = db.collection("events").document(idEvent);
+            docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                    @Nullable FirebaseFirestoreException e) {
+                    try {
+                        if (e != null) {
+                            throw e;
+                        } else {
+                            Event event = new Gson().fromJson(snapshot.getData().toString(), Event.class);
+                            events.add(event);
+
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                }
+
+            });
+        }*/
+
+        mutableLiveData.postValue(events);
+        return mutableLiveData;
+
+    }
+
     public MutableLiveData<Chat> loadChat(String idChat, final MutableLiveData<Chat> mutableLiveData) {
 
         final DocumentReference docRef = db.collection("chats").document(idChat);

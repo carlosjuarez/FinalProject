@@ -16,8 +16,10 @@ import com.batch.mcs.finalproject.interfaces.CallGroupDisplayListener;
 import com.batch.mcs.finalproject.viewmodel.TabViewModel;
 import com.batch.mcs.finalproject.views.CalendarDisplayFragment;
 import com.batch.mcs.finalproject.views.CalendarFeedFragment;
+import com.batch.mcs.finalproject.views.FeedFragment;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -45,9 +47,9 @@ public class GeneralNavigationFragment extends BaseFragment {
         ViewPager viewPager = fragmentBinding.showViewPager;
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
 
-        HashMap<String, Fragment> userTabs= new HashMap<String, Fragment>();
+        LinkedHashMap<String, Fragment> userTabs= new LinkedHashMap<>();
         userTabs.put("Calendar", CalendarDisplayFragment.getInstance());
-        userTabs.put("Feed", new CalendarFeedFragment());
+        userTabs.put("Feed", FeedFragment.getInstance());
         userTabs.put("Chat", new ChatFragment());
         userTabs.put("Search", new SearchFragment());
 

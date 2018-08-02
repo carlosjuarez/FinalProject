@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         style="@style/AppTheme.FragmentLayoutStyle"
@@ -11,11 +11,7 @@
             android:id="@+id/rv_calendardisplay_feed"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/recyclerview_feed_item"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sv_search_layout"/>
+            tools:listitem="@layout/recyclerview_feed_item" />
 
     </FrameLayout>
 </layout>

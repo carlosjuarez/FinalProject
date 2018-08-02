@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements CallGroupDisplayL
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        String userId = Objects.requireNonNull(getIntent().getExtras()).getString(getString(R.string.parameter_userid));
+        String userId = "10001";//Objects.requireNonNull(getIntent().getExtras()).getString(getString(R.string.parameter_userid));
 
         final DrawerUserInfoBinding drawerUserInfoBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.drawer_user_info, activityBinding.navView, false);
         navigationView = activityBinding.navView;

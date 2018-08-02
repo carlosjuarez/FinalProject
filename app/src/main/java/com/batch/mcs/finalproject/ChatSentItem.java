@@ -1,14 +1,11 @@
 package com.batch.mcs.finalproject;
 
-import com.batch.mcs.finalproject.models.Message;
-
 public class ChatSentItem implements ChatItem {
     private String text;
-    Message message;
 
-    public ChatSentItem(Message message){
-        this.message = message;
-        this.text = message.getContent();
+    public ChatSentItem(String text){
+        this.text = text;
+
     }
 
     public String getText(){

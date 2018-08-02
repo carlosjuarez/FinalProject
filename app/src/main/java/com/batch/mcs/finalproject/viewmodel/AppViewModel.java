@@ -199,4 +199,8 @@ public class AppViewModel extends ViewModel {
     public MutableLiveData<Message> getLiveMessage() {
         return liveMessage;
     }
+
+    public void addGroup(Group group) {
+
+    }
 }

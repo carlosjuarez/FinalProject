@@ -5,6 +5,9 @@
         <variable
             name="groupItem"
             type="com.batch.mcs.finalproject.models.Group"/>
+        <variable
+            name="clickHandler"
+            type="com.batch.mcs.finalproject.SearchFragment"/>
     </data>
 
     <android.support.v7.widget.CardView

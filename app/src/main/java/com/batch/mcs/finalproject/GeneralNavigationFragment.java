@@ -49,7 +49,7 @@ public class GeneralNavigationFragment extends BaseFragment {
         LinkedHashMap<String, Fragment> userTabs= new LinkedHashMap<>();
         userTabs.put("Calendar", CalendarDisplayFragment.getInstance());
         userTabs.put("Feed", FeedFragment.getInstance());
-        userTabs.put("Chat", new ChatFragment());
+        userTabs.put("Chat", ChatFragment.getInstance());
         userTabs.put("Search", new SearchFragment());
 
         for(Map.Entry<String, Fragment> entry : userTabs.entrySet()){

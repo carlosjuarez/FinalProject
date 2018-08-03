@@ -6,9 +6,13 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.view.View;
+import android.widget.Toast;
 
 import com.batch.mcs.finalproject.adapters.UserGroupListAdapter;
 import com.batch.mcs.finalproject.databinding.ActivityChatUserInteractionBinding;
@@ -36,7 +40,7 @@ public class ChatUserInteractionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         final ChatViewModel chatViewModel = ViewModelProviders.of(this).get(ChatViewModel.class);
-        ActivityChatUserInteractionBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_chat_user_interaction);
+        final ActivityChatUserInteractionBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_chat_user_interaction);
         User user = getIntent().getBundleExtra("BUNDLE").getParcelable("User");
         final String chatId = getIntent().getBundleExtra("BUNDLE").getString("chatId");
         final String userId = user.getId();
@@ -55,6 +59,20 @@ public class ChatUserInteractionActivity extends AppCompatActivity {
             }
         });
 
+        binding.ibFragmentChatUserInteraction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(binding.etFragmentChatUserInteraction.getText() != null) {
+                    String query = binding.etFragmentChatUserInteraction.getText().toString();
+                    createMessage(query,chatId,userId);
+                    //chatViewModel.
+
+                }else{
+                    Toast.makeText(ChatUserInteractionActivity.this, "No Text was Inputted", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void setupRecyclerView(List<Message> messages, String userId) {
@@ -81,6 +99,13 @@ public class ChatUserInteractionActivity extends AppCompatActivity {
 
         return chatItems;
 
+    }
+
+    public void createMessage(String text, String chatId, String userId){
+        Message message = new Message();
+        message.setContent(text);
+        message.setContent(chatId);
+        message.setCreator(userId);
     }
 }
 

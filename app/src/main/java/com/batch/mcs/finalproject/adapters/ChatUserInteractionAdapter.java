@@ -15,12 +15,12 @@ import com.batch.mcs.finalproject.interfaces.ChatItem;
 
 import java.util.List;
 
-public class ChatUserInteractionAdapter extends RecyclerView.Adapter<ViewHolder>{
+public class ChatUserInteractionAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-    private  Context context;
+    private Context context;
     private List<ChatItem> items;
 
-    public ChatUserInteractionAdapter(List<ChatItem> items){
+    public ChatUserInteractionAdapter(List<ChatItem> items) {
         this.context = context;
         this.items = items;
     }
@@ -51,14 +51,16 @@ public class ChatUserInteractionAdapter extends RecyclerView.Adapter<ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChatItem item = items.get(position);
         holder.bindType(item);
     }
+
 
     @Override
     public int getItemCount() {
         return items.size();
     }
 }
+
 

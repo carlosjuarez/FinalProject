@@ -189,8 +189,8 @@
                         android:text="@string/btn_forgot_password_submit"
                         app:layout_constraintBottom_toTopOf="@id/btn_create_event_cancel"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/til_event_date"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/til_event_date"
                         android:onClick="CreateNewEventViewModel"/>
 
                     <Button

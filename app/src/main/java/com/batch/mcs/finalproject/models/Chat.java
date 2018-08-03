@@ -8,8 +8,11 @@ import java.util.Map;
 public class Chat implements Parcelable {
 
     private String admin;
+    private String adminName;
+    private String member;
+    private String memberName;
+    boolean newMessage;
     private String id;
-    private Map<String, Boolean> members = null;
     private Map<String, Boolean> messages = null;
 
     public Chat() {
@@ -45,20 +48,44 @@ public class Chat implements Parcelable {
         this.admin = admin;
     }
 
+    public String getAdminName() {
+        return adminName;
+    }
+
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
+    }
+
+    public String getMember() {
+        return member;
+    }
+
+    public void setMember(String member) {
+        this.member = member;
+    }
+
+    public String getMemberName() {
+        return memberName;
+    }
+
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
+    public boolean isNewMessage() {
+        return newMessage;
+    }
+
+    public void setNewMessage(boolean newMessage) {
+        this.newMessage = newMessage;
+    }
+
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Map<String, Boolean> getMembers() {
-        return members;
-    }
-
-    public void setMembers(Map<String, Boolean> members) {
-        this.members = members;
     }
 
     public Map<String, Boolean> getMessages() {
@@ -74,16 +101,13 @@ public class Chat implements Parcelable {
         return 0;
     }
 
-    public Map<String, Object> toMap() {
-        Map<String, Object> result = new HashMap<>();
-        result.put("admin", admin);
-        result.put("id", id);
-        return result;
-    }
-
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(admin);
+        dest.writeString(adminName);
+        dest.writeString(member);
+        dest.writeString(memberName);
+        dest.writeByte((byte) (newMessage ? 1 : 0));
         dest.writeString(id);
     }
 }

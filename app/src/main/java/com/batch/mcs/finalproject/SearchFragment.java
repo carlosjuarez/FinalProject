@@ -17,6 +17,7 @@ import com.batch.mcs.finalproject.databinding.FragmentSearchBinding;
 import com.batch.mcs.finalproject.interfaces.ViewClickListener;
 import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
+import com.batch.mcs.finalproject.views.BaseFragment;
 
 import java.util.List;
 

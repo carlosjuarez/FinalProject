@@ -22,8 +22,6 @@ public class AppViewModel extends ViewModel {
 
     FirebaseFirestore firebaseFirestore;
     FirebaseDatabase firebaseDatabase;
-
-    //This is just for the groups and events
     private MutableLiveData<User> liveUser = new MutableLiveData<>();
     private MutableLiveData<List<Group>> liveGroupAdmin = new MutableLiveData<>();
     private MutableLiveData<List<Group>> liveGroupMember = new MutableLiveData<>();
@@ -37,7 +35,6 @@ public class AppViewModel extends ViewModel {
         firebaseDatabase = new FirebaseDatabase(firebaseFirestore);
     }
 
-    //Get User
     public void initUser(String userId) {
         if (userId != null && !userId.isEmpty()){
             firebaseDatabase.loadUser(userId, liveUser);
@@ -74,12 +71,9 @@ public class AppViewModel extends ViewModel {
     }
 
     public void initUserChats(){
-
-        if(liveUserChats == null){
-            liveUserChats = new MutableLiveData<>();
-            firebaseDatabase.loadChatUsers(liveUser.getValue(),liveUserChats);
-        }
+        firebaseDatabase.loadMyChats(liveUser.getValue().getId(), liveUserChats);
     }
+
 
     public void saveMessage(Message message, Chat chat){
         String mId = firebaseDatabase.saveMessage(chat,message);
@@ -105,8 +99,6 @@ public class AppViewModel extends ViewModel {
     public void updateliveMessage(Message message){
         firebaseDatabase.updateMessage(message);
     }
-
-
 
     public MutableLiveData<User> getLiveUser() {
         return liveUser;

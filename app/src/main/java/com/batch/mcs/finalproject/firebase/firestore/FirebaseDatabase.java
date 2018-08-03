@@ -2,6 +2,7 @@ package com.batch.mcs.finalproject.firebase.firestore;
 
 import android.app.Activity;
 import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -13,17 +14,23 @@ import com.batch.mcs.finalproject.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.gson.Gson;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,9 +78,8 @@ public class FirebaseDatabase {
         return myCId;
     }
 
-    public String saveMessage(Chat chat, Message message) {
+    public String saveMessage(Message message) {
 
-        String admin = chat.getId();
         DocumentReference newMessageRef = db.collection("messages").document();
         String myMId = newMessageRef.getId();
         message.setId(myMId);
@@ -105,7 +111,7 @@ public class FirebaseDatabase {
         });
     }
 
-    public void loadGroupsOwnedByUser(final User user, final MutableLiveData<List<Group>> mutableLiveData) {
+    public MutableLiveData<List<Group>> loadGroupAdmin(final User user, final MutableLiveData<List<Group>> mutableLiveData) {
         final List<Group> groups = new ArrayList<>();
 
         if(user.getMyGroups()!=null){
@@ -118,6 +124,7 @@ public class FirebaseDatabase {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 Group group = document.toObject(Group.class);
+                                //Group group = new Gson().fromJson(document.getData().toString(), Group.class);
                                 groups.add(group);
                                 if(groups.size() == user.getMyGroups().size()){
                                     mutableLiveData.postValue(groups);
@@ -249,35 +256,35 @@ public class FirebaseDatabase {
         });
     }
 
-    public MutableLiveData<Chat> loadChat(String idChat, final MutableLiveData<Chat> mutableLiveData) {
+    public void loadMyChats(final String adminId,final MutableLiveData<List<Chat>> chats){
 
-        final DocumentReference docRef = db.collection("chats").document(idChat);
-        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        final List<Chat> chatsList = new ArrayList<>();
+
+        db.collection("chats").whereEqualTo("admin",adminId).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot snapshot,
-                                @Nullable FirebaseFirestoreException e) {
-                try {
-                    if (e != null) {
-                        throw e;
-                    } else {
-                        Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
-                        mutableLiveData.setValue(chat);
-                    }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+            public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                for(QueryDocumentSnapshot snapshot: queryDocumentSnapshots){
+                    Chat chat =  new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+                    chatsList.add(chat);
                 }
-
+                chats.postValue(chatsList);
             }
-
         });
 
-        return mutableLiveData;
+        db.collection("chats").whereEqualTo("member",adminId).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                for(QueryDocumentSnapshot snapshot: queryDocumentSnapshots){
+                    Chat chat =  new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+                    chatsList.add(chat);
+                }
+                chats.postValue(chatsList);
+            }
+        });
     }
 
-    public MutableLiveData<List<Chat>> loadChatUsers(User user, final MutableLiveData<List<Chat>> mutableLiveData) {
-        final List<Chat> chats = new ArrayList<>();
+    public MutableLiveData<Chat> loadChat (String idChat,final MutableLiveData<Chat> mutableLiveData){
 
-        for (String idChat : user.getChats().keySet()) {
             final DocumentReference docRef = db.collection("chats").document(idChat);
             docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
@@ -288,8 +295,7 @@ public class FirebaseDatabase {
                             throw e;
                         } else {
                             Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
-                            chats.add(chat);
-
+                            mutableLiveData.setValue(chat);
                         }
                     } catch (Exception ex) {
                         ex.printStackTrace();
@@ -298,82 +304,100 @@ public class FirebaseDatabase {
                 }
 
             });
+
+            return mutableLiveData;
         }
 
-        mutableLiveData.postValue(chats);
-        return mutableLiveData;
+    public void loadChatMessages (Activity activity, String chatId, final MutableLiveData<List<Message>> mutableLiveData){
+        final List<Message> messages = new ArrayList<>();
 
-    }
-
-    public MutableLiveData<Message> loadMessage(String idChat, final MutableLiveData<Message> mutableLiveData) {
-
-        final DocumentReference docRef = db.collection("messages").document(idChat);
-        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        db.collection("messages").whereEqualTo("chatId",chatId).addSnapshotListener(activity,new EventListener<QuerySnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot snapshot,
-                                @Nullable FirebaseFirestoreException e) {
-                try {
-                    if (e != null) {
-                        throw e;
-                    } else {
-                        Message message = new Gson().fromJson(snapshot.getData().toString(), Message.class);
-                        mutableLiveData.setValue(message);
+            public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
+                    switch (dc.getType()) {
+                        case ADDED:
+                            Message message = dc.getDocument().toObject(Message.class);
+                            messages.add(message);
+                            break;
                     }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+
+                }
+                mutableLiveData.postValue(messages);
+            }
+        });
+
+        }
+
+        public MutableLiveData<Message> loadMessage (String idChat, final MutableLiveData<Message> mutableLiveData){
+
+            final DocumentReference docRef = db.collection("messages").document(idChat);
+            docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                    @Nullable FirebaseFirestoreException e) {
+                    try {
+                        if (e != null) {
+                            throw e;
+                        } else {
+                            Message message = new Gson().fromJson(snapshot.getData().toString(), Message.class);
+                            mutableLiveData.setValue(message);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
                 }
 
-            }
+            });
 
-        });
+            return mutableLiveData;
+        }
 
-        return mutableLiveData;
-    }
+        public void updateUser (User user){
+            db.collection("users").document(user.getId()).set(user, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
 
-    public void updateUser(User user) {
-        db.collection("users").document(user.getId()).set(user, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+        public void updateGroup (Group group){
+            db.collection("groups").document(group.getId()).set(group, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
 
-    public void updateGroup(Group group) {
-        db.collection("groups").document(group.getId()).set(group, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+        public void updateEvent (Event event){
+            db.collection("events").document(event.getId()).set(event, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
 
-    public void updateEvent(Event event) {
-        db.collection("events").document(event.getId()).set(event, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+        public void updateChat (Chat chat){
+            db.collection("chats").document(chat.getId()).set(chat, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
 
-    public void updateChat(Chat chat) {
-        db.collection("chats").document(chat.getId()).set(chat, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
-
-    public void updateMessage(Message message) {
-        db.collection("messages").document(message.getId()).set(message, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+        public void updateMessage (Message message){
+            db.collection("messages").document(message.getId()).set(message, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
 
 
     public void loadGroupsAll(final MutableLiveData<List<Group>> liveData) {

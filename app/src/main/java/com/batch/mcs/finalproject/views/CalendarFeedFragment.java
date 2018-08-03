@@ -14,10 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.batch.mcs.finalproject.BaseFragment;
 import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.adapters.CalendarFeedEventListAdapter;
-import com.batch.mcs.finalproject.adapters.UserGroupListAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentCalendarFeedBinding;
 import com.batch.mcs.finalproject.helperobjects.SelectDate;
 import com.batch.mcs.finalproject.models.Event;

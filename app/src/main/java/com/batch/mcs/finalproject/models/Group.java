@@ -1,7 +1,13 @@
 package com.batch.mcs.finalproject.models;
 
+import android.databinding.BindingAdapter;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +49,14 @@ public class Group implements Parcelable {
             return new Group[size];
         }
     };
+
+    @BindingAdapter({"groupImage"})
+    public static void loadImage(ImageView view, String imageUrl){
+        Glide.with(view.getContext())
+                .load(imageUrl)
+                .apply(RequestOptions.circleCropTransform())
+                .into(view);
+    }
 
     public String getName() {
         return name;

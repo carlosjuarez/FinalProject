@@ -19,12 +19,12 @@ public class Chat implements Parcelable {
         //Empty constructor
     }
 
-    public Chat(String admin) {
-        this.admin = admin;
-    }
-
     protected Chat(Parcel in) {
         admin = in.readString();
+        adminName = in.readString();
+        member = in.readString();
+        memberName = in.readString();
+        newMessage = in.readByte() != 0;
         id = in.readString();
     }
 
@@ -111,3 +111,4 @@ public class Chat implements Parcelable {
         dest.writeString(id);
     }
 }
+

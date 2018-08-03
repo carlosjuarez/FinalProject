@@ -35,9 +35,9 @@ public class ChatUserInteractionActivity extends AppCompatActivity {
 
         final ChatViewModel chatViewModel = ViewModelProviders.of(this).get(ChatViewModel.class);
         final ActivityChatUserInteractionBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_chat_user_interaction);
-        User user = getIntent().getBundleExtra("BUNDLE").getParcelable("User");
-        final String chatId = getIntent().getBundleExtra("BUNDLE").getString("chatId");
-        final String userId = user.getId();
+        Chat chat = getIntent().getBundleExtra("BUNDLE").getParcelable("Chat");
+        final String userId = getIntent().getBundleExtra("BUNDLE").getString("userId");
+        final String chatId = chat.getId();
 
         chatViewModel.initChat(chatId);
         chatViewModel.initMessages(this,chatId);
@@ -59,7 +59,7 @@ public class ChatUserInteractionActivity extends AppCompatActivity {
 
                 if(binding.etFragmentChatUserInteraction.getText() != null) {
                     String query = binding.etFragmentChatUserInteraction.getText().toString();
-                    createMessage(query,chatId,userId);
+                    chatViewModel.saveMessage(createMessage(query,chatId,userId));
 
 
                 }else{
@@ -95,11 +95,13 @@ public class ChatUserInteractionActivity extends AppCompatActivity {
 
     }
 
-    public void createMessage(String text, String chatId, String userId){
+    public Message createMessage(String text, String chatId, String userId){
         Message message = new Message();
         message.setContent(text);
-        message.setContent(chatId);
+        message.setChatId(chatId);
         message.setCreator(userId);
+
+        return message;
     }
 }
 

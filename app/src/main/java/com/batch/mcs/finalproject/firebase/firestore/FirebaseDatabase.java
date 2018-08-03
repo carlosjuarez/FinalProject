@@ -376,15 +376,15 @@ public class FirebaseDatabase {
     }
 
 
-    public void loadEVentsAll(final MutableLiveData<List<Group>> liveData) {
-        db.collection("groups")
+    public void loadGroupsAll(final MutableLiveData<List<Group>> liveData) {
+        db.collection("group")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
                         //add error
                         ArrayList<Group> groups = new ArrayList<>();
                         for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
-                            Group group = new Gson().fromJson(snapshot.getData().toString(), Group.class);
+                            Group group = snapshot.toObject(Group.class);
                             groups.add(group);
                         }
                         liveData.postValue(groups);

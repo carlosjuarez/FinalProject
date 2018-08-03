@@ -1,6 +1,5 @@
 package com.batch.mcs.finalproject.viewmodel;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.ArrayMap;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class AppViewModel extends ViewModel {
 
@@ -70,7 +68,7 @@ public class AppViewModel extends ViewModel {
     }
 
     public void initAllGroups(){
-        firebaseDatabase.loadEVentsAll(liveGroupAll);
+        firebaseDatabase.loadGroupsAll(liveGroupAll);
     }
 
     public void initUserChats(){

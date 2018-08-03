@@ -78,7 +78,7 @@ public class FirebaseDatabase {
         //chat.setAdmin(creatorId);
         DocumentReference newChatRef = db.collection("chats").document(chat.getId());
         String myCId = newChatRef.getId();
-        //chat.setId(myCId);
+        chat.setId(myCId);
         newChatRef.set(chat);
 
         return myCId;
@@ -88,7 +88,7 @@ public class FirebaseDatabase {
 
         DocumentReference newMessageRef = db.collection("messages").document(message.getId());
         String myMId = newMessageRef.getId();
-        //message.setId(myMId);
+        message.setId(myMId);
         newMessageRef.set(message);
 
         return myMId;

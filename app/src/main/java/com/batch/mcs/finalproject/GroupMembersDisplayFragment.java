@@ -19,6 +19,7 @@ import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
 import com.batch.mcs.finalproject.viewmodel.GroupMemberListViewModel;
 import com.batch.mcs.finalproject.viewmodel.GroupViewModel;
+import com.batch.mcs.finalproject.views.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -74,20 +74,6 @@ public class AppViewModel extends ViewModel {
         firebaseDatabase.loadMyChats(liveUser.getValue().getId(), liveUserChats);
     }
 
-
-    public void saveMessage(Message message, Chat chat){
-        String mId = firebaseDatabase.saveMessage(chat,message);
-        if(chat.getMessages()!=null){
-            chat.getMessages().put(mId,true);
-        }else{
-            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
-            map.put(mId,true);
-            chat.setMessages(map);
-        }
-        updateliveChat(chat);
-
-    }
-
     public void updateliveUser(User user){
         firebaseDatabase.updateUser(user);
     }

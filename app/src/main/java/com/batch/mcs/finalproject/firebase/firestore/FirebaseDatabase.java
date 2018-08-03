@@ -111,7 +111,7 @@ public class FirebaseDatabase {
         });
     }
 
-    public MutableLiveData<List<Group>> loadGroupAdmin(final User user, final MutableLiveData<List<Group>> mutableLiveData) {
+    public void loadGroupsOwnedByUser(final User user, final MutableLiveData<List<Group>> mutableLiveData) {
         final List<Group> groups = new ArrayList<>();
 
         if(user.getMyGroups()!=null){
@@ -124,7 +124,6 @@ public class FirebaseDatabase {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 Group group = document.toObject(Group.class);
-                                //Group group = new Gson().fromJson(document.getData().toString(), Group.class);
                                 groups.add(group);
                                 if(groups.size() == user.getMyGroups().size()){
                                     mutableLiveData.postValue(groups);

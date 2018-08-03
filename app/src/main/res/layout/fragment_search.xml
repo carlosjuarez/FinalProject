@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/AppTheme.ActivityLayoutStyle"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/relativeLayout">
+<layout>
 
-    <android.support.v7.widget.SearchView
-        android:id="@+id/sv_search_layout"
+    <data>
+        <variable
+            name="User"
+            type="com.batch.mcs.finalproject.models.User"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/AppTheme.ActivityLayoutStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@+id/rv_search_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/relativeLayout">
 
-    <view
-        android:id="@+id/rv_search_layout"
-        class="android.support.v7.app.AlertController$RecycleListView"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/no_dimension"
-        android:dividerHeight="@dimen/rv_search_group_margins"
-        android:paddingTop="@dimen/activity_horizontal_margin"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sv_search_layout" />
+        <android.support.v7.widget.SearchView
+            android:id="@+id/sv_search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:background="@drawable/edit_text_background"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:maxLines="1"
+            app:layout_constraintBottom_toTopOf="@+id/rv_search_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/no_dimension"
+            android:dividerHeight="@dimen/rv_search_group_margins"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sv_search_layout" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

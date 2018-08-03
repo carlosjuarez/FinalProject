@@ -13,12 +13,11 @@ import android.view.ViewGroup;
 import com.batch.mcs.finalproject.adapters.ViewPagerAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentGeneralNavigationBinding;
 import com.batch.mcs.finalproject.interfaces.CallGroupDisplayListener;
-import com.batch.mcs.finalproject.viewmodel.TabViewModel;
+import com.batch.mcs.finalproject.views.BaseFragment;
 import com.batch.mcs.finalproject.views.CalendarDisplayFragment;
-import com.batch.mcs.finalproject.views.CalendarFeedFragment;
+import com.batch.mcs.finalproject.views.ChatFragment;
 import com.batch.mcs.finalproject.views.FeedFragment;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -50,7 +49,7 @@ public class GeneralNavigationFragment extends BaseFragment {
         LinkedHashMap<String, Fragment> userTabs= new LinkedHashMap<>();
         userTabs.put("Calendar", CalendarDisplayFragment.getInstance());
         userTabs.put("Feed", FeedFragment.getInstance());
-        userTabs.put("Chat", new ChatFragment());
+        userTabs.put("Chat", ChatFragment.getInstance());
         userTabs.put("Search", new SearchFragment());
 
         for(Map.Entry<String, Fragment> entry : userTabs.entrySet()){

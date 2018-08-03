@@ -9,9 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.batch.mcs.finalproject.BaseFragment;
 import com.batch.mcs.finalproject.R;
-import com.batch.mcs.finalproject.databinding.FragmentCalendarBinding;
 import com.batch.mcs.finalproject.databinding.FragmentGroupCalendarBinding;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
 

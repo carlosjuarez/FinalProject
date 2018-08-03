@@ -6,21 +6,17 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.batch.mcs.finalproject.BaseFragment;
 import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.adapters.UserGroupListAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentGroupListBinding;
 import com.batch.mcs.finalproject.models.Group;
-import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
 
 import java.util.List;

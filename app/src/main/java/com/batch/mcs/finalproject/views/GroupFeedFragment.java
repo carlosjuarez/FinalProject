@@ -13,10 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.batch.mcs.finalproject.BaseFragment;
 import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.adapters.FeedEventListAdapter;
-import com.batch.mcs.finalproject.databinding.FragmentCalendarFeedBinding;
 import com.batch.mcs.finalproject.databinding.FragmentGroupFeedBinding;
 import com.batch.mcs.finalproject.models.Event;
 import com.batch.mcs.finalproject.models.Group;

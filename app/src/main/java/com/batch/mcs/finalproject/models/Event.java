@@ -1,7 +1,12 @@
 package com.batch.mcs.finalproject.models;
 
+import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,6 +51,12 @@ public class Event implements Parcelable {
         price = in.readInt();
     }
 
+    @BindingAdapter("eventImage")
+    public static void loadImage(ImageView view, String imageUrl){
+        Glide.with(view.getContext())
+        .load(imageUrl).into(view);
+    }
+
 
     //All getters
     public String getName() {
@@ -76,6 +87,7 @@ public class Event implements Parcelable {
     public String getImage() {
         return image;
     }
+
 
     public void setImage(String image) {
         this.image = image;

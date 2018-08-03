@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="event"
@@ -27,7 +28,8 @@
                 android:contentDescription="@string/img_feeditem_content_description"
                 android:src="@drawable/image_nia_gray"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:eventImage="@{event.image}"/>
 
             <TextView
                 android:id="@+id/tv_feeditem_title"

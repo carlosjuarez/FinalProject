@@ -28,7 +28,7 @@ public class AppViewModel extends ViewModel {
     private MutableLiveData<Group> liveGroup;
     private MutableLiveData<List<Group>> liveGroupAdmin = new MutableLiveData<>();
     private MutableLiveData<List<Group>> liveGroupMember = new MutableLiveData<>();
-    private MutableLiveData<List<Group>> liveGroupAll ;
+    private MutableLiveData<List<Group>> liveGroupAll= new MutableLiveData<>() ;
     private MutableLiveData<List<Event>> liveEventAll = new MutableLiveData<>();
     private MutableLiveData<Event> liveEvent;
     private MutableLiveData<Chat> liveChat;
@@ -63,10 +63,7 @@ public class AppViewModel extends ViewModel {
     }
 
     public void initAllGroups(){
-        if(liveGroupAll == null){
-            liveGroupAll = new MutableLiveData<>();
             firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAll);
-        }
     }
 
     public void initUserChats(){

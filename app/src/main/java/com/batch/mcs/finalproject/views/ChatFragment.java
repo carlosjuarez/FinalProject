@@ -24,7 +24,6 @@ import com.batch.mcs.finalproject.models.Chat;
 import com.batch.mcs.finalproject.models.Event;
 import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.models.Message;
-import com.batch.mcs.finalproject.models.MockFactory;
 import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -37,7 +36,7 @@ import java.util.Map;
 public class  ChatFragment extends BaseFragment {
 
     ChatFragmentAdapter adapter;
-//    MockFactory mockFactory = new MockFactory();
+
     RecyclerView recyclerView;
 
     public static ChatFragment getInstance(){
@@ -55,10 +54,6 @@ public class  ChatFragment extends BaseFragment {
         recyclerView = binding.rvFragmentChatChatList;
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-        FirebaseDatabase fb = new FirebaseDatabase(firebaseFirestore);
-//        final User user = mockFactory.getUsersArrayList().get(2);
 
         appViewModel.getLiveUserChats().observe(this, new Observer<List<Chat>>() {
             @Override

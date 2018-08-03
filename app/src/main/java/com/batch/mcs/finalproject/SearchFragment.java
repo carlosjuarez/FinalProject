@@ -40,7 +40,6 @@ public class SearchFragment extends BaseFragment implements ViewClickListener {
         view = fragmentSearchBinding.getRoot();
 
         appViewModel = ViewModelProviders.of(this).get(AppViewModel.class);
-        appViewModel.initMockGroups();
 
         appViewModel.getLiveGroupAll().observe(this, new Observer<List<Group>>() {
             @Override

@@ -3,7 +3,6 @@ package com.batch.mcs.finalproject.viewmodel;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.ArrayMap;
-import android.view.View;
 
 import com.batch.mcs.finalproject.firebase.firestore.FirebaseDatabase;
 import com.batch.mcs.finalproject.helperobjects.SelectDate;
@@ -11,11 +10,8 @@ import com.batch.mcs.finalproject.models.Chat;
 import com.batch.mcs.finalproject.models.Event;
 import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.models.Message;
-import com.batch.mcs.finalproject.models.MockFactory;
 import com.batch.mcs.finalproject.models.User;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.gson.Gson;
 
 import java.util.List;
 import java.util.Map;
@@ -167,12 +163,6 @@ public class AppViewModel extends ViewModel {
     public void updateliveUser(User user){
         liveUser.setValue(user);
         firebaseDatabase.updateUser(user);
-    }
-
-    public void initMockGroups(){
-        MockFactory factory = new MockFactory();
-        liveGroupAll = new MutableLiveData<>();
-        liveGroupAll.setValue(factory.getGroupsArrayList());
     }
 
     public void updateliveGroup(Group group){

@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:bind="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="Chat"
@@ -21,22 +22,22 @@
             android:paddingEnd="@dimen/activity_horizontal_padding"
             android:paddingStart="@dimen/activity_horizontal_padding">
 
-        <ImageView
-            android:id="@+id/iv_recyclerview_chat_user_item_user_image"
-            android:contentDescription="@string/iv_default_user_image_description"
-            android:layout_width="@dimen/iv_chat_user_image_square_size"
-            android:layout_height="@dimen/iv_chat_user_image_square_size"
-            android:layout_marginBottom="@dimen/margin_vertical_double"
-            android:layout_marginEnd="@dimen/input_margin_start_to_end"
-            android:layout_marginStart="@dimen/input_margin_start_to_end"
-            android:layout_marginTop="@dimen/margin_vertical_double"
-            android:maxLines="1"
-            android:background="@mipmap/ic_launcher"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_recyclerview_chat_user_item_user_name"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            bind:profileImage="@{userModel.image}"/>
+            <ImageView
+                android:id="@+id/iv_recyclerview_chat_user_item_user_image"
+                android:contentDescription="@string/iv_default_user_image_description"
+                android:layout_width="@dimen/iv_chat_user_image_square_size"
+                android:layout_height="@dimen/iv_chat_user_image_square_size"
+                android:layout_marginBottom="@dimen/margin_vertical_double"
+                android:layout_marginEnd="@dimen/input_margin_start_to_end"
+                android:layout_marginStart="@dimen/input_margin_start_to_end"
+                android:layout_marginTop="@dimen/margin_vertical_double"
+                android:maxLines="1"
+                android:background="@mipmap/ic_launcher"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_recyclerview_chat_user_item_user_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                bind:profileImage="@{userModel.image}"/>
 
             <TextView
                 android:id="@+id/tv_recyclerview_chat_user_item_user_name"

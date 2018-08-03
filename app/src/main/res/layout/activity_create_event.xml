@@ -29,8 +29,10 @@
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:fillViewport="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
                 <android.support.constraint.ConstraintLayout
+                    style="@style/AppTheme.ActivityLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -48,12 +50,14 @@
                         android:src="@android:drawable/ic_menu_search"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/til_event_name"/>
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/til_event_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
                         android:layout_marginBottom="@dimen/activity_vertical_margin"
                         android:layout_marginEnd="@dimen/activity_horizontal_margin"
                         android:layout_marginStart="@dimen/activity_horizontal_margin"
@@ -85,8 +89,7 @@
                         android:layout_marginTop="@dimen/activity_vertical_margin"
                         android:layout_marginBottom="@dimen/activity_vertical_margin"
                         android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                        android:layout_marginStart="@dimen/activity_horizontal_margin"
-                        android:paddingBottom="@dimen/margin_vertical">
+                        android:layout_marginStart="@dimen/activity_horizontal_margin">
 
                         <EditText
                             android:id="@+id/et_event_description_input"

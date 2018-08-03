@@ -51,7 +51,7 @@
                         android:id="@+id/recycleview_chat_user_interaction_sent_cardview_tv_message"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/password_hint"
+                        android:hint="@string/et_type_message"
                         android:text="@{Message.content}"
                         android:textAlignment="textEnd"
                         android:textSize="@dimen/title_text_size"
@@ -65,11 +65,11 @@
                         android:id="@+id/recycleview_chat_user_interaction_sent_cardview_tv_timestamp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/et_type_message"
+                        android:text="@string/tv_chat_timestamp"
                         style="@style/AppTheme.TextView.ChatTimeStamp"
                         android:maxLines="1"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/recycleview_chat_user_interaction_sent_cardview_tv_message" />
 
 

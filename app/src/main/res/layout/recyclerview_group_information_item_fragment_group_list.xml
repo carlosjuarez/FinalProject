@@ -8,15 +8,16 @@
 </data>
 <android.support.v7.widget.CardView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/activity_vertical_margin">
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/activity_vertical_padding"
-        android:paddingEnd="@dimen/activity_vertical_padding"
-        android:paddingStart="@dimen/activity_horizontal_padding"
+        android:paddingEnd="@dimen/margin_horizontal_double"
+        android:paddingStart="@dimen/margin_horizontal_double"
         android:paddingTop="@dimen/activity_horizontal_padding">
 
         <ImageView

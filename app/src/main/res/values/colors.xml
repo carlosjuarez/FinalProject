@@ -3,7 +3,7 @@
     <color name="colorPrimary">#14A76C</color>
     <!-- do not change this color code, coz some other colors depend on this one -->
     <color name="colorPrimaryDark">#707070</color>
-    <color name="colorAccent">#747474</color>
+    <color name="colorAccent">#14A76C</color>
     <color name="colorActivityBackground">#f4f4f4</color>
     <color name="colorButtonBackground">#14A76C</color>
     <color name="colorButtonText">@color/colorActivityBackground</color>
@@ -26,4 +26,6 @@
     <color name="cv_chat_receiver_text_background">#fff</color>
     <color name="tv_chat_sender_text_color">#fff</color>
     <color name="cv_chat_sender_text_background">@color/colorPrimary</color>
+    <color name="colorCalendarBackground">#fff</color>
+    <color name="colorTransparent">#00000000</color>
 </resources>

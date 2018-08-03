@@ -40,6 +40,7 @@ public class MockFactory {
         userCarlos.setCity("Mexico City");
         userCarlos.setEmail("carlosjuarez@gmail.com");
         userCarlos.setId("10001");
+        userCarlos.setImage("https://i.imgur.com/LP7mQze.png");
         list.add(userCarlos);
 
         //user 2
@@ -49,6 +50,7 @@ public class MockFactory {
         userMohammad.setCity("East Brunswick");
         userMohammad.setEmail("mohammadnafis@yahoo.com");
         userMohammad.setId("10025");
+        userMohammad.setImage("https://i.imgur.com/OdAD7DH.jpg");
         list.add(userMohammad);
 
         //user 3
@@ -58,6 +60,7 @@ public class MockFactory {
         userJoe.setCity("Kansas City");
         userJoe.setEmail("joesilva@hotmail.com");
         userJoe.setId("12142");
+        userJoe.setImage("https://i.imgur.com/zDHcqyE.png");
         list.add(userJoe);
 
         //user 4
@@ -67,6 +70,7 @@ public class MockFactory {
         userAlvaro.setCity("Miami");
         userAlvaro.setEmail("alvarolossada@outlook.com");
         userAlvaro.setId("13214");
+        userAlvaro.setImage("https://i.imgur.com/FNT6gxy.jpg");
         list.add(userAlvaro);
 
         return list;
@@ -82,6 +86,7 @@ public class MockFactory {
         groupStarWars.setIdAdmin(userAlvaro.getId());
         groupStarWars.setName("Team Star Wars");
         groupStarWars.setDescription("May the force be with you!");
+        groupStarWars.setImage("https://i.imgur.com/kzKnNPL.png");
 
         Map<String, Boolean> starwarsModerators = new HashMap<>();
         starwarsModerators.put(userMohammad.getId(), true);
@@ -101,6 +106,7 @@ public class MockFactory {
         groupStarTrek.setIdAdmin(userCarlos.getId());
         groupStarTrek.setName("Team Star Trek");
         groupStarTrek.setDescription("Live Long and Prosper");
+        groupStarTrek.setImage("https://i.imgur.com/tA4frwy.png");
 
         Map<String, Boolean> startrekModerators = new HashMap<>();
         startrekModerators.put(userJoe.getId(), true);
@@ -120,6 +126,7 @@ public class MockFactory {
         groupBattlestarGalactica.setIdAdmin(userJoe.getId());
         groupBattlestarGalactica.setName("Team Battlestar Galactica");
         groupBattlestarGalactica.setDescription("Fleeing from the Cylon tyranny, the last battlestar, Galactica, leads a ragtag fugitive fleet on a lonely quest: a shining planet known as Earth");
+        groupBattlestarGalactica.setImage("https://i.imgur.com/fPqjPPl.png");
 
         Map<String, Boolean> battlestarGalacticaModerators = new HashMap<>();
         battlestarGalacticaModerators.put(userAlvaro.getId(), true);
@@ -148,7 +155,7 @@ public class MockFactory {
         event1.setDate("August 21, 2018");
         event1.setPrice(15);
         event1.setLocation("101 Marietta St NW #3110, Atlanta, GA 30303");
-
+        event1.setImage("https://i.imgur.com/G5zqu6y.png");
         list.add(event1);
 
 
@@ -161,6 +168,7 @@ public class MockFactory {
         event2.setDate("September 15, 2018");
         event2.setPrice(21);
         event2.setLocation("10 Rimington Ln, Decatur, GA 30030");
+        event2.setImage("https://i.imgur.com/GOCpyze.png");
 
         list.add(event2);
 
@@ -174,6 +182,7 @@ public class MockFactory {
         event3.setDate("August 28, 2018");
         event3.setPrice(10);
         event3.setLocation("2924 Briarwood Blvd, East Point, GA 30344");
+        event3.setImage("https://i.imgur.com/JTye4ty.png");
 
         list.add(event3);
 
@@ -187,6 +196,7 @@ public class MockFactory {
         event4.setDate("October 20, 2018");
         event4.setPrice(8);
         event4.setLocation("1775 Parkway Pl, Marietta, GA 30067");
+        event4.setImage("https://i.imgur.com/c0W5wQI.png");
 
         list.add(event4);
 

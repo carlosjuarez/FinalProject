@@ -39,14 +39,6 @@
           }
         },
         {
-          "client_id": "825890321688-1k14me01pu1rujl7q97p350fdhmtnm68.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.batch.mcs.finalproject",
-            "certificate_hash": "e9d9fc4aaa26ea279cd2bdbe1554399c64876855"
-          }
-        },
-        {
           "client_id": "825890321688-j75i6aapcnr2cnkak7b3q0ulq40i4bf9.apps.googleusercontent.com",
           "client_type": 3
         }

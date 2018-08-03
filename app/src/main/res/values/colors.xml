@@ -28,4 +28,6 @@
     <color name="cv_chat_sender_text_background">@color/colorPrimary</color>
     <color name="colorCalendarBackground">#fff</color>
     <color name="colorTransparent">#00000000</color>
+    <color name="colorTabTextSelected">#fff</color>
+    <color name="colorTabTextUnselected">#3c3c3c</color>
 </resources>

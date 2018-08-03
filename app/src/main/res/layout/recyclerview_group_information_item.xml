@@ -40,7 +40,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_group_search_group_name"
-                app:groupImage="@{groupModel.image}"/>
+                app:groupImage="@{groupItem.image}"/>
 
             <TextView
                 android:id="@+id/tv_group_search_group_name"

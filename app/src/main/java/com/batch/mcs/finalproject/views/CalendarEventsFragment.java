@@ -3,7 +3,6 @@ package com.batch.mcs.finalproject.views;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
-import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,11 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
 
-import com.batch.mcs.finalproject.BaseFragment;
 import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.databinding.FragmentCalendarEventsBinding;
 import com.batch.mcs.finalproject.models.Event;
-import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
 
 import java.text.ParseException;

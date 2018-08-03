@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -79,7 +81,7 @@ public class FirebaseDatabase {
 
         //String creatorId = creator.getId();
         //chat.setAdmin(creatorId);
-        DocumentReference newChatRef = db.collection("chats").document(chat.getId());
+        DocumentReference newChatRef = db.collection("chats").document();
         String myCId = newChatRef.getId();
         chat.setId(myCId);
         newChatRef.set(chat);
@@ -89,7 +91,7 @@ public class FirebaseDatabase {
 
     public String saveMessage(Message message) {
 
-        DocumentReference newMessageRef = db.collection("messages").document(message.getId());
+        DocumentReference newMessageRef = db.collection("messages").document();
         String myMId = newMessageRef.getId();
         message.setId(myMId);
         newMessageRef.set(message);
@@ -168,7 +170,7 @@ public class FirebaseDatabase {
     public MutableLiveData<List<Group>> loadGroupAdmin(final User user, final MutableLiveData<List<Group>> mutableLiveData) {
         final List<Group> groups = new ArrayList<>();
 
-        if(user.getMyGroups()!=null){
+        if (user.getMyGroups() != null) {
             for (String idGroup : user.getMyGroups().keySet()) {
                 final DocumentReference docRef = db.collection("group").document(idGroup);
                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -180,7 +182,7 @@ public class FirebaseDatabase {
                                 Group group = document.toObject(Group.class);
                                 //Group group = new Gson().fromJson(document.getData().toString(), Group.class);
                                 groups.add(group);
-                                if(groups.size() == user.getMyGroups().size()){
+                                if (groups.size() == user.getMyGroups().size()) {
                                     mutableLiveData.postValue(groups);
                                 }
                             } else {
@@ -202,7 +204,7 @@ public class FirebaseDatabase {
         //User a query to query all the groupd where member.id = user.getid
         final List<Group> groups = new ArrayList<>();
 
-        if(user.getGroups()!=null){
+        if (user.getGroups() != null) {
             for (String idGroup : user.getGroups().keySet()) {
                 final DocumentReference docRef = db.collection("groups").document(idGroup);
                 docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -363,7 +365,7 @@ public class FirebaseDatabase {
 
     }
 
-        public MutableLiveData<Chat> loadChat (String idChat,final MutableLiveData<Chat> mutableLiveData){
+    public MutableLiveData<Chat> loadChat (String idChat,final MutableLiveData<Chat> mutableLiveData){
 
             final DocumentReference docRef = db.collection("chats").document(idChat);
             docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -388,24 +390,24 @@ public class FirebaseDatabase {
             return mutableLiveData;
         }
 
-        public void loadChatMessages (Activity activity, String chatId, final MutableLiveData<List<Message>> mutableLiveData){
-            final List<Message> messages = new ArrayList<>();
+    public void loadChatMessages (Activity activity, String chatId, final MutableLiveData<List<Message>> mutableLiveData){
+        final List<Message> messages = new ArrayList<>();
 
-            db.collection("messages").whereEqualTo("chatId",chatId).addSnapshotListener(activity,new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
-                    for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
-                        switch (dc.getType()) {
-                            case ADDED:
-                                Message message = dc.getDocument().toObject(Message.class);
-                                messages.add(message);
-                                break;
-                        }
-
+        db.collection("messages").whereEqualTo("chatId",chatId).addSnapshotListener(activity,new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
+                    switch (dc.getType()) {
+                        case ADDED:
+                            Message message = dc.getDocument().toObject(Message.class);
+                            messages.add(message);
+                            break;
                     }
-                    mutableLiveData.postValue(messages);
+
                 }
-            });
+                mutableLiveData.postValue(messages);
+            }
+        });
 
         }
 

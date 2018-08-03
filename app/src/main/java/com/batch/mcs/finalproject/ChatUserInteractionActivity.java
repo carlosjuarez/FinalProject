@@ -20,6 +20,7 @@ import com.batch.mcs.finalproject.interfaces.ChatItem;
 import com.batch.mcs.finalproject.models.Chat;
 import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.models.Message;
+import com.batch.mcs.finalproject.models.MockFactory;
 import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.ChatViewModel;
 

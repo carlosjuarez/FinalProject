@@ -48,7 +48,7 @@ public class GroupListFragment extends BaseFragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(true);
 
-        appViewModel.getLiveGroupAdmin().observe(this, new Observer<List<Group>>() {
+        appViewModel.getLiveGroupMember().observe(this, new Observer<List<Group>>() {
             @Override
             public void onChanged(@Nullable List<Group> groups) {
                 setupRecyclerView(groups);

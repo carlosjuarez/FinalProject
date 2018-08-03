@@ -58,8 +58,10 @@ public class AppViewModel extends ViewModel {
     public void initEvents(List<Group> groups) {
         ArrayList<String> eventIds = new ArrayList<>();
         for(Group group : groups){
-            for(Map.Entry<String,Boolean> entry : group.getIdEvents().entrySet()){
-                eventIds.add(entry.getKey());
+            if(group.getIdEvents()!=null){
+                for(Map.Entry<String,Boolean> entry : group.getIdEvents().entrySet()){
+                    eventIds.add(entry.getKey());
+                }
             }
         }
         if(eventIds.size()>0){

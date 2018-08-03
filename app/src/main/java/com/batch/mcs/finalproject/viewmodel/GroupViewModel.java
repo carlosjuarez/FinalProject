@@ -43,11 +43,13 @@ public class GroupViewModel extends ViewModel {
 
     public void initEvents(Group group) {
         ArrayList<String> eventIds = new ArrayList<>();
-        for(Map.Entry<String,Boolean> entry : group.getIdEvents().entrySet()){
-            eventIds.add(entry.getKey());
-        }
-        if(eventIds.size()>0){
-            firebaseDatabase.loadEvents(eventIds,liveEvents);
+        if(group.getIdEvents()!=null){
+            for(Map.Entry<String,Boolean> entry : group.getIdEvents().entrySet()){
+                eventIds.add(entry.getKey());
+            }
+            if(eventIds.size()>0){
+                firebaseDatabase.loadEvents(eventIds,liveEvents);
+            }
         }
     }
 

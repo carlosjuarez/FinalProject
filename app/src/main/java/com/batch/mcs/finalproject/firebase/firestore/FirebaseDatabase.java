@@ -238,7 +238,7 @@ public class FirebaseDatabase {
                         throw e;
                     } else {
                         Group group = snapshot.toObject(Group.class);
-                        mutableLiveData.setValue(group);
+                        mutableLiveData.postValue(group);
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();

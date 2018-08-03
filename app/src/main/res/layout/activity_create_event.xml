@@ -45,22 +45,22 @@
                         android:layout_height="@dimen/ib_height_create_event_picture"
                         android:layout_marginTop="@dimen/margin_vertical"
                         android:layout_marginBottom="@dimen/margin_vertical"
-
                         android:src="@android:drawable/ic_menu_search"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/til_event_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_top_bottom"
-                        android:layout_marginEnd="@dimen/input_margin_start_to_end"
-                        android:layout_marginStart="@dimen/input_margin_start_to_end"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
                         app:layout_constraintTop_toBottomOf="@id/ib_event_picture"
-                        app:layout_constraintBottom_toTopOf="@id/til_event_description">
+                        app:layout_constraintBottom_toTopOf="@id/til_event_description"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
 
                         <EditText
                             android:id="@+id/et_event_name_input"
@@ -80,10 +80,12 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@id/til_event_name"
                         app:layout_constraintBottom_toTopOf="@+id/til_event_city"
-                        android:layout_marginBottom="@dimen/activity_vertical_padding"
-                        android:paddingTop="@dimen/activity_vertical_padding"
-                        android:layout_marginEnd="@dimen/input_margin_start_to_end"
-                        android:layout_marginStart="@dimen/input_margin_start_to_end"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
                         android:paddingBottom="@dimen/margin_vertical">
 
                         <EditText
@@ -104,11 +106,12 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@id/til_event_description"
                         app:layout_constraintBottom_toTopOf="@id/til_event_location"
-                        android:layout_marginBottom="@dimen/activity_vertical_padding"
-                        android:paddingTop="@dimen/activity_vertical_padding"
-                        android:layout_marginEnd="@dimen/input_margin_start_to_end"
-                        android:layout_marginStart="@dimen/input_margin_start_to_end"
-                        android:paddingBottom="@dimen/margin_vertical">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin">
 
                         <EditText
                             android:id="@+id/et_event_city_input"
@@ -128,11 +131,12 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@id/til_event_city"
                         app:layout_constraintBottom_toTopOf="@id/til_event_date"
-                        android:layout_marginBottom="@dimen/activity_vertical_padding"
-                        android:paddingTop="@dimen/activity_vertical_padding"
-                        android:layout_marginEnd="@dimen/input_margin_start_to_end"
-                        android:layout_marginStart="@dimen/input_margin_start_to_end"
-                        android:paddingBottom="@dimen/margin_vertical">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin">
 
                         <EditText
                             android:id="@+id/et_event_city_location"
@@ -152,11 +156,12 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@id/til_event_location"
                         app:layout_constraintBottom_toTopOf="@id/til_event_price"
-                        android:layout_marginBottom="@dimen/activity_vertical_padding"
-                        android:paddingTop="@dimen/activity_vertical_padding"
-                        android:layout_marginEnd="@dimen/input_margin_start_to_end"
-                        android:layout_marginStart="@dimen/input_margin_start_to_end"
-                        android:paddingBottom="@dimen/margin_vertical">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin">
 
                         <EditText
                             android:id="@+id/et_event_date"
@@ -176,11 +181,12 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@id/til_event_date"
                         app:layout_constraintBottom_toTopOf="@id/btn_create_event_submit"
-                        android:layout_marginBottom="@dimen/activity_vertical_padding"
-                        android:paddingTop="@dimen/activity_vertical_padding"
-                        android:layout_marginEnd="@dimen/input_margin_start_to_end"
-                        android:layout_marginStart="@dimen/input_margin_start_to_end"
-                        android:paddingBottom="@dimen/margin_vertical">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin">
 
                         <EditText
                             android:id="@+id/et_event_city_price"
@@ -199,13 +205,15 @@
                         android:id="@+id/btn_create_event_submit"
                         android:layout_width="@dimen/no_dimension"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
                         android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
                         android:text="@string/btn_forgot_password_submit"
                         app:layout_constraintBottom_toTopOf="@id/btn_create_event_cancel"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/til_event_description"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/til_event_price"
                         android:onClick="CreateNewEventViewModel"/>
 
                     <Button
@@ -213,14 +221,16 @@
                         style="@style/AppTheme.ButtonAlternate"
                         android:layout_width="@dimen/no_dimension"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
                         android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
                         android:text="@string/btn_forgot_password_cancel"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/btn_create_event_submit"
-                        android:onClick="CreateNewEventCancel"
-                        android:layout_marginTop="@dimen/margin_top_bottom"/>
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:onClick="CreateNewEventCancel"/>
                 </android.support.constraint.ConstraintLayout>
         </ScrollView>
     </android.support.design.widget.CoordinatorLayout>

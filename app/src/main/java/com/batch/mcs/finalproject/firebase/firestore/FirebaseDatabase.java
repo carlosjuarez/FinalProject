@@ -62,16 +62,12 @@ public class FirebaseDatabase {
 
     }
 
-    public String saveChat(User creator, User member, Chat chat) {
+    public String saveChat(Chat chat) {
 
-        String creatorId = creator.getId();
-        String memberId = member.getId();
-        chat.setAdmin(creatorId);
         DocumentReference newChatRef = db.collection("chats").document();
         String myCId = newChatRef.getId();
         chat.setId(myCId);
         newChatRef.set(chat);
-
         return myCId;
     }
 
@@ -380,7 +376,21 @@ public class FirebaseDatabase {
     }
 
 
-
+    public void loadEVentsAll(final MutableLiveData<List<Group>> liveData) {
+        db.collection("groups")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                        //add error
+                        ArrayList<Group> groups = new ArrayList<>();
+                        for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
+                            Group group = new Gson().fromJson(snapshot.getData().toString(), Group.class);
+                            groups.add(group);
+                        }
+                        liveData.postValue(groups);
+                    }
+                });
+    }
 }
 
 

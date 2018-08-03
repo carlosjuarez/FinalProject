@@ -14,6 +14,7 @@ import com.batch.mcs.finalproject.models.User;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,6 +29,7 @@ public class GroupViewModel extends ViewModel {
     private MutableLiveData<Group> liveGroup = new MutableLiveData<>();
     private MutableLiveData<List<Event>> liveEvents = new MutableLiveData<>();
     private MutableLiveData<SelectDate> selectDateFilter = new MutableLiveData<>();
+    private User user;
 
 
     public GroupViewModel(){
@@ -83,5 +85,20 @@ public class GroupViewModel extends ViewModel {
     }
 
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void createChat(User member) {
+        Chat chat = new Chat();
+        chat.setAdmin(user.getId());
+        Map<String,Boolean> members = new HashMap<>();
+        members.put(member.getId(),true);
+        chat.setMembers(members);
+        firebaseDatabase.saveChat(chat);
+    }
 }

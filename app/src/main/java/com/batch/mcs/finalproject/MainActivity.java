@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements CallGroupDisplayL
     @Override
     public void showGroupNavigation(Group group) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frameLayoutContent, GroupNavigationFragment.newInstance(getString(R.string.parameter_group),group));
+        transaction.replace(R.id.frameLayoutContent, GroupNavigationFragment.newInstance(getString(R.string.parameter_group),group,appViewModel.getLiveUser().getValue()));
         transaction.addToBackStack(null);
         transaction.commit();
         if(drawerLayout!=null){

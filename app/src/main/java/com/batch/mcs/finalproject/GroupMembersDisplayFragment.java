@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.batch.mcs.finalproject.databinding.FragmentGroupMembersBinding;
 import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
 import com.batch.mcs.finalproject.viewmodel.GroupMemberListViewModel;
+import com.batch.mcs.finalproject.viewmodel.GroupViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,19 +26,24 @@ import java.util.List;
 public class GroupMembersDisplayFragment extends BaseFragment implements GroupMemberListAdapter.GroupMemberListAdapsterListner{
     private GroupMemberListAdapter adapter;
     private RecyclerView recyclerView;
-    private GroupMemberListViewModel groupMemberListViewModel;
+    private GroupViewModel groupMemberListViewModel;
+
+    public static GroupMembersDisplayFragment getInstance() {
+        GroupMembersDisplayFragment groupMembersDisplayFragment = new GroupMembersDisplayFragment();
+        return groupMembersDisplayFragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentGroupMembersBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_group_members,container,false);
-        groupMemberListViewModel=ViewModelProviders.of(getActivity()).get(GroupMemberListViewModel.class);
-        groupMemberListViewModel.getMembers();
+        groupMemberListViewModel=ViewModelProviders.of(getActivity()).get(GroupViewModel.class);
+
         recyclerView= binding.recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setNestedScrollingEnabled(true);
 
-        groupMemberListViewModel.getLiveGroupMember().observe(this, new Observer<List<User>>() {
+        groupMemberListViewModel.getLiveUsers().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(@Nullable List<User> users) {
                 setUpRecyclerView(users);
@@ -56,6 +63,7 @@ public class GroupMembersDisplayFragment extends BaseFragment implements GroupMe
     public void onMemberClicked(User member) {
         groupMemberListViewModel.createChat(member);
     }
+
 
 
 }

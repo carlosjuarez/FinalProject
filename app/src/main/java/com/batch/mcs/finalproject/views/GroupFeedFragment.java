@@ -78,8 +78,9 @@ public class GroupFeedFragment extends BaseFragment {
         groupViewModel.getLiveGroup().observe(this, new Observer<Group>() {
             @Override
             public void onChanged(@Nullable Group group) {
-                if(group.getIdAdmin().equals())
-                fragmentBinding.btnCreateEvent.setVisibility(View.VISIBLE);
+                if(group.getIdAdmin().equals(groupViewModel.getUser().getId())){
+                    fragmentBinding.btnCreateEvent.setVisibility(View.VISIBLE);
+                }
             }
         });
 

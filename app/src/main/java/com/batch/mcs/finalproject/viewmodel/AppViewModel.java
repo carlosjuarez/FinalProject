@@ -1,5 +1,6 @@
 package com.batch.mcs.finalproject.viewmodel;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.ArrayMap;
@@ -14,6 +15,7 @@ import com.batch.mcs.finalproject.models.User;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -29,8 +31,8 @@ public class AppViewModel extends ViewModel {
     private MutableLiveData<List<Group>> liveGroupMember = new MutableLiveData<>();
     private MutableLiveData<List<Event>> liveEventAll = new MutableLiveData<>();
     private MutableLiveData<List<Chat>> liveUserChats = new MutableLiveData<>();
-
     private MutableLiveData<SelectDate> selectDateFilter = new MutableLiveData<>();
+    private MutableLiveData<List<Group>> liveGroupAll = new MutableLiveData<>();
 
     public AppViewModel(){
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -67,26 +69,16 @@ public class AppViewModel extends ViewModel {
         }
     }
 
+    public void initAllGroups(){
+        firebaseDatabase.loadEVentsAll(liveGroupAll);
+    }
+
     public void initUserChats(){
 
         if(liveUserChats == null){
             liveUserChats = new MutableLiveData<>();
             firebaseDatabase.loadChatUsers(liveUser.getValue(),liveUserChats);
         }
-    }
-
-    public void saveChat(Chat chat, User creator, User member){
-        String cId = firebaseDatabase.saveChat(creator, member, chat);
-        if(creator.getChats()!=null){
-            creator.getChats().put(cId,true);
-        }else{
-            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
-            map.put(cId,true);
-            creator.setChats(map);
-        }
-        updateliveUser(creator);
-        updateliveUser(member);
-
     }
 
     public void saveMessage(Message message, Chat chat){
@@ -146,5 +138,30 @@ public class AppViewModel extends ViewModel {
     }
 
 
+    public MutableLiveData<List<Group>> getLiveGroupAll() {
+        return liveGroupAll;
+    }
 
+    public void addGroupToUser(Group group) {
+        User user = getLiveUser().getValue();
+        if(group.getIdMembers()!=null){
+            group.getIdMembers().put(user.getId(),true);
+        }else{
+            Map<String,Boolean> members = new HashMap<>();
+            members.put(group.getId(),true);
+            user.setGroups(members);
+        }
+
+        firebaseDatabase.updateGroup(group);
+
+        if(user.getGroups()!=null){
+            user.getGroups().put(group.getId(),true);
+        }else{
+            Map<String,Boolean> groups = new HashMap<>();
+            groups.put(group.getId(),true);
+            user.setGroups(groups);
+        }
+
+        firebaseDatabase.updateUser(user);
+    }
 }

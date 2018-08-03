@@ -63,7 +63,7 @@ public class GroupNavigationFragment extends BaseFragment {
         LinkedHashMap<String, Fragment> groupTabs= new LinkedHashMap<>();
         groupTabs.put("Calendar", GroupCalendarDisplayFragment.getInstance());
         groupTabs.put("Feed", GroupFeedFragment.getInstance());
-        groupTabs.put("Members", new GroupMembersDisplayFragment());
+        groupTabs.put("Members", GroupMembersDisplayFragment.getInstance());
 
         for(Map.Entry<String, Fragment> entry : groupTabs.entrySet()){
             viewPagerAdapter.addFrag(entry.getValue(), entry.getKey());
@@ -78,6 +78,7 @@ public class GroupNavigationFragment extends BaseFragment {
 
     private void initializeDataFromGroup() {
         final GroupViewModel groupViewModel = ViewModelProviders.of(getActivity()).get(GroupViewModel.class);
+        groupViewModel.setUser(user);
         groupViewModel.initGroup(group);
         groupViewModel.getLiveGroup().observe(this, new Observer<Group>() {
             @Override

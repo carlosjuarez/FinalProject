@@ -1,4 +1,4 @@
-package com.batch.mcs.finalproject;
+package com.batch.mcs.finalproject.interfaces;
 
 public interface ChatItem {
     int SENT = 1;

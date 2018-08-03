@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.batch.mcs.finalproject.interfaces.ChatItem;
+
 import java.util.List;
 
 public class ChatUserInteractionAdapter extends RecyclerView.Adapter<ViewHolder>{

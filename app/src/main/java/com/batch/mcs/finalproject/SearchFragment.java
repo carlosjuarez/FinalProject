@@ -1,6 +1,6 @@
 package com.batch.mcs.finalproject;
 
-import android.support.v4.app.Fragment;
+import com.batch.mcs.finalproject.views.BaseFragment;
 
 public class SearchFragment extends BaseFragment {
 

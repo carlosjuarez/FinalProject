@@ -19,69 +19,33 @@ import java.util.Set;
 public class ChatViewModel extends ViewModel {
 
 
-    FirebaseFirestore firebaseFirestore;
-    FirebaseDatabase firebaseDatabase;
-    private MutableLiveData<User> liveUser = new MutableLiveData<>();
-    private MutableLiveData<Group> liveGroup;
-    private MutableLiveData<List<Group>> liveGroupAdmin = new MutableLiveData<>();
-    private MutableLiveData<List<Group>> liveGroupMember = new MutableLiveData<>();
-    private MutableLiveData<List<Group>> liveGroupAll;
-    private MutableLiveData<Event> liveEvent;
-    private MutableLiveData<Chat> liveChat;
-    private MutableLiveData<Message> liveMessage;
-    private MutableLiveData<List<Chat>> liveUserChats = new MutableLiveData<>();
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+    FirebaseDatabase firebaseDatabase = new FirebaseDatabase(firebaseFirestore);
+    private MutableLiveData<Chat> liveChat = new MutableLiveData<>();
+     private MutableLiveData<List<Message>> liveUserMessages = new MutableLiveData<>();
 
-    public void initUser(String userId) {
-        if (userId != null && !userId.isEmpty()){
-            firebaseDatabase.loadUser(userId, liveUser);
-        }
+    public void initChat(String userId) {
+        firebaseDatabase.loadChat(userId, liveChat);
     }
 
-    public void initGroup(String idGroup){
-        firebaseDatabase.loadGroup(idGroup, liveGroup);
+    public void initMessages(Activity activity, String chatId) {
+        firebaseDatabase.loadChatMessages(activity, chatId, liveUserMessages);
     }
 
-    public void initUserGroups() {
-        if(liveUser.getValue()!=null){
-            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAdmin);
-            firebaseDatabase.loadGroupMember(liveUser.getValue(), liveGroupMember);
-        }
+    public MutableLiveData<Chat> getLiveChat() {
+        return liveChat;
     }
 
-    public void initAllGroups(){
-        if(liveGroupAll == null){
-            liveGroupAll = new MutableLiveData<>();
-            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAll);
-        }
+    public MutableLiveData<List<Message>> getLiveUserMessages() {
+        return liveUserMessages;
     }
 
-    public void initEvents() {
-        if (liveEvent == null) {
-            liveEvent = new MutableLiveData<>();
-            for (int i = 0; i < liveGroupAdmin.getValue().size(); i++) {
-                Map<String, Boolean> map = liveGroupAdmin.getValue().get(i).getIdEvents();
-                Set<String> set = map.keySet();
-                for (String eId : set) {
-                    firebaseDatabase.loadEvent(eId, liveEvent);
-                }
-            }
-
-            for (int i = 0; i < liveGroupMember.getValue().size(); i++) {
-                Map<String, Boolean> map = liveGroupMember.getValue().get(i).getIdEvents();
-                Set<String> set = map.keySet();
-                for (String eId : set) {
-                    firebaseDatabase.loadEvent(eId, liveEvent);
-                }
-            }
-        }
+    public void updateLiveChat(MutableLiveData<Chat> liveChat) {
+        this.liveChat = liveChat;
     }
 
-    public void initChat(String userId, Activity activity) {
-        if(liveChat.getValue()!=null){
-            firebaseDatabase.loadChat(activity,userId, liveChat);
-        }
+    public void updateLiveMessages(MutableLiveData<List<Message>> liveUserMessages) {
+        this.liveUserMessages = liveUserMessages;
     }
-
-
 
 }

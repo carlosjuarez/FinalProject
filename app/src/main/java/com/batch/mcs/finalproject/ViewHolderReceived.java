@@ -3,7 +3,7 @@ package com.batch.mcs.finalproject;
 import android.view.View;
 import android.widget.TextView;
 
-import com.batch.mcs.finalproject.databinding.RecycleviewChatUserInteractionReceiveItemBinding;
+import com.batch.mcs.finalproject.interfaces.ChatItem;
 
 public class ViewHolderReceived extends ViewHolder{
     private final TextView mTextView;

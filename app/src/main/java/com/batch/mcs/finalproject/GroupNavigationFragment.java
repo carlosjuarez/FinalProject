@@ -12,10 +12,10 @@ import android.view.ViewGroup;
 import com.batch.mcs.finalproject.adapters.ViewPagerAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentGroupNavigationBinding;
 import com.batch.mcs.finalproject.models.Group;
+import com.batch.mcs.finalproject.views.BaseFragment;
 import com.batch.mcs.finalproject.views.GroupCalendarDisplayFragment;
 import com.batch.mcs.finalproject.views.GroupFeedFragment;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

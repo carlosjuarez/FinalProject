@@ -69,6 +69,10 @@ public class AppViewModel extends ViewModel {
         }
     }
 
+    public void initUserChats(){
+        firebaseDatabase.loadMyChats("12142", liveUserChats);
+    }
+
     public void initEvents() {
         if (liveEvent == null) {
             liveEvent = new MutableLiveData<>();
@@ -114,33 +118,6 @@ public class AppViewModel extends ViewModel {
             group.setIdEvents(map);
         }
         updateliveGroup(group);
-
-    }
-
-//    public void saveChat(Chat chat, User creator, User member){
-//        String cId = firebaseDatabase.saveChat(creator, member, chat);
-//        if(creator.getChats()!=null){
-//            creator.getChats().put(cId,true);
-//        }else{
-//            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
-//            map.put(cId,true);
-//            creator.setChats(map);
-//        }
-//        updateliveUser(creator);
-//        updateliveUser(member);
-//
-//    }
-
-    public void saveMessage(Message message, Chat chat){
-        String mId = firebaseDatabase.saveMessage(chat,message);
-        if(chat.getMessages()!=null){
-            chat.getMessages().put(mId,true);
-        }else{
-            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
-            map.put(mId,true);
-            chat.setMessages(map);
-        }
-        updateliveChat(chat);
 
     }
 

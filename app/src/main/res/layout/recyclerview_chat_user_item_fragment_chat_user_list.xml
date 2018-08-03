@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:bind="http://schemas.android.com/apk/res/android">
+    xmlns:bind="http://schemas.android.com/tools">
     <data>
         <variable
             name="groupMember"
@@ -41,7 +41,7 @@
                 android:layout_width="@dimen/no_dimension"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                bind:text="@{groupMember.name +' ' + groupMember.lastName}"
+                app:text="@{groupMember.name +' ' + groupMember.lastName}"
                 android:maxLines="1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/floatingActionButton_add_user"

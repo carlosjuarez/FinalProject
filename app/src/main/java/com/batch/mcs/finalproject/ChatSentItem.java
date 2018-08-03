@@ -1,5 +1,6 @@
 package com.batch.mcs.finalproject;
 
+import com.batch.mcs.finalproject.interfaces.ChatItem;
 import com.batch.mcs.finalproject.models.Message;
 
 public class ChatSentItem implements ChatItem {

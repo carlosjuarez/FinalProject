@@ -87,12 +87,12 @@ public class GroupViewModel extends ViewModel {
         }
     }
 
-    public void initUserChats(){
-
-        if(liveUserChats == null){
-            liveUserChats = new MutableLiveData<>();
-            firebaseDatabase.loadChatUsers(liveUser.getValue(),liveUserChats);
-        }
+//    public void initUserChats(){
+//
+//        if(liveUserChats == null){
+//            liveUserChats = new MutableLiveData<>();
+//            firebaseDatabase.loadChatUsers(liveUser.getValue(),liveUserChats);
+//        }
 //        if(liveChat == null){
 //            liveChat = new MutableLiveData<>();
 //            firebaseDatabase.loadChat(liveUser.getValue().getId(), liveChat);
@@ -102,7 +102,7 @@ public class GroupViewModel extends ViewModel {
 //            liveMessage = new MutableLiveData<>();
 //            firebaseDatabase.loadMessage(liveChat.getValue().getId(), liveMessage);
 //        }
-    }
+    //}
 
 
 
@@ -133,32 +133,32 @@ public class GroupViewModel extends ViewModel {
 
     }
 
-    public void saveChat(Chat chat, User creator, User member){
-        String cId = firebaseDatabase.saveChat(creator, member, chat);
-        if(creator.getChats()!=null){
-            creator.getChats().put(cId,true);
-        }else{
-            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
-            map.put(cId,true);
-            creator.setChats(map);
-        }
-        updateliveUser(creator);
-        updateliveUser(member);
+//    public void saveChat(Chat chat, User creator, User member){
+//        String cId = firebaseDatabase.saveChat(creator, member, chat);
+//        if(creator.getChats()!=null){
+//            creator.getChats().put(cId,true);
+//        }else{
+//            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
+//            map.put(cId,true);
+//            creator.setChats(map);
+//        }
+//        updateliveUser(creator);
+//        updateliveUser(member);
+//
+//    }
 
-    }
-
-    public void saveMessage(Message message, Chat chat){
-        String mId = firebaseDatabase.saveMessage(chat,message);
-        if(chat.getMessages()!=null){
-            chat.getMessages().put(mId,true);
-        }else{
-            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
-            map.put(mId,true);
-            chat.setMessages(map);
-        }
-        updateliveChat(chat);
-
-    }
+//    public void saveMessage(Message message, Chat chat){
+//        String mId = firebaseDatabase.saveMessage(chat,message);
+//        if(chat.getMessages()!=null){
+//            chat.getMessages().put(mId,true);
+//        }else{
+//            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
+//            map.put(mId,true);
+//            chat.setMessages(map);
+//        }
+//        updateliveChat(chat);
+//
+//    }
 
     public void updateliveUser(User user){
         liveUser.setValue(user);

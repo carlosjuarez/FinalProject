@@ -1,6 +1,7 @@
 package com.batch.mcs.finalproject.views;
 
 
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
@@ -13,20 +14,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.batch.mcs.finalproject.adapters.ChatFragmentAdapter;
+import com.batch.mcs.finalproject.ChatFragmentAdapter;
 import com.batch.mcs.finalproject.R;
+import com.batch.mcs.finalproject.adapters.UserGroupListAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentChatBinding;
 import com.batch.mcs.finalproject.firebase.firestore.FirebaseDatabase;
+import com.batch.mcs.finalproject.interfaces.ChatItem;
 import com.batch.mcs.finalproject.models.Chat;
+import com.batch.mcs.finalproject.models.Event;
+import com.batch.mcs.finalproject.models.Group;
+import com.batch.mcs.finalproject.models.Message;
+import com.batch.mcs.finalproject.models.MockFactory;
 import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class  ChatFragment extends BaseFragment {
 
     ChatFragmentAdapter adapter;
+//    MockFactory mockFactory = new MockFactory();
     RecyclerView recyclerView;
 
     public static ChatFragment getInstance(){
@@ -47,6 +58,7 @@ public class  ChatFragment extends BaseFragment {
 
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         FirebaseDatabase fb = new FirebaseDatabase(firebaseFirestore);
+//        final User user = mockFactory.getUsersArrayList().get(2);
 
         appViewModel.getLiveUserChats().observe(this, new Observer<List<Chat>>() {
             @Override

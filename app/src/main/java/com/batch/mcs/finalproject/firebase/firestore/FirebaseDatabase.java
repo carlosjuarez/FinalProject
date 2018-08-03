@@ -228,7 +228,7 @@ public class FirebaseDatabase {
 
     public void loadGroup(String idGroup, final MutableLiveData<Group> mutableLiveData) {
 
-        final DocumentReference docRef = db.collection("groups").document(idGroup);
+        final DocumentReference docRef = db.collection("group").document(idGroup);
         docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
@@ -237,7 +237,7 @@ public class FirebaseDatabase {
                     if (e != null) {
                         throw e;
                     } else {
-                        Group group = new Gson().fromJson(snapshot.getData().toString(), Group.class);
+                        Group group = snapshot.toObject(Group.class);
                         mutableLiveData.setValue(group);
                     }
                 } catch (Exception ex) {

@@ -70,7 +70,7 @@ public class AppViewModel extends ViewModel {
     }
 
     public void initUserChats(){
-        firebaseDatabase.loadMyChats("12142", liveUserChats);
+        firebaseDatabase.loadMyChats(liveUser.getValue().getId(), liveUserChats);
     }
 
     public void initEvents() {

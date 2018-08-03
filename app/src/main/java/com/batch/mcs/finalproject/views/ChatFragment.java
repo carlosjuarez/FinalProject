@@ -37,7 +37,7 @@ import java.util.Map;
 public class  ChatFragment extends BaseFragment {
 
     ChatFragmentAdapter adapter;
-//    MockFactory mockFactory = new MockFactory();
+
     RecyclerView recyclerView;
 
     public static ChatFragment getInstance(){
@@ -56,14 +56,10 @@ public class  ChatFragment extends BaseFragment {
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-        FirebaseDatabase fb = new FirebaseDatabase(firebaseFirestore);
-//        final User user = mockFactory.getUsersArrayList().get(2);
-
         appViewModel.getLiveUserChats().observe(this, new Observer<List<Chat>>() {
             @Override
             public void onChanged(@Nullable List<Chat> chats) {
-                setupRecyclerView(appViewModel.getLiveUser().getValue(),chats);
+                setupRecyclerView(chats);
             }
         });
 
@@ -85,8 +81,8 @@ public class  ChatFragment extends BaseFragment {
         return binding.getRoot();
     }
 
-    private void setupRecyclerView(User user, List<Chat> chats) {
-        adapter = new ChatFragmentAdapter(user, getContext(), chats);
+    private void setupRecyclerView(List<Chat> chats) {
+        adapter = new ChatFragmentAdapter(getContext(),chats);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         adapter.notifyDataSetChanged();

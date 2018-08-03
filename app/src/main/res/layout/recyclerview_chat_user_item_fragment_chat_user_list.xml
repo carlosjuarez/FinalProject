@@ -33,14 +33,15 @@
                 app:layout_constraintEnd_toStartOf="@id/tv_recyclerview_chat_user_item_fragment_chat_user_list_user_name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="parent"/>
+                app:layout_constraintLeft_toRightOf="parent"
+                bind:profileImage="@{groupMember.image}"/>
 
             <TextView
                 android:id="@+id/tv_recyclerview_chat_user_item_fragment_chat_user_list_user_name"
                 android:layout_width="@dimen/no_dimension"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:text="@string/tv_default_text_user_name"
+                android:text="@{groupMember.name +' ' + groupMember.lastName}"
                 android:maxLines="1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/floatingActionButton_add_user"
@@ -52,7 +53,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 bind:clickable="true"
-                app:srcCompat="@android:drawable/ic_input_add"
                 app:layout_constraintRight_toRightOf="parent"
                 />
 

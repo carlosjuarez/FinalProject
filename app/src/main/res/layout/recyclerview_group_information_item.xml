@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-
+<layout xmlns:bind="http://schemas.android.com/tools">
     <data>
         <variable
             name="groupItem"
@@ -8,6 +7,9 @@
         <variable
             name="clickHandler"
             type="com.batch.mcs.finalproject.SearchFragment"/>
+        <variable
+            name="groupModel"
+            type="com.batch.mcs.finalproject.models.Event"/>
     </data>
 
     <android.support.v7.widget.CardView
@@ -18,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_vertical">
 
-        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <android.support.constraint.ConstraintLayout
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:background="@color/colorTextBody"
             android:layout_width="match_parent"
@@ -37,7 +39,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_group_search_group_name"/>
+                app:layout_constraintEnd_toStartOf="@id/tv_group_search_group_name"
+                bind:groupImage="@{groupItem.image}"/>
 
             <TextView
                 android:id="@+id/tv_group_search_group_name"

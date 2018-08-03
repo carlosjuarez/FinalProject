@@ -79,6 +79,6 @@ public class SearchFragment extends BaseFragment implements ViewClickListener {
 
     @Override
     public void clickListener(Group group) {
-        appViewModel.addGroup(group);
+//        appViewModel.addGroup(group);
     }
 }

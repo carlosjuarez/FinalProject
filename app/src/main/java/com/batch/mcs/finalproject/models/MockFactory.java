@@ -6,6 +6,15 @@ import java.util.Map;
 
 public class MockFactory {
 
+    public static final String iamhungry = "I am hungry"; // 1
+    public static final String hihungrymynamesjoe = "Hi Hungry, My name's Joe"; // 2
+    public static final String youareamazing = "You are amazing"; // 3
+    public static final String iamnotamzingiamcarlos = "I am not amazing, I am Carlos"; // 4
+    public static final String iwillworkontheprojecttomorrow = "I will work on the project tomorrow"; // 5
+    public static final String youdoyougirl = "You do you girl"; // 6
+    public static final String itisverycommonyouknow = "It is very common, you know"; // 7
+    public static final String noidontknow = "No, I don't know"; // 8
+
     private User userCarlos;
     private User userMohammad;
     private User userJoe;
@@ -18,6 +27,8 @@ public class MockFactory {
     private ArrayList<User> userList;
     private ArrayList<Group> groupList;
     private ArrayList<Event> eventList;
+    private ArrayList<Chat> chatList;
+    private ArrayList<Message> messageList;
 
     private ArrayList<User> createUsers(){
         ArrayList<User> list = new ArrayList<>();
@@ -79,6 +90,7 @@ public class MockFactory {
         Map<String, Boolean> starwarsMembers = new HashMap<>();
         starwarsMembers.put(userJoe.getId(), true);
         starwarsMembers.put(userCarlos.getId(), true);
+        starwarsMembers.put(userMohammad.getId(), true);
         groupStarWars.setIdMembers(starwarsMembers);
 
         list.add(groupStarWars);
@@ -97,6 +109,7 @@ public class MockFactory {
         Map<String, Boolean> startrekMembers = new HashMap<>();
         startrekMembers.put(userAlvaro.getId(), true);
         startrekMembers.put(userMohammad.getId(), true);
+        startrekMembers.put(userJoe.getId(), true);
         groupStarTrek.setIdMembers(startrekMembers);
 
         list.add(groupStarTrek);
@@ -115,6 +128,7 @@ public class MockFactory {
         Map<String, Boolean> battlestarGalacticaMembers = new HashMap<>();
         battlestarGalacticaMembers.put(userCarlos.getId(), true);
         battlestarGalacticaMembers.put(userMohammad.getId(), true);
+        battlestarGalacticaMembers.put(userAlvaro.getId(), true);
         groupBattlestarGalactica.setIdMembers(battlestarGalacticaMembers);
 
         list.add(groupBattlestarGalactica);
@@ -179,22 +193,184 @@ public class MockFactory {
         return list;
     }
 
+    public ArrayList<Chat> createChat(){
+        ArrayList<Chat> chats = new ArrayList<>();
+        ArrayList<Message> messages = new ArrayList<>();
 
+        Chat chat1 = new Chat();
+        chat1.newMessage = false;
+        chat1.setAdmin(userAlvaro.getId());
+        chat1.setAdminName(userAlvaro.getName());
+        chat1.setMember(userCarlos.getId());
+        chat1.setMemberName(userCarlos.getName());
+        chat1.setId("40001");
+
+        Map<String, Boolean> chatMap1 = new HashMap<>();
+        Message msg1 = new Message();
+        msg1.setId("50001");
+        msg1.setCreator(userAlvaro.getId());
+        msg1.setChatId(chat1.getId());
+        msg1.setContent(youareamazing);
+        chatMap1.put(msg1.getId(), true);
+        messages.add(msg1);
+
+        Message msg2 = new Message();
+        msg2.setId("50002");
+        msg2.setCreator(userCarlos.getId());
+        msg2.setChatId(chat1.getId());
+        msg2.setContent(iamnotamzingiamcarlos);
+        chatMap1.put(msg2.getId(), true);
+        messages.add(msg2);
+
+        chat1.setMessages(chatMap1);
+
+        chats.add(chat1);
+
+        /////////////////////////////
+
+        Chat chat2 = new Chat();
+        chat2.newMessage = false;
+        chat2.setAdmin(userMohammad.getId());
+        chat2.setAdminName(userMohammad.getName());
+        chat2.setMember(userJoe.getId());
+        chat2.setMemberName(userJoe.getName());
+        chat2.setId("40002");
+
+        Map<String, Boolean> chatMap2 = new HashMap<>();
+        Message msg3 = new Message();
+        msg3.setId("50003");
+        msg3.setCreator(userMohammad.getId());
+        msg3.setChatId(chat2.getId());
+        msg3.setContent(iamhungry);
+        chatMap2.put(msg3.getId(), true);
+        messages.add(msg3);
+
+        Message msg4 = new Message();
+        msg4.setId("50004");
+        msg4.setCreator(userJoe.getId());
+        msg4.setChatId(chat2.getId());
+        msg4.setContent(hihungrymynamesjoe);
+        chatMap2.put(msg4.getId(), true);
+        messages.add(msg4);
+
+        chat2.setMessages(chatMap2);
+
+        chats.add(chat2);
+
+        //////////////////////////////
+
+        Chat chat3 = new Chat();
+        chat3.newMessage = false;
+        chat3.setAdmin(userJoe.getId());
+        chat3.setAdminName(userJoe.getName());
+        chat3.setMember(userAlvaro.getId());
+        chat3.setMemberName(userAlvaro.getName());
+        chat3.setId("40003");
+
+        Map<String, Boolean> chatMap3 = new HashMap<>();
+        Message msg5 = new Message();
+        msg5.setId("50005");
+        msg5.setCreator(userJoe.getId());
+        msg5.setChatId(chat3.getId());
+        msg5.setContent(iwillworkontheprojecttomorrow);
+        chatMap3.put(msg5.getId(), true);
+        messages.add(msg5);
+
+        Message msg6 = new Message();
+        msg6.setId("50006");
+        msg6.setCreator(userAlvaro.getId());
+        msg6.setChatId(chat3.getId());
+        msg6.setContent(youdoyougirl);
+        chatMap3.put(msg6.getId(), true);
+        messages.add(msg6);
+
+        chat3.setMessages(chatMap3);
+
+        chats.add(chat3);
+
+        //////////////////////////////
+
+        Chat chat4 = new Chat();
+        chat4.newMessage = false;
+        chat4.setAdmin(userMohammad.getId());
+        chat4.setAdminName(userMohammad.getName());
+        chat4.setMember(userCarlos.getId());
+        chat4.setMemberName(userCarlos.getName());
+        chat4.setId("40004");
+
+        Map<String, Boolean> chatMap4 = new HashMap<>();
+        Message msg7 = new Message();
+        msg7.setId("50007");
+        msg7.setCreator(userMohammad.getId());
+        msg7.setChatId(chat4.getId());
+        msg7.setContent(itisverycommonyouknow);
+        chatMap4.put(msg7.getId(), true);
+        messages.add(msg7);
+
+        Message msg8 = new Message();
+        msg8.setId("50008");
+        msg8.setCreator(userCarlos.getId());
+        msg8.setChatId(chat4.getId());
+        msg8.setContent(noidontknow);
+        chatMap4.put(msg8.getId(), true);
+        messages.add(msg8);
+
+        chat4.setMessages(chatMap4);
+
+        chats.add(chat4);
+
+        messageList = messages;
+
+        return chats;
+    }
 
     public MockFactory(){
         userList = createUsers();
         groupList = createGroups();
-        Map<String, Boolean> groups = new HashMap<>();
 
-        //since all users have the same groups but different roles, so they have the same grouplist
-        for(int i=0; i<groupList.size(); i++) {
-            groups.put(groupList.get(i).getId(), true);
-        }
+//        Map<String, Boolean> groups = new HashMap<>();
+//
+//        //since all users have the same groups but different roles, so they have the same grouplist
+//        for(int i=0; i<groupList.size(); i++) {
+//            groups.put(groupList.get(i).getId(), true);
+//        }
+//
+//        //adding the grouplist to each user object
+//        for(int j = 0; j< userList.size(); j++){
+//            userList.get(j).setMyGroups(groups);
+//        }
 
-        //adding the grouplist to each user object
-        for(int j = 0; j< userList.size(); j++){
-            userList.get(j).setMyGroups(groups);
-        }
+        Map<String, Boolean> mohammadAdminGroups = new HashMap<>();
+        Map<String, Boolean> mohammadMemberGroups = new HashMap<>();
+        mohammadMemberGroups.put(groupList.get(0).getId(), true);
+        mohammadMemberGroups.put(groupList.get(1).getId(), true);
+        mohammadMemberGroups.put(groupList.get(2).getId(), true);
+        userMohammad.setMyGroups(mohammadAdminGroups);
+        userMohammad.setGroups(mohammadMemberGroups);
+
+        Map<String, Boolean> alvaroAdminGroups = new HashMap<>();
+        Map<String, Boolean> alvaroMemberGroups = new HashMap<>();
+        alvaroAdminGroups.put(groupList.get(0).getId(), true);
+        alvaroMemberGroups.put(groupList.get(1).getId(), true);
+        alvaroMemberGroups.put(groupList.get(2).getId(), true);
+        userAlvaro.setMyGroups(alvaroAdminGroups);
+        userAlvaro.setGroups(alvaroMemberGroups);
+
+        Map<String, Boolean> carlosAdminGroups = new HashMap<>();
+        Map<String, Boolean> carlosMemberGroups = new HashMap<>();
+        carlosMemberGroups.put(groupList.get(0).getId(), true);
+        carlosAdminGroups.put(groupList.get(1).getId(), true);
+        carlosMemberGroups.put(groupList.get(2).getId(), true);
+        userCarlos.setMyGroups(carlosAdminGroups);
+        userCarlos.setGroups(carlosMemberGroups);
+
+        Map<String, Boolean> joeAdminGroups = new HashMap<>();
+        Map<String, Boolean> joeMemberGroups = new HashMap<>();
+        joeMemberGroups.put(groupList.get(0).getId(), true);
+        joeMemberGroups.put(groupList.get(1).getId(), true);
+        joeAdminGroups.put(groupList.get(2).getId(), true);
+        userJoe.setMyGroups(joeAdminGroups);
+        userJoe.setGroups(joeMemberGroups);
 
         eventList = createEventList();
 
@@ -212,6 +388,8 @@ public class MockFactory {
         battlestarGalacticaEventList.put(eventList.get(3).getId(), true);
         groupBattlestarGalactica.setIdEvents(battlestarGalacticaEventList);
 
+        chatList = createChat();
+
     }
 
     public ArrayList<User> getUsersArrayList(){
@@ -226,4 +404,7 @@ public class MockFactory {
         return eventList;
     }
 
+    public ArrayList<Chat> getChatArrayList() { return chatList;  }
+
+    public ArrayList<Message> getMessageArrayList() { return messageList; }
 }

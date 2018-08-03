@@ -49,6 +49,7 @@ public class  ChatFragment extends BaseFragment {
 
         final FragmentChatBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chat,container,false);
         final AppViewModel appViewModel = ViewModelProviders.of(getActivity()).get(AppViewModel.class);
+        binding.setUser(appViewModel.getLiveUser().getValue());
 
         appViewModel.initUserChats();
         recyclerView = binding.rvFragmentChatChatList;

@@ -268,7 +268,7 @@ public class FirebaseDatabase {
             @Override
             public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
                 for(QueryDocumentSnapshot snapshot: queryDocumentSnapshots){
-                    Chat chat =  new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+                    Chat chat =  snapshot.toObject(Chat.class);
                     chatsList.add(chat);
                 }
                 chats.postValue(chatsList);
@@ -279,7 +279,7 @@ public class FirebaseDatabase {
             @Override
             public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
                 for(QueryDocumentSnapshot snapshot: queryDocumentSnapshots){
-                    Chat chat =  new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+                    Chat chat =  snapshot.toObject(Chat.class);
                     chatsList.add(chat);
                 }
                 chats.postValue(chatsList);

@@ -74,6 +74,7 @@ public class GroupNavigationFragment extends BaseFragment {
 
         initializeDataFromGroup();
 
+        fragmentGroupNavigationBinding.showTabs.setTabTextColors( getResources().getColor(R.color.colorTabTextUnselected),getResources().getColor(R.color.colorTabTextSelected));
         return fragmentGroupNavigationBinding.getRoot();
     }
 

@@ -81,7 +81,7 @@ public class  ChatFragment extends BaseFragment {
     }
 
     private void setupRecyclerView(User user, List<Chat> chats) {
-        adapter = new ChatFragmentAdapter(user, getContext(), chats);
+        adapter = new ChatFragmentAdapter(getContext(), chats);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         adapter.notifyDataSetChanged();

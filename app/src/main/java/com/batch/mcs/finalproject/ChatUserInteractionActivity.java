@@ -6,27 +6,21 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Toast;
 
-import com.batch.mcs.finalproject.adapters.UserGroupListAdapter;
 import com.batch.mcs.finalproject.databinding.ActivityChatUserInteractionBinding;
 import com.batch.mcs.finalproject.interfaces.ChatItem;
 import com.batch.mcs.finalproject.models.Chat;
-import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.models.Message;
-import com.batch.mcs.finalproject.models.MockFactory;
 import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.ChatViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 
 public class ChatUserInteractionActivity extends AppCompatActivity {
@@ -66,7 +60,7 @@ public class ChatUserInteractionActivity extends AppCompatActivity {
                 if(binding.etFragmentChatUserInteraction.getText() != null) {
                     String query = binding.etFragmentChatUserInteraction.getText().toString();
                     createMessage(query,chatId,userId);
-                    //chatViewModel.
+
 
                 }else{
                     Toast.makeText(ChatUserInteractionActivity.this, "No Text was Inputted", Toast.LENGTH_SHORT).show();

@@ -19,7 +19,7 @@
     <color name="colorMenuUserStatusBackground">#25000000</color>
     <color name="colorMenuOption">#747474</color>
     <color name="colorUserMenuBackground">#EAE7DC</color>
-    <color name="colorFragmentBackground">#fff</color>
+    <color name="colorFragmentBackground">@color/colorActivityBackground</color>
     <color name="colorChatTimestampText">#b9b9b9</color>
     <color name="colorTabBackground">#14A76C</color>
     <color name="tv_chat_receiver_text_color">#000</color>

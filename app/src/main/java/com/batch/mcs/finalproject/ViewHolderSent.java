@@ -1,14 +1,9 @@
 package com.batch.mcs.finalproject;
 
-import android.databinding.ViewDataBinding;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.batch.mcs.finalproject.databinding.RecycleviewChatUserInteractionReceiveItemBinding;
-import com.batch.mcs.finalproject.databinding.RecycleviewChatUserInteractionSentItemBinding;
-
-import io.opencensus.stats.ViewData;
+import com.batch.mcs.finalproject.interfaces.ChatItem;
 
 public class ViewHolderSent extends ViewHolder{
     private final TextView mTextView;

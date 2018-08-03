@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -90,7 +91,7 @@ public class FirebaseDatabase {
 
         DocumentReference newMessageRef = db.collection("messages").document(message.getId());
         String myMId = newMessageRef.getId();
-        //message.setId(myMId);
+        message.setId(myMId);
         newMessageRef.set(message);
 
         return myMId;
@@ -387,61 +388,6 @@ public class FirebaseDatabase {
             return mutableLiveData;
         }
 
-//    public MutableLiveData<List<Chat>> loadChatUsers(User user, final MutableLiveData<List<Chat>> mutableLiveData) {
-//        final List<Chat> chats = new ArrayList<>();
-//
-//        for (String idChat : user.getChats().keySet()) {
-//            final DocumentReference docRef = db.collection("chats").document(idChat);
-//            docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-//                @Override
-//                public void onEvent(@Nullable DocumentSnapshot snapshot,
-//                                    @Nullable FirebaseFirestoreException e) {
-//                    try {
-//                        if (e != null) {
-//                            throw e;
-//                        } else {
-//                            Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
-//                            chats.add(chat);
-//
-//                        }
-//                    } catch (Exception ex) {
-//                        ex.printStackTrace();
-//                    }
-//
-//                }
-//
-//            });
-//        }
-//
-//        mutableLiveData.postValue(chats);
-//        return mutableLiveData;
-//
-//    }
-
-//    public MutableLiveData<Chat> loadChat(String idChat, final MutableLiveData<Chat> mutableLiveData) {
-//
-//        final DocumentReference docRef = db.collection("chats").document(idChat);
-//        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-//            @Override
-//            public void onEvent(@Nullable DocumentSnapshot snapshot,
-//                                @Nullable FirebaseFirestoreException e) {
-//                try {
-//                    if (e != null) {
-//                        throw e;
-//                    } else {
-//                        Chat chat = new Gson().fromJson(snapshot.getData().toString(), Chat.class);
-//                        mutableLiveData.setValue(chat);
-//                    }
-//                } catch (Exception ex) {
-//                    ex.printStackTrace();
-//                }
-//
-//            }
-//
-//        });
-//
-//        return mutableLiveData;
-//    }
         public void loadChatMessages (Activity activity, String chatId, final MutableLiveData<List<Message>> mutableLiveData){
             final List<Message> messages = new ArrayList<>();
 

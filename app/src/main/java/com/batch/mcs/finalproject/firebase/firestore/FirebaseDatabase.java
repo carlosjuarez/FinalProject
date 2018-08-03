@@ -110,7 +110,7 @@ public class FirebaseDatabase {
                     if (e != null) {
                         throw e;
                     } else {
-                        User user = new Gson().fromJson(snapshot.getData().toString(), User.class);
+                        User user = snapshot.toObject(User.class);
                         mutableLiveData.setValue(user);
                     }
                 } catch (Exception ex) {
@@ -315,7 +315,7 @@ public class FirebaseDatabase {
             @Override
             public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
                 for(QueryDocumentSnapshot snapshot: queryDocumentSnapshots){
-                    Chat chat =  new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+                    Chat chat =  snapshot.toObject(Chat.class);
                     chatsList.add(chat);
                 }
                 chats.postValue(chatsList);
@@ -326,7 +326,7 @@ public class FirebaseDatabase {
             @Override
             public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
                 for(QueryDocumentSnapshot snapshot: queryDocumentSnapshots){
-                    Chat chat =  new Gson().fromJson(snapshot.getData().toString(), Chat.class);
+                    Chat chat =  snapshot.toObject(Chat.class);
                     chatsList.add(chat);
                 }
                 chats.postValue(chatsList);

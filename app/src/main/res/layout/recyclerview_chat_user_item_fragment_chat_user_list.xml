@@ -41,7 +41,7 @@
                 android:layout_width="@dimen/no_dimension"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:text="@{groupMember.name +' ' + groupMember.lastName}"
+                bind:text="@{groupMember.name +' ' + groupMember.lastName}"
                 android:maxLines="1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/floatingActionButton_add_user"

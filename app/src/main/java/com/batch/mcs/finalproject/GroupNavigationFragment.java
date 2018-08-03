@@ -60,6 +60,7 @@ public class GroupNavigationFragment extends BaseFragment {
         }
         viewPager.setAdapter(viewPagerAdapter);
         fragmentGroupNavigationBinding.showTabs.setupWithViewPager(viewPager);
+        fragmentGroupNavigationBinding.showTabs.setTabTextColors( getResources().getColor(R.color.colorTabTextUnselected),getResources().getColor(R.color.colorTabTextSelected));
         return fragmentGroupNavigationBinding.getRoot();
     }
 

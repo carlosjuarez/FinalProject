@@ -57,6 +57,7 @@ public class GeneralNavigationFragment extends BaseFragment {
         }
         viewPager.setAdapter(viewPagerAdapter);
         fragmentBinding.showTabs.setupWithViewPager(viewPager);
+        fragmentBinding.showTabs.setTabTextColors( getResources().getColor(R.color.colorTabTextUnselected),getResources().getColor(R.color.colorTabTextSelected));
         return fragmentBinding.getRoot();
     }
 

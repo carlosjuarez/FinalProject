@@ -59,6 +59,9 @@ public class GroupFeedFragment extends BaseFragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                if(feedEventListAdapter!=null){
+                    feedEventListAdapter.getFilter().filter(newText);
+                }
                 return false;
             }
         });

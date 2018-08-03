@@ -69,7 +69,7 @@ public class ChatFragmentAdapter extends RecyclerView.Adapter<ChatFragmentAdapte
 
     @Override
     public int getItemCount() {
-        return chatList.size();
+        return chatListFilter.size();
     }
 
     @Override

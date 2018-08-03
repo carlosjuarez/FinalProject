@@ -75,7 +75,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/input_margin_start_to_end"
                 android:layout_marginTop="@dimen/input_margin_top_to_bottom"
-                android:text="@{event.price}"
                 app:layout_constraintStart_toEndOf="@+id/img_feeditem_image"
                 app:layout_constraintTop_toBottomOf="@+id/tv_feeditem_location" />
 

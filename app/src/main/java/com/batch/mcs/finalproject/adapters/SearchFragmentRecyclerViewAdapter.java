@@ -43,10 +43,11 @@ public class SearchFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Sear
         final Group group = filteredGroups.get(position);
         holder.binding.setVariable(BR.groupItem, group);
         CardView cardView = holder.binding.cvGroupSearchView;
-        cardView.setOnClickListener(new View.OnClickListener() {
+        cardView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onLongClick(View view) {
                 listener.clickListener(group);
+                return false;
             }
         });
     }

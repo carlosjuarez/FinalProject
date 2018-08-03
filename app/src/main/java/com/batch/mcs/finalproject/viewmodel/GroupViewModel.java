@@ -77,8 +77,8 @@ public class GroupViewModel extends ViewModel {
     }
 
     //Calendar feed filter
-    public void filterFeedCalendar(int year,int month, int day) {
-        SelectDate selectDate = new SelectDate(year,month,day);
+    public void filterFeedCalendar(String string) {
+        SelectDate selectDate = new SelectDate(0,0,0,string);
         selectDateFilter.setValue(selectDate);
     }
 
@@ -98,9 +98,9 @@ public class GroupViewModel extends ViewModel {
     public void createChat(User member) {
         Chat chat = new Chat();
         chat.setAdmin(user.getId());
-        Map<String,Boolean> members = new HashMap<>();
-        members.put(member.getId(),true);
-        chat.setMembers(members);
+        chat.setAdminName(user.getName()+" "+user.getLastName());
+        chat.setMember(member.getId());
+        chat.setMemberName(member.getName()+" "+member.getLastName());
         firebaseDatabase.saveChat(chat);
     }
 }

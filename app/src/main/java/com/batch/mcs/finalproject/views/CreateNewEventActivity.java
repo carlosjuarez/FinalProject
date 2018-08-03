@@ -30,12 +30,12 @@ public class CreateNewEventActivity extends AppCompatActivity{
         activityCreateGroupBinding.setEventViewModel(createEventViewModel);
     }
 
-    public void CreateNewGroupViewModel(View view){
+    public void CreateNewEventViewModel(View view) {
         createEventViewModel.createNewEvent();
         finish();
     }
 
-    public void CreateNewGroupCancel(View view){
+    public void CreateNewEventCancel(View view) {
         finish();
     }
 }

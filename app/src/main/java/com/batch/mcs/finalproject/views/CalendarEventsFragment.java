@@ -19,6 +19,8 @@ import com.batch.mcs.finalproject.viewmodel.AppViewModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -42,7 +44,9 @@ public class CalendarEventsFragment extends BaseFragment {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
                 //Pass a date to this method
-                appViewModel.filterFeedCalendar(year,month,day);
+                Calendar calendar = new GregorianCalendar( year, month, day );
+                SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy",Locale.getDefault());
+                appViewModel.filterFeedCalendar(sdf.format(calendar.getTimeInMillis()));
             }
         });
 

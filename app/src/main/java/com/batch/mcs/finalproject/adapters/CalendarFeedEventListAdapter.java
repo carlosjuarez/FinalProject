@@ -44,7 +44,7 @@ public class CalendarFeedEventListAdapter extends RecyclerView.Adapter<CalendarF
 
     @Override
     public int getItemCount() {
-        return eventList.size();
+        return eventListFiltered.size();
     }
 
     @Override

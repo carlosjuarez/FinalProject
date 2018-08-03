@@ -57,7 +57,7 @@ public class GroupCalendarFeedDisplayFragment extends Fragment {
         groupviewModel.getSelectDateFilter().observe(this, new Observer<SelectDate>() {
             @Override
             public void onChanged(@Nullable SelectDate selectDate) {
-                calendarFeedEventListAdapter.getFilter().filter(selectDate.getMonth()+"."+selectDate.getDay()+"."+selectDate.getYear());
+                calendarFeedEventListAdapter.getFilter().filter(selectDate.getDate());
             }
         });
 

@@ -41,7 +41,7 @@ public class FeedEventListAdapter extends RecyclerView.Adapter<FeedEventListAdap
 
     @Override
     public int getItemCount() {
-        return eventList.size();
+        return eventListFiltered.size();
     }
 
     @Override

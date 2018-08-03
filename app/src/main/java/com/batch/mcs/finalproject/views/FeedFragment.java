@@ -61,6 +61,9 @@ public class FeedFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                if(feedEventListAdapter!=null){
+                    feedEventListAdapter.getFilter().filter(newText);
+                }
                 return false;
             }
         });

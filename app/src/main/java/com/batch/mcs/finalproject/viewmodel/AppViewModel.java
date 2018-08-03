@@ -106,8 +106,8 @@ public class AppViewModel extends ViewModel {
 
 
     //Calendar feed filter
-    public void filterFeedCalendar(int year,int month, int day) {
-        SelectDate selectDate = new SelectDate(year,month,day);
+    public void filterFeedCalendar(String string) {
+        SelectDate selectDate = new SelectDate(0,0,0,string);
         selectDateFilter.setValue(selectDate);
     }
 
@@ -121,7 +121,7 @@ public class AppViewModel extends ViewModel {
     }
 
     public void addGroupToUser(Group group) {
-        User user = getLiveUser().getValue();
+        User user = liveUser.getValue();
         if(group.getIdMembers()!=null){
             group.getIdMembers().put(user.getId(),true);
         }else{

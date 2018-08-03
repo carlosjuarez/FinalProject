@@ -38,7 +38,7 @@ public class SearchFragment extends BaseFragment implements ViewClickListener {
 
         fragmentSearchBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false);
 
-        appViewModel = ViewModelProviders.of(this).get(AppViewModel.class);
+        appViewModel = ViewModelProviders.of(getActivity()).get(AppViewModel.class);
 
         appViewModel.initAllGroups();
 

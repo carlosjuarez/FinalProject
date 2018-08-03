@@ -99,7 +99,7 @@ public class FirebaseDatabase {
                     if (e != null) {
                         throw e;
                     } else {
-                        User user = new Gson().fromJson(snapshot.getData().toString(), User.class);
+                        User user = snapshot.toObject(User.class);
                         mutableLiveData.setValue(user);
                     }
                 } catch (Exception ex) {
@@ -215,9 +215,14 @@ public class FirebaseDatabase {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
-                            User user = document.toObject(User.class);
-                            usersList.add(user);
-                            if(userIds.size() == usersList.size()){
+                            try{
+                                User user = document.toObject(User.class);
+                                usersList.add(user);
+                                if(userIds.size() == usersList.size()){
+                                    mutableLiveData.postValue(usersList);
+                                }
+                            }catch (Exception e){
+                                e.printStackTrace();
                                 mutableLiveData.postValue(usersList);
                             }
                         } else {
@@ -363,7 +368,7 @@ public class FirebaseDatabase {
         }
 
         public void updateGroup (Group group){
-            db.collection("groups").document(group.getId()).set(group, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
+            db.collection("group").document(group.getId()).set(group, SetOptions.merge()).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     e.printStackTrace();

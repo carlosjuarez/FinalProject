@@ -58,7 +58,7 @@ public class CalendarFeedFragment extends BaseFragment {
             @Override
             public void onChanged(@Nullable SelectDate selectDate) {
                 if(selectDate!=null && calendarFeedEventListAdapter!=null){
-                    calendarFeedEventListAdapter.getFilter().filter(selectDate.getMonth()+"."+selectDate.getDay()+"."+selectDate.getYear());
+                    calendarFeedEventListAdapter.getFilter().filter(selectDate.getDate());
                 }
             }
         });

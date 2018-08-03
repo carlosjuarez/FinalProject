@@ -2,6 +2,7 @@ package com.batch.mcs.finalproject;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -21,15 +22,18 @@ import com.batch.mcs.finalproject.interfaces.CallGroupDisplayListener;
 import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
+import com.batch.mcs.finalproject.viewmodel.CreateGroupViewModel;
 import com.batch.mcs.finalproject.viewmodel.TabViewModel;
 
+import java.util.List;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements CallGroupDisplayListener {
 
-    private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
-    private NavigationView navigationView;
+    private DrawerUserInfoBinding drawerUserInfoBinding;
+    private AppViewModel appViewModel;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements CallGroupDisplayL
         setSupportActionBar(toolbar);
 
         drawerLayout = activityBinding.drawerLayout;
-        toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout,toolbar, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -48,31 +52,56 @@ public class MainActivity extends AppCompatActivity implements CallGroupDisplayL
 
         String userId = Objects.requireNonNull(getIntent().getExtras()).getString(getString(R.string.parameter_userid));
 
-        final DrawerUserInfoBinding drawerUserInfoBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.drawer_user_info, activityBinding.navView, false);
-        navigationView = activityBinding.navView;
+        drawerUserInfoBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.drawer_user_info, activityBinding.navView, false);
+        NavigationView navigationView = activityBinding.navView;
         navigationView.addHeaderView(drawerUserInfoBinding.getRoot());
 
-        final AppViewModel appViewModel = ViewModelProviders.of(this).get(AppViewModel.class);
+        drawerUserInfoBinding.btnDrawerCreategroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CreateNewGroupActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(getString(R.string.parameter_user),appViewModel.getLiveUser().getValue());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+        initializeData(userId);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.frameLayoutContent,GeneralNavigationFragment.getInstance()).commit();
+
+    }
+
+    private void initializeData(String userId) {
+        appViewModel = ViewModelProviders.of(this).get(AppViewModel.class);
         appViewModel.initUser(userId);
         appViewModel.getLiveUser().observe(this, new Observer<User>() {
             @Override
             public void onChanged(@Nullable User user) {
-                appViewModel.initUserGroups();
+                appViewModel.initMyGroups();
                 drawerUserInfoBinding.setUser(user);
             }
         });
-
-        getSupportFragmentManager().beginTransaction().add(R.id.frameLayoutContent,GeneralNavigationFragment.getInstance()).commit();
-
+        appViewModel.initGroups(userId);
+        appViewModel.getLiveGroupMember().observe(this, new Observer<List<Group>>() {
+            @Override
+            public void onChanged(@Nullable List<Group> groups) {
+                appViewModel.initEvents(groups);
+            }
+        });
     }
 
 
     @Override
     public void showGroupNavigation(Group group) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frameLayoutContent, GroupNavigationFragment.newInstance(group));
+        transaction.replace(R.id.frameLayoutContent, GroupNavigationFragment.newInstance(getString(R.string.parameter_group),group,appViewModel.getLiveUser().getValue()));
         transaction.addToBackStack(null);
         transaction.commit();
+        if(drawerLayout!=null){
+            drawerLayout.closeDrawers();
+        }
     }
 
     @Override

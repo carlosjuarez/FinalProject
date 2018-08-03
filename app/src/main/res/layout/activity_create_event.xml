@@ -151,7 +151,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@id/til_event_location"
-                        app:layout_constraintBottom_toTopOf="@id/til_event_price"
+                        app:layout_constraintBottom_toTopOf="@id/btn_create_event_submit"
                         android:layout_marginBottom="@dimen/activity_vertical_padding"
                         android:paddingTop="@dimen/activity_vertical_padding"
                         android:layout_marginEnd="@dimen/input_margin_start_to_end"
@@ -167,33 +167,8 @@
                             android:layout_marginEnd="@dimen/activity_vertical_padding"
                             android:layout_marginStart="@dimen/activity_vertical_padding"
                             android:maxLines="1"
-                            android:text="@={eventViewModel.eventLocation}"/>
+                            android:text="@={eventViewModel.eventDate}"/>
                     </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/til_event_price"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@id/til_event_date"
-                        app:layout_constraintBottom_toTopOf="@id/btn_create_event_submit"
-                        android:layout_marginBottom="@dimen/activity_vertical_padding"
-                        android:paddingTop="@dimen/activity_vertical_padding"
-                        android:layout_marginEnd="@dimen/input_margin_start_to_end"
-                        android:layout_marginStart="@dimen/input_margin_start_to_end"
-                        android:paddingBottom="@dimen/margin_vertical">
-
-                        <EditText
-                            android:id="@+id/et_event_city_price"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/et_hint_event_price"
-                            android:inputType="text"
-                            android:layout_marginEnd="@dimen/activity_vertical_padding"
-                            android:layout_marginStart="@dimen/activity_vertical_padding"
-                            android:maxLines="1"
-                            android:text="@={eventViewModel.eventLocation}"/>
-                    </android.support.design.widget.TextInputLayout>
-
 
                     <Button
                         android:id="@+id/btn_create_event_submit"
@@ -205,7 +180,7 @@
                         app:layout_constraintBottom_toTopOf="@id/btn_create_event_cancel"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/til_event_description"
+                        app:layout_constraintTop_toBottomOf="@id/til_event_date"
                         android:onClick="CreateNewEventViewModel"/>
 
                     <Button

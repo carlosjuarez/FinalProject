@@ -11,7 +11,7 @@ import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.CreateGroupViewModel;
 import com.batch.mcs.finalproject.viewmodel.RegisterUserViewModel;
 
-public class CreateNewGroup  extends AppCompatActivity{
+public class CreateNewGroupActivity extends AppCompatActivity{
     CreateGroupViewModel createNewGroupViewModel;
     ActivityCreateGroupBinding activityCreateGroupBinding;
 

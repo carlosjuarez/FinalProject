@@ -38,47 +38,45 @@ public class SearchFragment extends BaseFragment implements ViewClickListener {
 
         fragmentSearchBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false);
 
-        view = fragmentSearchBinding.getRoot();
+        appViewModel = ViewModelProviders.of(getActivity()).get(AppViewModel.class);
 
-        appViewModel = ViewModelProviders.of(this).get(AppViewModel.class);
+        appViewModel.initAllGroups();
+
+        recyclerView = fragmentSearchBinding.rvSearchLayout;
+        recyclerView.setHasFixedSize(false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        SearchView searchView = fragmentSearchBinding.svSearchLayout;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if(adapter!=null){
+                    adapter.getFilter().filter(query);
+                }
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         appViewModel.getLiveGroupAll().observe(this, new Observer<List<Group>>() {
             @Override
             public void onChanged(@Nullable List<Group> groups) {
 
-                SearchView searchView = fragmentSearchBinding.svSearchLayout;
-                search(searchView);
-
                 adapter = new SearchFragmentRecyclerViewAdapter(groups, SearchFragment.this);
-                recyclerView = fragmentSearchBinding.rvSearchLayout;
-                recyclerView.setHasFixedSize(false);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                 recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
         });
 
-        return view;
-    }
-
-    private void search(SearchView searchView) {
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                adapter.getFilter().filter(newText);
-                return true;
-            }
-        });
+        return fragmentSearchBinding.getRoot();
     }
 
     @Override
     public void clickListener(Group group) {
-//        appViewModel.addGroup(group);
+        appViewModel.addGroupToUser(group);
     }
 }

@@ -5,11 +5,13 @@ public class SelectDate {
     private int Month;
     private int Day;
     private int Year;
+    private String Date;
 
-    public SelectDate(int year, int month, int day) {
+    public SelectDate(int year, int month, int day, String date) {
         Month = month;
         Day = day;
         Year = year;
+        Date = date;
     }
 
     public int getMonth() {
@@ -34,5 +36,13 @@ public class SelectDate {
 
     public void setYear(int year) {
         Year = year;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
     }
 }

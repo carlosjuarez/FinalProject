@@ -23,7 +23,9 @@
         <activity android:name=".PasswordForgottenActivity"></activity>
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".ResetPasswordActivity"></activity>
+        <activity android:name=".CreateNewGroupActivity"></activity>
         <activity android:name=".ChatUserInteractionActivity"></activity>
+        <activity android:name=".views.CreateNewEventActivity"></activity>
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.batch.mcs.finalproject.views;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,7 +19,7 @@ import com.batch.mcs.finalproject.adapters.FeedEventListAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentGroupFeedBinding;
 import com.batch.mcs.finalproject.models.Event;
 import com.batch.mcs.finalproject.models.Group;
-import com.batch.mcs.finalproject.viewmodel.AppViewModel;
+import com.batch.mcs.finalproject.viewmodel.GroupViewModel;
 
 import java.util.List;
 
@@ -42,10 +43,10 @@ public class GroupFeedFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentGroupFeedBinding fragmentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_group_feed, container, false);
-        final AppViewModel appViewModel = ViewModelProviders.of(getActivity()).get(AppViewModel.class);
+        final FragmentGroupFeedBinding fragmentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_group_feed, container, false);
+        final GroupViewModel groupViewModel = ViewModelProviders.of(getActivity()).get(GroupViewModel.class);
 
         fragmentBinding.svSearchLayout.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -58,6 +59,9 @@ public class GroupFeedFragment extends BaseFragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                if(feedEventListAdapter!=null){
+                    feedEventListAdapter.getFilter().filter(newText);
+                }
                 return false;
             }
         });
@@ -67,17 +71,30 @@ public class GroupFeedFragment extends BaseFragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(true);
 
-        appViewModel.getLiveEventAll().observe(this, new Observer<List<Event>>() {
+        groupViewModel.getLiveEvents().observe(this, new Observer<List<Event>>() {
             @Override
             public void onChanged(@Nullable List<Event> events) {
                 setupRecyclerView(events);
             }
         });
 
-        appViewModel.getLiveGroupMember().observe(this, new Observer<List<Group>>() {
+        groupViewModel.getLiveGroup().observe(this, new Observer<Group>() {
             @Override
-            public void onChanged(@Nullable List<Group> groups) {
-                appViewModel.initAllEvents();
+            public void onChanged(@Nullable Group group) {
+                if(group.getIdAdmin().equals(groupViewModel.getUser().getId())){
+                    fragmentBinding.btnCreateEvent.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        fragmentBinding.btnCreateEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),CreateNewEventActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(getString(R.string.parameter_group),groupViewModel.getLiveGroup().getValue());
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 

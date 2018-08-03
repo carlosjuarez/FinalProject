@@ -29,11 +29,25 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_create_event"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sv_search_layout"
             tools:listitem="@layout/recyclerview_feed_item" />
+
+        <Button
+            android:id="@+id/btn_create_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_event"
+            android:layout_marginTop="@dimen/margin_top_bottom"
+            android:layout_marginBottom="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_display_feed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"/>
+
 
     </android.support.constraint.ConstraintLayout>
 </layout>

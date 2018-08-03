@@ -4,10 +4,12 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.databinding.RecyclerviewGroupInformationItemFragmentGroupListBinding;
+import com.batch.mcs.finalproject.interfaces.CallGroupDisplayListener;
 import com.batch.mcs.finalproject.models.Group;
 
 import java.util.List;
@@ -15,9 +17,11 @@ import java.util.List;
 public class UserGroupListAdapter extends RecyclerView.Adapter<UserGroupListAdapter.ViewHolder> {
 
     private List<Group> groupList;
+    CallGroupDisplayListener listener;
 
-    public UserGroupListAdapter(List<Group> groups){
+    public UserGroupListAdapter(List<Group> groups, CallGroupDisplayListener listener){
         this.groupList = groups;
+        this.listener = listener;
     }
 
 
@@ -30,8 +34,14 @@ public class UserGroupListAdapter extends RecyclerView.Adapter<UserGroupListAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Group group = groupList.get(position);
+        final Group group = groupList.get(position);
         holder.binding.setGroup(group);
+        holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.showGroupNavigation(group);
+            }
+        });
     }
 
 

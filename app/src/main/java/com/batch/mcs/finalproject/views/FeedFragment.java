@@ -61,6 +61,9 @@ public class FeedFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                if(feedEventListAdapter!=null){
+                    feedEventListAdapter.getFilter().filter(newText);
+                }
                 return false;
             }
         });
@@ -74,13 +77,6 @@ public class FeedFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<Event> events) {
                 setupRecyclerView(events);
-            }
-        });
-
-        appViewModel.getLiveGroupMember().observe(this, new Observer<List<Group>>() {
-            @Override
-            public void onChanged(@Nullable List<Group> groups) {
-                appViewModel.initAllEvents();
             }
         });
 

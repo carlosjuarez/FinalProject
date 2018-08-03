@@ -54,17 +54,12 @@ public class CalendarFeedFragment extends BaseFragment {
             }
         });
 
-        appViewModel.getLiveGroupMember().observe(this, new Observer<List<Group>>() {
-            @Override
-            public void onChanged(@Nullable List<Group> groups) {
-                appViewModel.initAllEvents();
-            }
-        });
-
         appViewModel.getSelectDateFilter().observe(this, new Observer<SelectDate>() {
             @Override
             public void onChanged(@Nullable SelectDate selectDate) {
-                calendarFeedEventListAdapter.getFilter().filter(selectDate.getMonth()+"."+selectDate.getDay()+"."+selectDate.getYear());
+                if(selectDate!=null && calendarFeedEventListAdapter!=null){
+                    calendarFeedEventListAdapter.getFilter().filter(selectDate.getDate());
+                }
             }
         });
 

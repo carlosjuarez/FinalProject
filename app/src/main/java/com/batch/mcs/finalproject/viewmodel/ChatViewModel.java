@@ -32,6 +32,10 @@ public class ChatViewModel extends ViewModel {
         firebaseDatabase.loadChatMessages(activity, chatId, liveUserMessages);
     }
 
+    public void saveMessage(Message message) {
+        firebaseDatabase.saveMessage(message);
+    }
+
     public MutableLiveData<Chat> getLiveChat() {
         return liveChat;
     }

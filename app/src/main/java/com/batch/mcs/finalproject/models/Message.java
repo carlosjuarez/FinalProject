@@ -8,6 +8,22 @@ import java.util.Map;
 
 public class Message implements Parcelable {
 
+    private String chatId;
+    private String creator;
+    private String id;
+    private String content;
+
+    public Message() {
+        //Empty constructor
+    }
+
+    protected Message(Parcel in) {
+        chatId = in.readString();
+        creator = in.readString();
+        id = in.readString();
+        content = in.readString();
+    }
+
     public static final Creator<Message> CREATOR = new Creator<Message>() {
         @Override
         public Message createFromParcel(Parcel in) {
@@ -20,24 +36,26 @@ public class Message implements Parcelable {
         }
     };
 
-    private String id;
-    private String content;
-
-    public Message() {
-        //Empty constructor
+    public String getChatId() {
+        return chatId;
     }
 
-    protected Message(Parcel in) {
-        id = in.readString();
-        content = in.readString();
+    public void setChatId(String chatId) {
+        this.chatId = chatId;
     }
 
-    //All getters
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
     public String getId() {
         return id;
     }
 
-    //All setters
     public void setId(String id) {
         this.id = id;
     }
@@ -59,16 +77,16 @@ public class Message implements Parcelable {
         return result;
     }
 
-    //Parcelable
     @Override
     public int describeContents() {
         return 0;
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(id);
-        parcel.writeString(content);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(chatId);
+        dest.writeString(creator);
+        dest.writeString(id);
+        dest.writeString(content);
     }
-
 }

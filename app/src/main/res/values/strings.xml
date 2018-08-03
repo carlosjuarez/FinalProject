@@ -82,4 +82,7 @@
     <string name="et_hint_event_price">Price</string>
     <string name="navigation_drawer_open">Open Menu</string>
     <string name="navigation_drawer_close">Close Menu</string>
+    <string name="create_group">Create Group</string>
+    <string name="add_user">Find People</string>
+    <string name="create_event">Add event</string>
 </resources>

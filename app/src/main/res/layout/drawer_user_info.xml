@@ -90,26 +90,24 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_vertical_double"
             android:layout_marginBottom="@dimen/margin_vertical_double"
-            app:layout_constraintBottom_toTopOf="@id/fr_drawer_user_info_friends_list_fragment"
+            app:layout_constraintBottom_toTopOf="@id/btn_drawer_creategroup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cv_drawer_user_info_user_card_view_layout"
             app:layout_constraintVertical_weight="1"
             tools:layout="@layout/fragment_group_list"/>
 
-        <fragment
-            android:id="@+id/fr_drawer_user_info_friends_list_fragment"
-            android:name="com.batch.mcs.finalproject.views.UserListFragment"
+        <Button
+            android:id="@+id/btn_drawer_creategroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_vertical_double"
-            android:layout_marginTop="@dimen/margin_vertical_double"
+            android:text="@string/create_group"
+            android:layout_marginTop="@dimen/margin_top_bottom"
             app:layout_constraintBottom_toTopOf="@id/ll_drawer_user_info_setting_button_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fr_drawer_user_info_group_list_fragment"
-            app:layout_constraintVertical_weight="1"
-            tools:layout="@layout/fragment_user_list"/>
+            />
 
         <LinearLayout
             android:id="@+id/ll_drawer_user_info_setting_button_layout"

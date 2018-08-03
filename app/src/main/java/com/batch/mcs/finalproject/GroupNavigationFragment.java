@@ -1,8 +1,11 @@
 package com.batch.mcs.finalproject;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -12,6 +15,8 @@ import android.view.ViewGroup;
 import com.batch.mcs.finalproject.adapters.ViewPagerAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentGroupNavigationBinding;
 import com.batch.mcs.finalproject.models.Group;
+import com.batch.mcs.finalproject.models.User;
+import com.batch.mcs.finalproject.viewmodel.GroupViewModel;
 import com.batch.mcs.finalproject.views.GroupCalendarDisplayFragment;
 import com.batch.mcs.finalproject.views.GroupFeedFragment;
 
@@ -21,14 +26,18 @@ import java.util.Map;
 
 public class GroupNavigationFragment extends BaseFragment {
 
+    private Group group;
+    private User user;
+
     public GroupNavigationFragment() {
         // Required empty public constructor
     }
 
-    public static GroupNavigationFragment newInstance(Group group) {
+    public static GroupNavigationFragment newInstance(String tag, Group group, User user) {
         GroupNavigationFragment fragment = new GroupNavigationFragment();
         Bundle args = new Bundle();
-        args.putParcelable(Resources.getSystem().getString(R.string.parameter_group), group);
+        args.putParcelable(tag, group);
+        args.putParcelable("parameter_user", user);
         fragment.setArguments(args);
         return fragment;
     }
@@ -37,8 +46,9 @@ public class GroupNavigationFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            //Obtener el grupo y el usuario
-            //Me supongo que aqui se debe de crear un viewModel de grupo con los datos de eventos y cosas asi
+            Bundle bundle = getArguments();
+            group = bundle.getParcelable(getString(R.string.parameter_group));
+            user = bundle.getParcelable("parameter_user");
         }
     }
 
@@ -60,7 +70,23 @@ public class GroupNavigationFragment extends BaseFragment {
         }
         viewPager.setAdapter(viewPagerAdapter);
         fragmentGroupNavigationBinding.showTabs.setupWithViewPager(viewPager);
+
+        initializeDataFromGroup();
+
         return fragmentGroupNavigationBinding.getRoot();
+    }
+
+    private void initializeDataFromGroup() {
+        final GroupViewModel groupViewModel = ViewModelProviders.of(getActivity()).get(GroupViewModel.class);
+        groupViewModel.initGroup(group);
+        groupViewModel.getLiveGroup().observe(this, new Observer<Group>() {
+            @Override
+            public void onChanged(@Nullable Group group) {
+                groupViewModel.initEvents(group);
+                groupViewModel.initMembers(group);
+            }
+        });
+
     }
 
     @Override

@@ -23,6 +23,7 @@
         <activity android:name=".PasswordForgottenActivity"></activity>
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".ResetPasswordActivity"></activity>
+        <activity android:name=".CreateNewGroupActivity"></activity>
     </application>
 
 </manifest>

@@ -36,7 +36,8 @@ public class CreateEventViewModel extends ViewModel {
     public void saveEvent(Event event){
         firebaseFirestore= FirebaseFirestore.getInstance();
         firebaseDatabase = new FirebaseDatabase(firebaseFirestore);
-        String gId = firebaseDatabase.saveEvent(group,event);
+        event.setAdminId(group.getId());
+        String gId = firebaseDatabase.saveEvent(event);
         if(group.getIdEvents()!=null){
             group.getIdEvents().put(gId, true);
         }else{

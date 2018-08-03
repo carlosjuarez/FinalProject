@@ -14,6 +14,7 @@ import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.databinding.FragmentCalendarBinding;
 import com.batch.mcs.finalproject.databinding.FragmentGroupCalendarBinding;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
+import com.batch.mcs.finalproject.viewmodel.GroupViewModel;
 
 public class GroupCalendarDisplayFragment extends BaseFragment {
 
@@ -25,7 +26,6 @@ public class GroupCalendarDisplayFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentGroupCalendarBinding fragmentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_group_calendar,container,false);
-        AppViewModel appViewModel = ViewModelProviders.of(getActivity()).get(AppViewModel.class);
         return fragmentBinding.getRoot();
     }
 }

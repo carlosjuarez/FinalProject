@@ -77,13 +77,6 @@ public class FeedFragment extends Fragment {
             }
         });
 
-        appViewModel.getLiveGroupMember().observe(this, new Observer<List<Group>>() {
-            @Override
-            public void onChanged(@Nullable List<Group> groups) {
-                appViewModel.initAllEvents();
-            }
-        });
-
         return fragmentBinding.getRoot();
     }
 

@@ -16,11 +16,10 @@ import android.view.ViewGroup;
 import com.batch.mcs.finalproject.BaseFragment;
 import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.adapters.FeedEventListAdapter;
-import com.batch.mcs.finalproject.databinding.FragmentCalendarFeedBinding;
 import com.batch.mcs.finalproject.databinding.FragmentGroupFeedBinding;
 import com.batch.mcs.finalproject.models.Event;
 import com.batch.mcs.finalproject.models.Group;
-import com.batch.mcs.finalproject.viewmodel.AppViewModel;
+import com.batch.mcs.finalproject.viewmodel.GroupViewModel;
 
 import java.util.List;
 
@@ -46,8 +45,8 @@ public class GroupFeedFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentGroupFeedBinding fragmentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_group_feed, container, false);
-        final AppViewModel appViewModel = ViewModelProviders.of(getActivity()).get(AppViewModel.class);
+        final FragmentGroupFeedBinding fragmentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_group_feed, container, false);
+        final GroupViewModel groupViewModel = ViewModelProviders.of(getActivity()).get(GroupViewModel.class);
 
         fragmentBinding.svSearchLayout.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -69,17 +68,18 @@ public class GroupFeedFragment extends BaseFragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(true);
 
-        appViewModel.getLiveEventAll().observe(this, new Observer<List<Event>>() {
+        groupViewModel.getLiveEvents().observe(this, new Observer<List<Event>>() {
             @Override
             public void onChanged(@Nullable List<Event> events) {
                 setupRecyclerView(events);
             }
         });
 
-        appViewModel.getLiveGroupMember().observe(this, new Observer<List<Group>>() {
+        groupViewModel.getLiveGroup().observe(this, new Observer<Group>() {
             @Override
-            public void onChanged(@Nullable List<Group> groups) {
-                appViewModel.initAllEvents();
+            public void onChanged(@Nullable Group group) {
+                if(group.getIdAdmin().equals())
+                fragmentBinding.btnCreateEvent.setVisibility(View.VISIBLE);
             }
         });
 

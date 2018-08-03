@@ -3,7 +3,6 @@ package com.batch.mcs.finalproject.viewmodel;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.ArrayMap;
-import android.view.View;
 
 import com.batch.mcs.finalproject.firebase.firestore.FirebaseDatabase;
 import com.batch.mcs.finalproject.helperobjects.SelectDate;
@@ -12,10 +11,9 @@ import com.batch.mcs.finalproject.models.Event;
 import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.models.Message;
 import com.batch.mcs.finalproject.models.User;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,16 +22,14 @@ public class AppViewModel extends ViewModel {
 
     FirebaseFirestore firebaseFirestore;
     FirebaseDatabase firebaseDatabase;
+
+    //This is just for the groups and events
     private MutableLiveData<User> liveUser = new MutableLiveData<>();
-    private MutableLiveData<Group> liveGroup;
     private MutableLiveData<List<Group>> liveGroupAdmin = new MutableLiveData<>();
     private MutableLiveData<List<Group>> liveGroupMember = new MutableLiveData<>();
-    private MutableLiveData<List<Group>> liveGroupAll ;
     private MutableLiveData<List<Event>> liveEventAll = new MutableLiveData<>();
-    private MutableLiveData<Event> liveEvent;
-    private MutableLiveData<Chat> liveChat;
-    private MutableLiveData<Message> liveMessage;
     private MutableLiveData<List<Chat>> liveUserChats = new MutableLiveData<>();
+
     private MutableLiveData<SelectDate> selectDateFilter = new MutableLiveData<>();
 
     public AppViewModel(){
@@ -41,52 +37,33 @@ public class AppViewModel extends ViewModel {
         firebaseDatabase = new FirebaseDatabase(firebaseFirestore);
     }
 
+    //Get User
     public void initUser(String userId) {
         if (userId != null && !userId.isEmpty()){
             firebaseDatabase.loadUser(userId, liveUser);
         }
     }
 
-    public void initGroup(String idGroup){
-        firebaseDatabase.loadGroup(idGroup, liveGroup);
-    }
-
-    public void initAllEvents() {
-        firebaseDatabase.loadEventsAll(liveUser.getValue(),liveEventAll);
-    }
-
-    public void initUserGroups() {
-        if(liveUser.getValue()!=null){
-            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAdmin);
-            firebaseDatabase.loadGroupMember(liveUser.getValue(), liveGroupMember);
+    //Once i have a user I will get the groups that i own
+    public void initMyGroups() {
+        if (liveUser.getValue() != null) {
+            firebaseDatabase.loadGroupsOwnedByUser(liveUser.getValue(), liveGroupAdmin);
         }
     }
 
-    public void initAllGroups(){
-        if(liveGroupAll == null){
-            liveGroupAll = new MutableLiveData<>();
-            firebaseDatabase.loadGroupAdmin(liveUser.getValue(), liveGroupAll);
-        }
+    public void initGroups(String idUser){
+        firebaseDatabase.loadGroups(idUser, liveGroupMember);
     }
 
-    public void initEvents() {
-        if (liveEvent == null) {
-            liveEvent = new MutableLiveData<>();
-            for (int i = 0; i < liveGroupAdmin.getValue().size(); i++) {
-                Map<String, Boolean> map = liveGroupAdmin.getValue().get(i).getIdEvents();
-                Set<String> set = map.keySet();
-                for (String eId : set) {
-                    firebaseDatabase.loadEvent(eId, liveEvent);
-                }
+    public void initEvents(List<Group> groups) {
+        ArrayList<String> eventIds = new ArrayList<>();
+        for(Group group : groups){
+            for(Map.Entry<String,Boolean> entry : group.getIdEvents().entrySet()){
+                eventIds.add(entry.getKey());
             }
-
-            for (int i = 0; i < liveGroupMember.getValue().size(); i++) {
-                Map<String, Boolean> map = liveGroupMember.getValue().get(i).getIdEvents();
-                Set<String> set = map.keySet();
-                for (String eId : set) {
-                    firebaseDatabase.loadEvent(eId, liveEvent);
-                }
-            }
+        }
+        if(eventIds.size()>0){
+            firebaseDatabase.loadEvents(eventIds,liveEventAll);
         }
     }
 
@@ -96,44 +73,6 @@ public class AppViewModel extends ViewModel {
             liveUserChats = new MutableLiveData<>();
             firebaseDatabase.loadChatUsers(liveUser.getValue(),liveUserChats);
         }
-//        if(liveChat == null){
-//            liveChat = new MutableLiveData<>();
-//            firebaseDatabase.loadChat(liveUser.getValue().getId(), liveChat);
-//        }
-//
-//        if(liveMessage == null){
-//            liveMessage = new MutableLiveData<>();
-//            firebaseDatabase.loadMessage(liveChat.getValue().getId(), liveMessage);
-//        }
-    }
-
-
-
-    public void saveGroup(Group group){
-        String gId = firebaseDatabase.saveGroup(liveUser.getValue(),group);
-        User user = liveUser.getValue();
-        if(user.getMyGroups()!=null){
-            user.getMyGroups().put(gId,true);
-        }else{
-            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
-            map.put(gId,true);
-            user.setMyGroups(map);
-        }
-        updateliveUser(user);
-
-    }
-
-    public void saveEvent(Event event, Group group){
-        String eId = firebaseDatabase.saveEvent(group,event);
-        if(group.getIdEvents()!=null){
-            group.getIdEvents().put(eId,true);
-        }else{
-            Map<String,Boolean> map = new ArrayMap<String, Boolean>();
-            map.put(eId,true);
-            group.setIdEvents(map);
-        }
-        updateliveGroup(group);
-
     }
 
     public void saveChat(Chat chat, User creator, User member){
@@ -164,16 +103,7 @@ public class AppViewModel extends ViewModel {
     }
 
     public void updateliveUser(User user){
-        liveUser.setValue(user);
         firebaseDatabase.updateUser(user);
-    }
-
-    public void updateliveGroup(Group group){
-        firebaseDatabase.updateGroup(group);
-    }
-
-    public void updateliveEvent(Event event){
-        firebaseDatabase.updateEvent(event);
     }
 
     public void updateliveChat(Chat chat){
@@ -183,6 +113,8 @@ public class AppViewModel extends ViewModel {
     public void updateliveMessage(Message message){
         firebaseDatabase.updateMessage(message);
     }
+
+
 
     public MutableLiveData<User> getLiveUser() {
         return liveUser;
@@ -194,22 +126,6 @@ public class AppViewModel extends ViewModel {
 
     public MutableLiveData<List<Group>> getLiveGroupMember() {
         return liveGroupMember;
-    }
-
-    public MutableLiveData<List<Group>> getLiveGroupAll() {
-        return liveGroupAll;
-    }
-
-    public MutableLiveData<Event> getLiveEvent() {
-        return liveEvent;
-    }
-
-    public MutableLiveData<Chat> getLiveChat() {
-        return liveChat;
-    }
-
-    public MutableLiveData<Message> getLiveMessage() {
-        return liveMessage;
     }
 
     public MutableLiveData<List<Chat>> getLiveUserChats() {
@@ -228,6 +144,7 @@ public class AppViewModel extends ViewModel {
     public MutableLiveData<SelectDate> getSelectDateFilter() {
         return selectDateFilter;
     }
+
 
 
 }

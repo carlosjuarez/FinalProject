@@ -2,6 +2,7 @@ package com.batch.mcs.finalproject.views;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,6 +20,7 @@ import com.batch.mcs.finalproject.BaseFragment;
 import com.batch.mcs.finalproject.R;
 import com.batch.mcs.finalproject.adapters.UserGroupListAdapter;
 import com.batch.mcs.finalproject.databinding.FragmentGroupListBinding;
+import com.batch.mcs.finalproject.interfaces.CallGroupDisplayListener;
 import com.batch.mcs.finalproject.models.Group;
 import com.batch.mcs.finalproject.models.User;
 import com.batch.mcs.finalproject.viewmodel.AppViewModel;
@@ -29,6 +31,7 @@ public class GroupListFragment extends BaseFragment {
 
     RecyclerView recyclerView;
     UserGroupListAdapter userGroupListAdapter;
+    CallGroupDisplayListener listener;
 
     public GroupListFragment() {
 
@@ -56,8 +59,19 @@ public class GroupListFragment extends BaseFragment {
     }
 
     private void setupRecyclerView(List<Group> groups) {
-        userGroupListAdapter = new UserGroupListAdapter(groups);
+        userGroupListAdapter = new UserGroupListAdapter(groups,listener);
         recyclerView.setAdapter(userGroupListAdapter);
         userGroupListAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof CallGroupDisplayListener) {
+            listener = (CallGroupDisplayListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + R.string.error_onattach_callgroupdisplaylistener);
+        }
     }
 }

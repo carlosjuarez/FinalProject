@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:bind="http://schemas.android.com/tools">
     <data>
         <variable
             name="groupItem"
@@ -40,7 +40,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_group_search_group_name"
-                app:groupImage="@{groupItem.image}"/>
+                bind:groupImage="@{groupItem.image}"/>
 
             <TextView
                 android:id="@+id/tv_group_search_group_name"

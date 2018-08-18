@@ -19,9 +19,8 @@
             android:layout_marginTop="@dimen/margin_vertical"
             android:text="@string/tv_online_user_list_header"
             android:maxLines="1"
-            app:layout_constraintBottom_toTopOf="@+id/rv_fragment_user_list_users_reclycler_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -35,7 +34,8 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_fragment_user_list_header" />
+            app:layout_constraintTop_toBottomOf="@id/tv_fragment_user_list_header"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </android.support.constraint.ConstraintLayout>
 
